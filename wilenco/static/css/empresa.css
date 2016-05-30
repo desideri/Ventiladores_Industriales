@@ -1,0 +1,20 @@
+#mision{
+    display: none;
+}
+#vision{
+    display: none;
+}
+#obras{
+    display: none;
+}
+.active a{
+    color:#777;
+}
+
+.current{
+    display: block;
+}
+
+.inactive{
+    display: none;
+}

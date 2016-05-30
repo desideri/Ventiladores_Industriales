@@ -25,7 +25,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static 'js/simpleCart.min.js' %}"> </script>
 <!-- start menu -->
 <link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/empresa.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
+<script src="{% static 'js/empresa.js' %}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!-- /start menu -->
 </head>
@@ -63,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="contact">
 	  <div class="container">
 		 <ol class="breadcrumb">
-		  <li class="active">Informaci&oacute;n de la Empresa</li>
+		  <li class="active"><a href="#" class="show">Informaci&oacute;n de la Empresa</a></li>
 		 </ol>
 			<!--start contact-->
 			<h3>Empresa</h3>
@@ -71,15 +73,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 span_1_of_3">
 					<div class="contact_info">
 						<ul>
-			    	 		<li><h4>Misi&oacute;n</h4></li>
-							<li><h4>Visi&oacute;n</h4></li>
-							<li><h4>Obras</h4></li>
+			    	 		<li><a href="#" class="show"><h4>Misi&oacute;n</h4></a></li>
+							<li><a href="#vision" class="show"><h4>Visi&oacute;n</h4></a></li>
+							<li><a href="#obras" class="show"><h4>Obras</h4></a></li>
 						</ul>
       				</div>
 				</div>
-				<div class="col-md-6 span_2_of_3">
+				<div id="info" class="col-md-6 span_2_of_3 current">
 				  <div class="contact-form">
-					  <h4 class="text-center">Informaci&oacute;n de la Empresa</h4>
+					  <h4>Informaci&oacute;n de la Empresa</h4>
+
+
+				    </div>
+  				</div>
+				<div id="mision" class="col-md-6 span_2_of_3">
+				  <div class="contact-form">
+					  <h4>Misi&oacute;n</h4>
+
+
+				    </div>
+  				</div>
+				<div id="vision" class="col-md-6 span_2_of_3">
+				  <div class="contact-form">
+					  <h4>Visi&oacute;n</h4>
+
+
+				    </div>
+  				</div>
+				<div id="obras" class="col-md-6 span_2_of_3">
+				  <div class="contact-form">
+					  <h4>Obras</h4>
+
 
 				    </div>
   				</div>
