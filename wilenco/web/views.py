@@ -6,3 +6,9 @@ def index(request):
 
 def contacto(request):
     return render(request, 'contact.html', {})
+
+def product(request):
+    return render(request, 'product.html', {})
+
+def empresa(request):
+    return render(request, 'empresa.html', {})

@@ -1,4 +1,4 @@
-w/*--A Design by W3layouts 
+w/*--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -16,7 +16,7 @@ body a{
 	-ms-transition: 0.5s all;
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
-border-top: none;	
+border-top: none;
 }
 a:hover, a:focus {
     color:#000;
@@ -39,7 +39,7 @@ ul{
 	margin: 0;
 }
 h1,h2,h3,h4,h5,h6,label,p{
-	margin:0;	
+	margin:0;
 }
 h1.b1,h2.b2,h3.b3 {
   margin-bottom:25px;
@@ -83,7 +83,7 @@ h1.b1,h2.b2,h3.b3 {
 .cartHeaders div{
 	float:left;
 	margin: 5px 20px 5px 20px ;
-}	
+}
 .grid_1 img{
 	margin-bottom:1em;
 }
@@ -124,14 +124,14 @@ h1.b1,h2.b2,h3.b3 {
     font-weight: 100;
     padding: 0.5em 1.3em;
 	text-decoration:none;
-background:#ed645c;	
+background:#D90429;
 display:inline-block;
 }
 .logo h1 a:hover{
 	text-decoration:none;
 }
 .logo{
-	float:left;	
+	float:left;
 }
  .top-nav {
   width: 42%;
@@ -695,7 +695,7 @@ background-position:-167px -36px;
 .product-grid {
 	width: 30%;
 	margin: 0 3% 4% 0;
-	float: left;	
+	float: left;
 	position: relative;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -726,11 +726,11 @@ background-position:-167px -36px;
 }
 .product-img img {
 	width: 100%;
-	padding:1em 2.5em 0; 
+	padding:1em 2.5em 0;
 }
 .product-info-cust {
 	padding: 0.8em 1.2em;
-} 
+}
 .item_quantity {
   margin: 1em 0;
   font-size: 0.85em;
@@ -743,7 +743,7 @@ background-position:-167px -36px;
 	color:#fff;
 	text-decoration:none;
 	font-weight:600;
-	padding:0.5em 2em;	
+	padding:0.5em 2em;
 	display:inline-block;
 	border-radius:5px;
 	-moz-border-radius: 5px;
@@ -764,7 +764,7 @@ background-position:-167px -36px;
 .item_add:hover {
 	background:#ed645c;
 	color: #fff;
-} 
+}
 .product-info-price {
 	float: right;
 	background: #fff;
@@ -882,7 +882,7 @@ p.disc {
 ul.place{
 	margin: 5px 0;
 	background: #f9f9f9;
-	width: 100%;  
+	width: 100%;
 	padding:0px 5px;
 	  cursor: pointer;
 }
@@ -916,7 +916,7 @@ ul.place li.by{
 .possible-about h4{
 	color:#7db122;
 	font-size:1.4em;
-	
+
 	font-weight:600;
 	   padding: 0 0 0.3em;
 }
@@ -937,7 +937,7 @@ span.amount {
   text-align:center;
 }
 ul.dropdown-menu1 li a:hover{
-	color:#000!important;	
+	color:#000!important;
 }
 .glyphicon-minus:before {
     content: "\2212";
@@ -986,13 +986,13 @@ ul.dropdown-menu1 li a:hover{
 /* checked state */
 /**/
 .sky-form .radio input + i:after {
-	background-color: #2da5da;	
+	background-color: #2da5da;
 }
 .sky-form .checkbox input + i:after {
 	color: #2da5da;
 }
 .sky-form .rating input:checked ~ label {
-	color: #2da5da;	
+	color: #2da5da;
 	 background: url(../images/star.png) 0 -20px;
 	display: -webkit-box;
 }
@@ -1183,7 +1183,7 @@ position: absolute;
 }
  ul.star-footer li{
 	display:inline-block;
-	
+
 }
  ul.star-footer li i{
 	height: 16px;
@@ -1246,7 +1246,7 @@ p.para {
 	color:#BDBCBC;
 	font-size:1.3em;
 	display:block;
-font-family: 'Dosis-Medium';	
+font-family: 'Dosis-Medium';
 }
 .btm-grid span{
 	color:#333;
@@ -1306,14 +1306,14 @@ h3.ghj {
 }
 .group {
     zoom:1;
-}	
+}
 .span_2_of_3 {
 	width: 70%;
-	padding:1.5%; 
+	padding:1.5%;
 }
 .span_1_of_3 {
 	width: 30%;
-	padding:1.5%; 
+	padding:1.5%;
 }
 .span_2_of_3  h4,
 .span_1_of_3  h4 {
@@ -1348,7 +1348,7 @@ h3.ghj {
 }
 .contact-form textarea{
 		resize:none;
-		height:120px;		
+		height:120px;
 }
 .contact-form input[type="submit"]{
 	background:#00a0dc;
@@ -1416,7 +1416,7 @@ h3.ghj {
 	padding:5em 0 0;
 }
 .cart-item-info h3{
-	font-size:1em;	
+	font-size:1em;
 }
 .cart-item-info h3 a{
 	color:#000;
@@ -1449,7 +1449,7 @@ h3.ghj {
 .cart-item-info h4 span{
 	font-size:0.65em;
 	font-weight:400;
-} 
+}
 .close1,.close2{
   background: url('../images/close_1.png') no-repeat 0px 0px;
   cursor: pointer;
@@ -1463,11 +1463,11 @@ h3.ghj {
   -o-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
 }
-.cart-header {  
-  position: relative;  
+.cart-header {
+  position: relative;
 }
-.cart-header2 {  
-  position: relative;  
+.cart-header2 {
+  position: relative;
 }
 a.order {
   background:#6FC9EB;
@@ -1514,7 +1514,7 @@ a.cpns:hover{
 	font-size:0.9em;
 	font-weight:400;
 	margin-top:1em;
-	color:#727272;	
+	color:#727272;
 }
 .total-item p a:hover{
 	color:#333;
@@ -1527,7 +1527,7 @@ a.continue{
 	color:#fff;
 	text-decoration:none;
 	display: block;
-   font-weight: 600;  
+   font-weight: 600;
    text-align: center;
    margin-bottom:2em;
 }
@@ -1542,7 +1542,7 @@ ul.total_price{
 ul.total_price li.last_price{
 	width: 50%;
   float: left;
-  
+
 }
 ul.total_price li.last_price span{
 	font-size: 1.1em;
@@ -1560,7 +1560,7 @@ ul.total_price li.last_price span{
 .price-details span{
 	width: 50%;
   float: left;
- 
+
   font-size: 0.8125em;
   color: #000;
   line-height: 1.8em;
@@ -1654,7 +1654,7 @@ text-decoration:underline;
 .log h5{
 color: #5d5959;
 font-size:1.3em;
-padding-bottom:10px; 
+padding-bottom:10px;
 }
 .log form {
 margin-top:2em;
@@ -1832,7 +1832,7 @@ label {
 	transition: 0.5s ease;
 	-moz-transition: 0.5s ease;
 	-o-transition: 0.5s ease;
-	-webkit-transition: 0.5s ease;	
+	-webkit-transition: 0.5s ease;
 }
 .registration_form input[type="submit"]:hover{
 	background:#ed645c;
@@ -2157,7 +2157,7 @@ ul.place li.sort {
 .registration h2 {
     font-size: 1.6em;
 }
-span.item_price {    
+span.item_price {
     margin: 6px 0 0px;
 }
 }
@@ -2294,7 +2294,7 @@ span.item_price {
     top: 35%;
     left: 25%;
 	 font-size: 1em;
-} 
+}
 .subscribe form input[type="submit"] {
     width: 24%;
 }
@@ -2345,7 +2345,7 @@ input.item_add.items {
     padding: 0.3em 3.9em;
 }
 .item_quantity {
-    padding: 6px 6px !important; 
+    padding: 6px 6px !important;
 }
 input.item_add.items {
     padding: 0.7em 1.5em !important;

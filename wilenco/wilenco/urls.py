@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'web.views.index'),
     url(r'^contacto/', 'web.views.contacto'),
+    url(r'^productos/', 'web.views.product'),
+    url(r'^empresa/', 'web.views.empresa'),
 ]
