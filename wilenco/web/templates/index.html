@@ -1,8 +1,9 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
+<!--
+ Nombre: index.html
+ Descripcion: Página principal del Sitio web
+ Version: 1.1
+ Fecha: 03/06/2016
+ Autor: Grupo Ventiladores
 -->
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--theme style-->
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/jquery.min.js' %}"></script>
-
 <!--//theme style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,9 +26,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="{% static 'js/memenu.js' %}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!-- /start menu -->
+<!--Liberia para la cotizacion-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 </head>
 <body>
-<!--header-->
+<!-- Inicio del header-->
 <script src="{% static 'js/responsiveslides.min.js' %}"></script>
 <script>
     $(function () {
@@ -43,118 +47,109 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </script>
 
 <div class="header-top">
-	 <div class="header-bottom">
-				<div class="logo">
-					<h1><a href="/">Wilenco</a></h1>
-				</div>
-			 <!---->
-			 <div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="/empresa/">Empresa</a></li>
-					<li class="grid"><a href="/productos">Productos</a>
-						<div class="mepanel">
-							<div class="row">
-								<div class="col1 me-one">
-									<h4>Shop</h4>
-									<ul>
-										<li><a href="/productos/">New Arrivals</a></li>
-										<li><a href="/productos/">Home</a></li>
-										<li><a href="/productos/">Decorates</a></li>
-										<li><a href="/productos/">Accessories</a></li>
-										<li><a href="/productos/">Kids</a></li>
-										<li><a href="/productos/">Login</a></li>
-										<li><a href="/productos/">Brands</a></li>
-										<li><a href="/productos/">My Shopping Bag</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Type</h4>
-									<ul>
-										<li><a href="/productos/">Diwali Lights</a></li>
-										<li><a href="/productos/">Tube Lights</a></li>
-										<li><a href="/productos/">Bulbs</a></li>
-										<li><a href="/productos/">Ceiling Lights</a></li>
-										<li><a href="/productos/">Accessories</a></li>
-										<li><a href="/productos/">Lanterns</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="/productos/">Everyday</a></li>
-										<li><a href="/productos/">Philips</a></li>
-										<li><a href="/productos/">Havells</a></li>
-										<li><a href="/productos/">Wipro</a></li>
-										<li><a href="/productos/">Jaguar</a></li>
-										<li><a href="/productos/">Ave</a></li>
-										<li><a href="/productos/">Gold Medal</a></li>
-										<li><a href="/productos/">Anchor</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="grid"><a href="#">Servicios</a>
-						<div class="mepanel">
-							<div class="row">
-								<div class="col1 me-one">
-									<h4>Shop</h4>
-									<ul>
-										<li><a href="/productos/">New Arrivals</a></li>
-										<li><a href="/productos/">Home</a></li>
-										<li><a href="/productos/">Decorates</a></li>
-										<li><a href="/productos/">Accessories</a></li>
-										<li><a href="/productos/">Kids</a></li>
-										<li><a href="/productos/">Login</a></li>
-										<li><a href="/productos/">Brands</a></li>
-										<li><a href="/productos/">My Shopping Bag</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Type</h4>
-									<ul>
-										<li><a href="/productos/">Diwali Lights</a></li>
-										<li><a href="/productos/">Tube Lights</a></li>
-										<li><a href="/productos/">Bulbs</a></li>
-										<li><a href="/productos/">Ceiling Lights</a></li>
-										<li><a href="/productos/">Accessories</a></li>
-										<li><a href="/productos/">Lanterns</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="/productos/">Everyday</a></li>
-										<li><a href="/productos/">Philips</a></li>
-										<li><a href="/productos/">Havells</a></li>
-										<li><a href="/productos/">Wipro</a></li>
-										<li><a href="/productos/">Jaguar</a></li>
-										<li><a href="/productos/">Ave</a></li>
-										<li><a href="/productos/">Gold Medal</a></li>
-										<li><a href="/productos/">Anchor</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-				<li class="grid"><a href="/contacto/">Contact&eacute;nos</a></li>
-				</ul>
-			 </div>
-			 <!---->
-			 <div class="cart box_1">
-				 <a href="checkout.html">
-					<div class="total">
-					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div>
-					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-				</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-			 	<div class="clearfix"> </div>
-			 </div>
-			 <div class="clearfix"> </div>
-			 <!---->
-			 </div>
-			<div class="clearfix"> </div>
+  <div class="row">
+     <div class="col-sm-3"></div>
+     <div class="col-sm-1"><a href="/"><img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-rounded" width="100" height="70" style="margin-top:20px"></a></div>
+     <div class="col-sm-8">
+       <div class="top-nav">
+        <ul class="memenu skyblue nav-justified">
+          <li class="active"><a href="/">Inicio</a> </li>
+          <li class="grid"><a href="/empresa/">Empresa</a></li>
+          <li class="grid"><a href="/productos">Productos</a>
+            <div class="mepanel">
+              <div class="row">
+                <div class="col1 me-one">
+                  <h4>Shop</h4>
+                  <ul>
+                    <li><a href="/productos/">New Arrivals</a></li>
+                    <li><a href="/productos/">Home</a></li>
+                    <li><a href="/productos/">Decorates</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Kids</a></li>
+                    <li><a href="/productos/">Login</a></li>
+                    <li><a href="/productos/">Brands</a></li>
+                    <li><a href="/productos/">My Shopping Bag</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Type</h4>
+                  <ul>
+                    <li><a href="/productos/">Diwali Lights</a></li>
+                    <li><a href="/productos/">Tube Lights</a></li>
+                    <li><a href="/productos/">Bulbs</a></li>
+                    <li><a href="/productos/">Ceiling Lights</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Lanterns</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Popular Brands</h4>
+                  <ul>
+                    <li><a href="/productos/">Everyday</a></li>
+                    <li><a href="/productos/">Philips</a></li>
+                    <li><a href="/productos/">Havells</a></li>
+                    <li><a href="/productos/">Wipro</a></li>
+                    <li><a href="/productos/">Jaguar</a></li>
+                    <li><a href="/productos/">Ave</a></li>
+                    <li><a href="/productos/">Gold Medal</a></li>
+                    <li><a href="/productos/">Anchor</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="grid"><a href="#">Servicios</a>
+            <div class="mepanel">
+              <div class="row">
+                <div class="col1 me-one">
+                  <h4>Shop</h4>
+                  <ul>
+                    <li><a href="/productos/">New Arrivals</a></li>
+                    <li><a href="/productos/">Home</a></li>
+                    <li><a href="/productos/">Decorates</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Kids</a></li>
+                    <li><a href="/productos/">Login</a></li>
+                    <li><a href="/productos/">Brands</a></li>
+                    <li><a href="/productos/">My Shopping Bag</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Type</h4>
+                  <ul>
+                    <li><a href="/productos/">Diwali Lights</a></li>
+                    <li><a href="/productos/">Tube Lights</a></li>
+                    <li><a href="/productos/">Bulbs</a></li>
+                    <li><a href="/productos/">Ceiling Lights</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Lanterns</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Popular Brands</h4>
+                  <ul>
+                    <li><a href="/productos/">Everyday</a></li>
+                    <li><a href="/productos/">Philips</a></li>
+                    <li><a href="/productos/">Havells</a></li>
+                    <li><a href="/productos/">Wipro</a></li>
+                    <li><a href="/productos/">Jaguar</a></li>
+                    <li><a href="/productos/">Ave</a></li>
+                    <li><a href="/productos/">Gold Medal</a></li>
+                    <li><a href="/productos/">Anchor</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="grid"><a href="/contacto/">Cont&aacute;ctenos</a></li>
+        </ul>
+       </div>
+     </div>
+	<div class="clearfix"> </div>
 </div>
-<!---->
+</div>
+<!-- Fin del Header-->
+<!-- Inicio del Contenido-->
 <div class="slider">
 	  <div class="callbacks_container">
 	     <ul class="rslides" id="slider">
@@ -187,7 +182,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </div>
 <!---->
 <script src="{% static 'js/bootstrap.js' %}"> </script>
-
 <div class="items">
 	 <div class="container">
 		 <div class="items-sec">
@@ -339,6 +333,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 </div>
 </div>
 <!---->
+<!-- Fin del Contenido-->
 <div class="footer">
 	 <div class="container">
 		 <div class="footer-grids">
@@ -355,9 +350,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="col-md-6 ftr-grid">
 					<h3>Contacto</h3>
 					<ul class="nav-bottom">
-						<li> Tel. +34 938 529 111</li>
-						<li> Fax + 34 938 529 042</li>
-						<li>wilenco@hotmail.com</li>
+						<li>General Gomez 2012 y Los Ríos</li>
+						<li>Guayas - Guayaquil</li>
+						<li>Ecuador</li>
+            <li>Phone:(042) 513 374</li>
+            <li>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></li>
 					</ul>
 			 </div>
 			 <div class="clearfix"></div>

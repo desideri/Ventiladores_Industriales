@@ -34,33 +34,108 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!--header-->
 <div class="header-top">
-	 <div class="header-bottom">
-				<div class="logo">
-					<h1><a href="/">Wilenco</a></h1>
-				</div>
-			 <!---->
-			 <div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="/empresa/">Empresa</a></li>
-					<li class="grid"><a href="/productos/">Productos</a></li>
-					<li class="grid"><a href="#">Servicios</a></li>
-					<li class="grid"><a href="/contacto/">Contact&eacute;nos</a></li>
-				</ul>
-			 </div>
-			 <!---->
-			 <div class="cart box_1">
-				 <a href="checkout.html">
-					<div class="total">
-					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div>
-					<span class="glyphicon glyphicon-list-alt"></span>
-				</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-			 	<div class="clearfix"> </div>
-			 </div>
-			 <div class="clearfix"> </div>
-			 <!---->
-			 </div>
-			<div class="clearfix"> </div>
+  <div class="row">
+     <div class="col-sm-3"></div>
+     <div class="col-sm-1"><a href="/"><img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-rounded" width="100" height="70" style="margin-top:20px"></a></div>
+     <div class="col-sm-8">
+       <div class="top-nav">
+        <ul class="memenu skyblue nav-justified">
+          <li class="grid"><a href="/">Inicio</a> </li>
+          <li class="active"><a href="/empresa/">Empresa</a></li>
+          <li class="grid"><a href="/productos">Productos</a>
+            <div class="mepanel">
+              <div class="row">
+                <div class="col1 me-one">
+                  <h4>Shop</h4>
+                  <ul>
+                    <li><a href="/productos/">New Arrivals</a></li>
+                    <li><a href="/productos/">Home</a></li>
+                    <li><a href="/productos/">Decorates</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Kids</a></li>
+                    <li><a href="/productos/">Login</a></li>
+                    <li><a href="/productos/">Brands</a></li>
+                    <li><a href="/productos/">My Shopping Bag</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Type</h4>
+                  <ul>
+                    <li><a href="/productos/">Diwali Lights</a></li>
+                    <li><a href="/productos/">Tube Lights</a></li>
+                    <li><a href="/productos/">Bulbs</a></li>
+                    <li><a href="/productos/">Ceiling Lights</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Lanterns</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Popular Brands</h4>
+                  <ul>
+                    <li><a href="/productos/">Everyday</a></li>
+                    <li><a href="/productos/">Philips</a></li>
+                    <li><a href="/productos/">Havells</a></li>
+                    <li><a href="/productos/">Wipro</a></li>
+                    <li><a href="/productos/">Jaguar</a></li>
+                    <li><a href="/productos/">Ave</a></li>
+                    <li><a href="/productos/">Gold Medal</a></li>
+                    <li><a href="/productos/">Anchor</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="grid"><a href="#">Servicios</a>
+            <div class="mepanel">
+              <div class="row">
+                <div class="col1 me-one">
+                  <h4>Shop</h4>
+                  <ul>
+                    <li><a href="/productos/">New Arrivals</a></li>
+                    <li><a href="/productos/">Home</a></li>
+                    <li><a href="/productos/">Decorates</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Kids</a></li>
+                    <li><a href="/productos/">Login</a></li>
+                    <li><a href="/productos/">Brands</a></li>
+                    <li><a href="/productos/">My Shopping Bag</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Type</h4>
+                  <ul>
+                    <li><a href="/productos/">Diwali Lights</a></li>
+                    <li><a href="/productos/">Tube Lights</a></li>
+                    <li><a href="/productos/">Bulbs</a></li>
+                    <li><a href="/productos/">Ceiling Lights</a></li>
+                    <li><a href="/productos/">Accessories</a></li>
+                    <li><a href="/productos/">Lanterns</a></li>
+                  </ul>
+                </div>
+                <div class="col1 me-one">
+                  <h4>Popular Brands</h4>
+                  <ul>
+                    <li><a href="/productos/">Everyday</a></li>
+                    <li><a href="/productos/">Philips</a></li>
+                    <li><a href="/productos/">Havells</a></li>
+                    <li><a href="/productos/">Wipro</a></li>
+                    <li><a href="/productos/">Jaguar</a></li>
+                    <li><a href="/productos/">Ave</a></li>
+                    <li><a href="/productos/">Gold Medal</a></li>
+                    <li><a href="/productos/">Anchor</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="grid"><a href="/contacto/">Cont&aacute;ctenos</a></li>
+        </ul>
+       </div>
+     </div>
+	<div class="clearfix"> </div>
 </div>
+</div>
+<!-- Fin del Header-->
 <!---->
 <div class="contact">
 	  <div class="container">
@@ -126,11 +201,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 			 </div>
 			 <div class="col-md-6 ftr-grid">
-					<h3>Contacto</h3>
-					<ul class="nav-bottom">
-						<li> Tel. +34 938 529 111</li>
-						<li> Fax + 34 938 529 042</li>
-						<li>wilenco@hotmail.com</li>
+				 <h3>Contacto</h3>
+				 <ul class="nav-bottom">
+					 <li>General Gomez 2012 y Los Ríos</li>
+					 <li>Guayas - Guayaquil</li>
+					 <li>Ecuador</li>
+					 <li>Phone:(042) 513 374</li>
+					 <li>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></li>
 					</ul>
 			 </div>
 			 <div class="clearfix"></div>
