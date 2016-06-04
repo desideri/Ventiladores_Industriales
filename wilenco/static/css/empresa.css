@@ -18,3 +18,7 @@
 .inactive{
     display: none;
 }
+
+.map iframe{
+    height: 15em;
+}
