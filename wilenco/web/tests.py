@@ -17,7 +17,7 @@ import unittest
 from selenium import webdriver
 
 
-class TestCajaNegraContacto(unittest.TestCase):
+class TestCajaNegraContacto(TestCase):
     '''Como su nombre lo indica, es una clase usada para realizar unit test.
 
        En este caso se lo usa para realizar pruebas de Caja negra a la Página Contacto de nuestro sitio web.
