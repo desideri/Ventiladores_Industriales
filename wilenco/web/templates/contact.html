@@ -1,6 +1,7 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
+<!--
+Autor: Wilenco
+Ultima modificación: junio 04/2016
+Ultimo modificador: Jorge Ayala
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
@@ -26,7 +27,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>
+    /*Aquí se realizan funciones para validar lo que el usuario ingresa en el formulario*/
+    $(document).ready(function(){
+        //Muestra el menu de la página
+        $(".memenu").memenu();
+        //$('.mybutton').hide();
+        $('#msgEmailInvalido').hide();
+                                
+        function emailValido(email) {
+            //regex obtenido aquí: http://so.devilmaycode.it/jquery-validate-e-mail-address-regex/
+            var patron = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+            return patron.test(email);
+        }
+
+        function validar() {
+                
+                var email = $("#emailUsuario").val();
+                if (!emailValido(email)) {
+                            $('#msgEmailInvalido').show();
+                            $("#msgEmailInvalido").text(email + " no es aceptable :(");
+                            $("#msgEmailInvalido").css("color", "red");
+                }
+                else{
+                    $("#msgEmailInvalido").text("");
+                    $('#msgEmailInvalido').hide();
+                    $("#emailUsuario").val("");
+                    $("#nombreUsuario").val("");
+                    $("#telUsuario").val("");
+                    $("#asuntoUsuario").val("");
+                }
+                return false;
+            }
+
+        $("form").bind("submit", validar);
+    
+    
+    });
+
+
+</script>
 <!-- /start menu -->
 </head>
 <body>
@@ -164,22 +204,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					    <form>
 					    	<div>
 						    	<span><label>NOMBRE</label></span>
-						    	<span><input name="userName" type="text" class="textbox"></span>
+						    	<span><input id ="nombreUsuario"name="userName" type="text" class="textbox" required></span>
 						    </div>
 						    <div>
 						    	<span><label>E-MAIL</label></span>
-						    	<span><input name="userEmail" type="text" class="textbox"></span>
+						    	<span><input id ="emailUsuario" name="userEmail" type="text" class="textbox" required> <label id="msgEmailInvalido"></label></span>
 						    </div>
 						    <div>
 						     	<span><label>TEL&eacuteFONO/CELULAR</label></span>
-						    	<span><input name="userPhone" type="text" class="textbox"></span>
+						    	<span><input pattern="0[0-9]{1}-[0-9]{7}" id ="telUsuario"name="userPhone" type="text" class="textbox" required></span>
 						    </div>
 						    <div>
 						    	<span><label>ASUNTO</label></span>
-						    	<span><textarea name="userMsg"> </textarea></span>
+						    	<span><textarea id="asuntoUsuario" name="userMsg" required> </textarea></span>
 						    </div>
 						   <div>
-						   		<span><input type="submit" class="mybutton" value="Enviar"></span>
+						   		<span><input type="submit" class="mybutton" value="Enviar" ></span>
 						  </div>
 					    </form>
 
