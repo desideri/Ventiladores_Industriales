@@ -1,18 +1,23 @@
 <!--
 Autor: Wilenco
-Ultima modificación: junio 04/2016
+Ultima modificación: junio 06/2016
 Ultimo modificador: Jorge Ayala
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
+<!--
+Seccion head de la página:
+    Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
+       
+    -->
 <head>
 {% load staticfiles %}
+
 <title>Wilenco | Home </title>
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<!--theme style-->
+
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/jquery.min.js' %}"></script>
 
@@ -27,6 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
+<!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
 <script>
     /*Aquí se realizan funciones para validar lo que el usuario ingresa en el formulario*/
     $(document).ready(function(){
@@ -70,7 +76,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- /start menu -->
 </head>
 <body>
-<!--header-->
+<!--header
+    Aquí se encuentra definido el menú princiipal, el nombre de la empresa y su logo
+    
+    
+    -->
 <div class="header-top">
   <div class="row">
      <div class="col-sm-3"></div>
@@ -190,6 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.861770902672!2d-79.90175978524474!3d-2.2058727983921544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6e14f8c26db5%3A0x49a884cc44b19448!2sLos+R%C3%ADos+%26+Gral+Jos%C3%A9+A.G%C3%B3mez%2C+Guayaquil+090308!5e0!3m2!1ses-419!2sec!4v1465014386485" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 								</div>
       				</div>
+                    <!--Información general de la compañía-->
       			<div class="company_address">
 				     <h4>Informaci&oacute;n de la Compañia :</h4>
 						 <p>General Gomez 2012 y Los Ríos</p>
@@ -199,6 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 <p>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></p>
 				   </div>
 				</div>
+              <!--Formulario que debe ser llenado por el usuario-->
 				<div class="col-md-6 span_2_of_3">
 				  <div class="contact-form">
 					    <form>
