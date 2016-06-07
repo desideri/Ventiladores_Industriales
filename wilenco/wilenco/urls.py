@@ -6,10 +6,10 @@ from django.contrib import admin
  Django Urls for wilenco project.
  Autor: Wilenco
  Nombre: urls.py
- Descripcion: Archivo que contiene las urls del sitio web.
+ Descripcion: Archivo que contiene las urls del sitio web
  Version: 2.1
  Fecha de Creacion: Mayo 30/2016
- Ultima modificación: junio 06/2016
+ Ultima modificacion: Junio 06/2016
  Ultimo modificador: Kattya Desiderio
 """
 urlpatterns = [

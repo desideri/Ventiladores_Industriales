@@ -8,7 +8,7 @@ from django.shortcuts import render
  Descripcion: Archivo que contiene las vistas del sitio web.
  Version: 2.1
  Fecha de Creacion: Mayo 30/2016
- Ultima modificación: junio 06/2016
+ Ultima modificacion: junio 06/2016
  Ultimo modificador: Kattya Desiderio
 """
 

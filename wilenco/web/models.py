@@ -15,13 +15,16 @@ class Producto(models.Model):
     potencia = models.CharField(max_length=50)
     capacidad = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
-    imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)
+   # imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)
 
-# Clase  "Solicitud"
-# Descripcion: Clase para receptar la Solicitud de Instalacion/Mantenimiento.
-# Fecha de Creacion: Junio 03/2016
-# Fecha de Modificacion: Junio 06/2016
+"""
+ Clase  "Solicitud"
+ Descripcion: Entidad para receptar la Solicitud de Instalacion/Mantenimiento.
+ Fecha de Creacion: Junio 03/2016
+ Fecha de Modificacion: Junio 06/2016
+ """
 class Solicitud(models.Model):
+    """ Entidad para Solicitud"""
     tipo =  models.BooleanField(default=False) #0 Mantemiento / 1 Instalacion
     descripcion = models.CharField(max_length=50) # Descripcion que desee dar el cliente
     fechaCreada = models.DateField()   # Fecha de la Creacion de la Solicitud
