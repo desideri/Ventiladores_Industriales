@@ -15,7 +15,7 @@ class Producto(models.Model):
     potencia = models.CharField(max_length=50)
     capacidad = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
-   # imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)
+    imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)
 
 """
  Clase  "Solicitud"
@@ -33,4 +33,3 @@ class Solicitud(models.Model):
     nombre = models.CharField(max_length=50)   # Nombre
     apellido = models.CharField(max_length=50) # Apellido
     cedulaCliente = models.IntegerField() # Cedula
-    

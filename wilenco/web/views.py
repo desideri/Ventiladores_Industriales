@@ -8,34 +8,41 @@ from django.shortcuts import render
  Descripcion: Archivo que contiene las vistas del sitio web.
  Version: 2.1
  Fecha de Creacion: Mayo 30/2016
- Ultima modificacion: junio 06/2016
+ Ultima modificacion: junio 07/2016
  Ultimo modificador: Kattya Desiderio
 """
 
-# Funcion  "index"
-# Descripcion: Funcion que hace render el index.
-# Fecha de Creacion: Junio 03/2016
-# Fecha de Modificacion: Junio 06/2016
 def index(request):
+    """ Funcion  "index"
+        Descripcion: Funcion que hace render el index.
+        Fecha de Creacion: Junio 03/2016
+        Fecha de Modificacion: Junio 06/2016"""
     return render(request, 'index.html', {})
 
-# Funcion  "contacto"
-# Descripcion: Funcion que hace render la pagina de Contactenos.
-# Fecha de Creacion: Junio 03/2016
-# Fecha de Modificacion: Junio 06/2016
 def contacto(request):
+    """  Funcion  "contacto"
+         Descripcion: Funcion que hace render la pagina de Contactenos.
+         Fecha de Creacion: Junio 03/2016
+         Fecha de Modificacion: Junio 06/2016 """
     return render(request, 'contact.html', {})
 
-# Funcion  "product"
-# Descripcion: Funcion que hace render la pagina de Productos.
-# Fecha de Creacion: Junio 03/2016
-# Fecha de Modificacion: Junio 06/2016
 def product(request):
+    """  Funcion  "product"
+         Descripcion: Funcion que hace render la pagina de Productos.
+         Fecha de Creacion: Junio 03/2016
+         Fecha de Modificacion: Junio 06/2016"""
     return render(request, 'product.html', {})
 
-# Funcion  "empresa"
-# Descripcion: Funcion que hace render la pagina de Empresa.
-# Fecha de Creacion: Junio 03/2016
-# Fecha de Modificacion: Junio 06/2016
 def empresa(request):
+    """ Funcion  "empresa"
+        Descripcion: Funcion que hace render la pagina de Empresa.
+        Fecha de Creacion: Junio 03/2016
+        Fecha de Modificacion: Junio 06/2016"""
     return render(request, 'empresa.html', {})
+
+def servicio(request):
+    """ Funcion  "servicio"
+        Descripcion: Funcion que hace render la pagina de Servicio.
+        Fecha de Creacion: Junio 07/2016
+        Fecha de Modificacion: Junio 07/2016"""
+    return render(request, 'servicio.html', {})

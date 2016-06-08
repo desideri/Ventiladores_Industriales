@@ -9,7 +9,7 @@ from django.contrib import admin
  Descripcion: Archivo que contiene las urls del sitio web
  Version: 2.1
  Fecha de Creacion: Mayo 30/2016
- Ultima modificacion: Junio 06/2016
+ Ultima modificacion: Junio 07/2016
  Ultimo modificador: Kattya Desiderio
 """
 urlpatterns = [
@@ -23,5 +23,7 @@ urlpatterns = [
     url(r'^productos/', 'web.views.product'), #URL para la pagina de Productos
 
     url(r'^empresa/', 'web.views.empresa'), #URL para la pagina de Empresa: Mision, Vision, Obras
+
+    url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion
 
 ]
