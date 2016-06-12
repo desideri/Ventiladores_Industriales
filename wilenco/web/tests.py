@@ -12,7 +12,7 @@ Fuente de referencia: https://realpython.com/blog/python/headless-selenium-testi
 
 '''
 
-class TestCajaNegraContacto(TestCase):
+class TestCajaNegraContacto(unittest.TestCase):
     """
        @Autor: Jorge Ayala
        Como su nombre lo indica, es una clase usada para realizar unit test.
@@ -73,7 +73,7 @@ class TestCajaNegraContacto(TestCase):
 
     
 
-class TestCajaNegraModeloSolicitud(TestCase):
+class TestCajaNegraModeloSolicitud(unittest.TestCase):
     """
         @Autor: Israel Fernandez
         Clase para realizar un unit test del modelo Solicitud
