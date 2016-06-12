@@ -1,5 +1,5 @@
 from django.test import TestCase
-from web.models import *
+#from web.models import *
 from datetime import datetime
 import unittest
 from selenium import webdriver
