@@ -5,8 +5,8 @@ import unittest
 from selenium import webdriver
 '''
 @Autores: Wilenco team
-@Ultima modificacion: junio07/2016
-@Ultimo modificador: Israel Fernandez
+@Ultima modificacion: junio 12/2016
+@Ultimo modificador: Jorge Ayala
 Pruebas de caja negra y blanca para proyecto
 Fuente de referencia: https://realpython.com/blog/python/headless-selenium-testing-with-python-and-phantomjs/
 
