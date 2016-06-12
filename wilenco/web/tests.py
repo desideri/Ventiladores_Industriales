@@ -68,10 +68,7 @@ class TestCajaNegraContacto(unittest.TestCase):
 
         self.assertTrue(msgEmailInvalido.is_displayed())
 
-    def tearDown(self):
-        self.driver.quit()
-
-    
+        
 
 class TestCajaNegraModeloSolicitud(unittest.TestCase):
     """
@@ -93,5 +90,4 @@ class TestCajaNegraModeloSolicitud(unittest.TestCase):
 
         self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud invalida :(')
 
-    def tearDown(self):
-        self.driver.quit()
+    
