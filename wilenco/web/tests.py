@@ -32,6 +32,7 @@ class TestCajaNegraContacto(TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         # self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(6) 
         self.driver.set_window_size(1120,550)
 
     def test_emailCorrecto(self):
@@ -69,6 +70,8 @@ class TestCajaNegraContacto(TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    
+
 class TestCajaNegraModeloSolicitud(TestCase):
     """
         @Autor: Israel Fernandez
@@ -88,3 +91,6 @@ class TestCajaNegraModeloSolicitud(TestCase):
                                                   apellido ="test", cedulaCliente = "09123456780")
 
         self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud invalida :(')
+
+    def tearDown(self):
+        self.driver.quit()
