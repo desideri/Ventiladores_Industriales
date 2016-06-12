@@ -4,5 +4,6 @@ python:
 
 install: "pip install -r requirements.txt --use-mirrors"
 
-script: nosetests
+script:
+  - python wilenco/wilenco/test/tests.py
   
