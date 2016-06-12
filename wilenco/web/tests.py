@@ -50,6 +50,7 @@ class TestCajaNegraContacto(TestCase):
         msgEmailInvalido = self.driver.find_element_by_id("msgEmailInvalido")
 
         self.assertFalse(msgEmailInvalido.is_displayed())
+        print "Prueba de mail correcto: " + str(msgEmailInvalido.is_displayed())
 
     def test_emailIncorrecto(self):
         '''
