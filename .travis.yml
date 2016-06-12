@@ -5,5 +5,5 @@ python:
 before_install: "pip install -r requeriments.txt"
 
 script: 
-	-python wilenco/manage.py test
-	-python wilenco/web/tests.py
+  - python wilenco/manage.py test
+  - python wilenco/web/tests.py
