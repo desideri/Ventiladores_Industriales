@@ -43,7 +43,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         En esta prueba se utiliza la clase de equivalencia CE1.
         Como resultado, el usuario no debe ver ningun mensaje y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("/contacto/")
         self.driver.find_element_by_id('nombreUsuario').send_keys("Jorge Ayala")
         self.driver.find_element_by_id('emailUsuario').send_keys("test@iana.org.")
         self.driver.find_element_by_id('telUsuario').send_keys("22323")
@@ -63,7 +63,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         En esta prueba se utiliza la clase de equivalencia CE2.
         Como resultado, el usuario debe ver un mensaje de email incorrecto en rojo.
         '''
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("/contacto/")
         self.driver.find_element_by_id('nombreUsuario').send_keys("Jorge Ayala")
         self.driver.find_element_by_id('emailUsuario').send_keys("testiana.org.")
         self.driver.find_element_by_id('telUsuario').send_keys("22323")
