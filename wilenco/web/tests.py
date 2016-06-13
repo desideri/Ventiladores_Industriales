@@ -1,5 +1,5 @@
 from django.test import TestCase
-#from web.models import *
+from web.models import *
 from datetime import datetime
 import unittest
 from selenium import webdriver
@@ -50,7 +50,10 @@ class TestCajaNegraContacto(unittest.TestCase):
         msgEmailInvalido = self.driver.find_element_by_id("msgEmailInvalido")
 
         self.assertFalse(msgEmailInvalido.is_displayed())
-        print "Prueba de mail correcto: " + str(msgEmailInvalido.is_displayed())
+        emailIncorrecto = msgEmailInvalido.is_displayed()
+        pruebaCorrecta = not emailIncorrecto
+        print "¿Prueba de mail correcto exitosa? " + str(pruebaCorrecta)
+        
 
     def test_emailIncorrecto(self):
         '''
@@ -67,6 +70,7 @@ class TestCajaNegraContacto(unittest.TestCase):
         msgEmailInvalido = self.driver.find_element_by_id("msgEmailInvalido")
 
         self.assertTrue(msgEmailInvalido.is_displayed())
+        print "¿Prueba de mail Incorrecto exitosa? " + str(msgEmailInvalido.is_displayed())
 
         
 
@@ -90,6 +94,5 @@ class TestCajaNegraModeloSolicitud(unittest.TestCase):
 
         self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud invalida :(')
 
-    
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()    
