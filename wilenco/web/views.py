@@ -1,7 +1,7 @@
 # views.py
 from django.shortcuts import render
-from models import *
-from serializers import *
+from web.models import *
+from web.serializers import *
 #APIREST
 from rest_framework import generics
 from rest_framework import filters

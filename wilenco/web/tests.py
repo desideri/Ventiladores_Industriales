@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test import Client
 from django.test import LiveServerTestCase
-from web.models import *
+#from web.models import *
 from datetime import datetime
 from selenium import webdriver
 '''
