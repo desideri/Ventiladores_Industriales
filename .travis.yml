@@ -6,5 +6,5 @@ install: "pip install -r requirements.txt"
 
 script:
   - python wilenco/manage.py test
-  - python wilenco/wilenco/tests/tests.py
+  - python wilenco/web/tests.py
   
