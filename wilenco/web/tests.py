@@ -1,7 +1,6 @@
 from django.test import TestCase
 from web.models import *
 from datetime import datetime
-import unittest
 from selenium import webdriver
 '''
 @Autores: Wilenco team
@@ -12,7 +11,7 @@ Fuente de referencia: https://realpython.com/blog/python/headless-selenium-testi
 
 '''
 
-class TestCajaNegraContacto(unittest.TestCase):
+class TestCajaNegraContacto(TestCase):
     """
        @Autor: Jorge Ayala
        Como su nombre lo indica, es una clase usada para realizar unit test.
@@ -32,7 +31,7 @@ class TestCajaNegraContacto(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         # self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(6) 
+        self.driver.implicitly_wait(6)
         self.driver.set_window_size(1120,550)
 
     def test_emailCorrecto(self):
@@ -52,8 +51,8 @@ class TestCajaNegraContacto(unittest.TestCase):
         self.assertFalse(msgEmailInvalido.is_displayed())
         emailIncorrecto = msgEmailInvalido.is_displayed()
         pruebaCorrecta = not emailIncorrecto
-        print "¿Prueba de mail correcto exitosa? " + str(pruebaCorrecta)
-        
+        print "Prueba de mail correcto exitosa? " + str(pruebaCorrecta)
+
 
     def test_emailIncorrecto(self):
         '''
@@ -70,29 +69,29 @@ class TestCajaNegraContacto(unittest.TestCase):
         msgEmailInvalido = self.driver.find_element_by_id("msgEmailInvalido")
 
         self.assertTrue(msgEmailInvalido.is_displayed())
-        print "¿Prueba de mail Incorrecto exitosa? " + str(msgEmailInvalido.is_displayed())
+        print "Prueba de mail Incorrecto exitosa? " + str(msgEmailInvalido.is_displayed())
 
-        
 
-class TestCajaNegraModeloSolicitud(unittest.TestCase):
+
+class TestCajaNegraModeloSolicitud(TestCase):
     """
         @Autor: Israel Fernandez
         Clase para realizar un unit test del modelo Solicitud
         Ingresando entradas validas y no validas
     """
-    def crear_solicitud_valida(self):
+    def test_crear_solicitud_valida(self):
         self.solicitud = Solicitud.objects.create(tipo = False, descripcion = "test",
                                                   fechaEscojida = datetime.now(), nombre="test",
                                                   apellido ="test", cedulaCliente = "0912345678")
 
         self.assertIsInstance(self.solicitud, Solicitud, 'Solicitud exitosa')
 
-    def crear_solicitud_invalida(self):
+    def test_crear_solicitud_invalida(self):
         self.solicitud = Solicitud.objects.create(tipo = False, descripcion = "test",
                                                   fechaEscojida = datetime.now(), nombre="test",
-                                                  apellido ="test", cedulaCliente = "09123456780")
+                                                  apellido ="test", cedulaCliente = "09asdasd123456780")
 
-        self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud invalida :(')
-
-if __name__ == '__main__':
-    unittest.main()    
+        try:
+            self.solicitud.full_clean()
+        except:
+            print "Solicitud invalida"
