@@ -12,3 +12,4 @@
     Python 2.7
     Django 1.8          (pip install django==1.8)
     DjangoRestFramework (pip install djangorestframework)
+    DjangoFilter (pip install django-filter)
