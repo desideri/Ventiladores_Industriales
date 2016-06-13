@@ -1,6 +1,18 @@
 # views.py
-
 from django.shortcuts import render
+from models import *
+from serializers import *
+#APIREST
+from rest_framework import generics
+from rest_framework import filters
+from rest_framework import viewsets
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_gis.filters import InBBoxFilter
 """
  Django Views for wilenco project.
  Autor: Wilenco
@@ -11,6 +23,13 @@ from django.shortcuts import render
  Ultima modificacion: junio 07/2016
  Ultimo modificador: Kattya Desiderio
 """
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('noSerie','nombre', 'marca')
+
 
 def index(request):
     """ Funcion  "index"

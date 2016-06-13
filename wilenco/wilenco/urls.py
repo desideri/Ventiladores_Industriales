@@ -1,6 +1,11 @@
 # urls.py
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
+from rest_framework import routers
+from web import views
+
 
 """
  Django Urls for wilenco project.
@@ -12,6 +17,11 @@ from django.contrib import admin
  Ultima modificacion: Junio 07/2016
  Ultimo modificador: Kattya Desiderio
 """
+
+router = routers.DefaultRouter()
+router.register(r'producto', views.ProductoViewSet)
+
+
 urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
@@ -25,5 +35,10 @@ urlpatterns = [
     url(r'^empresa/', 'web.views.empresa'), #URL para la pagina de Empresa: Mision, Vision, Obras
 
     url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion
+
+    #RestFramework
+    url(r'^api/', include(router.urls)),
+
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]
