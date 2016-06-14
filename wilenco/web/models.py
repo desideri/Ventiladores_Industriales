@@ -16,6 +16,15 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to='img/productos', blank=True,
                                null=True)
 
+class Cliente(models.Model):
+    """
+    @is1394 (Israel Fernandez)
+    Entidad Cliente contiene informacion relevante sobre cada cliente registrado"""
+    cedula = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=100)
+    direccion = models.TextField()
+    telefono = models.CharField(max_length=10)
+    email = models.EmailField()
 
 class Solicitud(models.Model):
     """
@@ -25,28 +34,27 @@ class Solicitud(models.Model):
     Instalacion/Mantenimiento.
     Fecha de Creacion: Junio 03/2016
     Fecha de Modificacion: Junio 06/2016"""
-    tipo = models.BooleanField(default=False) #0 Mantemiento / 1 Instalacion
-    descripcion = models.CharField(max_length=50) # Descripcion que desee dar
+
+    tipo = (('MANT', 'Mantenimiento'),('INST','Instalacion'))
+
+    tipoSolicitud = models.CharField(max_length=4,choices=tipo)
+    descripcion = models.TextField() # Descripcion que desee dar
                                                   # el cliente
     fechaCreada = models.DateField(auto_now=True)   # Fecha de la Creacion de
                                                     #  la Solicitud
     fechaEscojida = models.DateField() # Fecha tentativa del cliente para el
                                        # Mantemiento/Instalacion
-    nombre = models.CharField(max_length=50)   # Nombre
-    apellido = models.CharField(max_length=50) # Apellido
-    cedulaCliente = models.CharField(max_length=10) # Cedula
+    cliente = models.ForeignKey(Cliente)
 
 
-class Cotizador(models.Model):
+class Cotizacion(models.Model):
     """
     @Jsayala (Jorge Ayala)
-    Entidad Cotizador contiene informacion relevante sobre cada cliente que
+    Entidad Cotizacion contiene informacion relevante sobre cada cliente que
     solicita una cotizacion, como fecha, id de cotizacion,  descripcion de
     obra o producto a cotizar"""
     cotizadorID = models.CharField(max_length=10)
-    fechaDeSolicitud = models.DateField()
-    nombresCliente = models.CharField(max_length=20)
-    apellidosCliente = models.CharField(max_length=20)
-    telefonoCliente = models.CharField(max_length=15)
-    mailCliente = models.CharField(max_length=50)
-    descripcionObra = models.CharField(max_length=50)
+    fechaDeSolicitud = models.DateField(auto_now=True)
+    cliente = models.ForeignKey(Cliente,null=False)
+    producto = models.ManyToManyField(Producto, blank=False, null=False)
+    descripcionObra = models.TextField()

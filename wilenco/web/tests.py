@@ -60,7 +60,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         email_incorrecto = msg_email_invalido.is_displayed()
         prueba_correcta = not email_incorrecto
         print "Prueba de mail correcto exitosa? " + str(prueba_correcta)
-        
+
     def test_email_incorrecto(self):
         '''
         En esta prueba se utiliza la clase de equivalencia CE2.
@@ -85,26 +85,27 @@ class TestCajaNegraModeloSolicitud(TestCase):
         Ingresando entradas validas y no validas
     """
     def test_crear_solicitud_valida(self):
-        self.solicitud = Solicitud.objects.create(tipo=False, descripcion="test",
+        self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
+                                              direccion="testlandia", telefono="0913458119",
+                                              email="test@test.com")
+        self.solicitud = Solicitud.objects.create(tipoSolicitud="MANT", descripcion="test",
                                                   fechaEscojida=datetime.now(),
-                                                  nombre="test", apellido="test",
-                                                  cedulaCliente="0912345678")
+                                                  cliente = self.cliente)
 
         self.assertIsInstance(self.solicitud, Solicitud, 'Solicitud exitosa')
 
     def test_crear_solicitud_invalida(self):
-        self.solicitud = Solicitud.objects.create(tipo=False, descripcion="test",
-                                                  fechaEscojida=datetime.now(),
-                                                  nombre="test", apellido="test",
-                                                  cedulaCliente="09asdasd123456780")
-
+        self.solicitud = None
         try:
-            self.solicitud.full_clean()
+            self.solicitud = Solicitud.objects.create(tipoSolicitud="INST", descripcion="test",
+                                                      fechaEscojida=datetime.now())
         except:
-            print "Test Solicitud invalida: Solicitud Invalida"
+            self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud Invalida')
 
-        
-class TestCajaNegraModeloCotizador(TestCase):
+
+
+
+class TestCajaNegraModeloCotizacion(TestCase):
     """
         @Autor: Jorge Ayala
         Clase para realizar un unit test de la entidad Cotizador
@@ -112,28 +113,50 @@ class TestCajaNegraModeloCotizador(TestCase):
         con longitud correcta
     """
     def test_crear_cotizacion_valida(self):
-        self.cotizacion = Cotizador.objects.create(cotizadorID="iedc1234WL",
-                                                   fechaDeSolicitud=datetime.now(),
-                                                   nombresCliente="Pablo Alberto",
-                                                   apellidosCliente="Iglesias Garzon",
-                                                   telefonoCliente="593-2434593",
-                                                   mailCliente="test@iana.org.",
+        self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
+                                              direccion="testlandia", telefono="0913458119",
+                                              email="test@test.com")
+
+        self.producto1 = Producto.objects.create(noSerie="12345", nombre="testproduct",
+                                                 stock=12, marca="test",
+                                                 modelo="test", potencia="10KW",
+                                                 capacidad="120BTU", descripcion="test")
+
+        self.producto2 = Producto.objects.create(noSerie="12345", nombre="testproduct",
+                                                 stock=12, marca="test",
+                                                 modelo="test", potencia="10KW",
+                                                 capacidad="120BTU", descripcion="test")
+
+        self.cotizacion = Cotizacion.objects.create(cotizadorID="iedc1234WL",
+                                                   cliente = self.cliente,
                                                    descripcionObra="Nada importante")
 
-        self.assertIsInstance(self.cotizacion, Cotizador, 'Cotizacion creada')
+        self.cotizacion.producto.add(self.producto1)
+        self.cotizacion.producto.add(self.producto2)
+        self.assertIsInstance(self.cotizacion, Cotizacion, 'Cotizacion creada')
 
     def test_crear_cotizacion_invalida(self):
-        self.cotizacion = Cotizador.objects.create(cotizadorID="iedc1234WL000",
-                                                   fechaDeSolicitud=datetime.now(),
-                                                   nombresCliente="Pablo Alberto",
-                                                   apellidosCliente="Iglesias Garzon",
-                                                   telefonoCliente="593-2434593",
-                                                   mailCliente="test@iana.org.",
-                                                   descripcionObra="Nada importante")
+        self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
+                                              direccion="testlandia", telefono="0913458119",
+                                              email="test@test.com")
+
+        self.producto1 = Producto.objects.create(noSerie="12345", nombre="testproduct",
+                                                 stock=12, marca="test",
+                                                 modelo="test", potencia="10KW",
+                                                 capacidad="120BTU", descripcion="test")
+
+        self.producto2 = Producto.objects.create(noSerie="12345", nombre="testproduct",
+                                                 stock=12, marca="test",
+                                                 modelo="test", potencia="10KW",
+                                                 capacidad="120BTU", descripcion="test")
+
+        self.cotizacion = None
+
         try:
-            self.cotizacion.full_clean()
+            self.cotizacion = Cotizacion.objects.create(cotizadorID="iedc1234WL",
+                                                       descripcionObra="Nada importante")
         except:
-            print "Test Cotizacion invalida: Cotizacion Invalida"
+            self.assertNotIsInstance(self.cotizacion, Cotizacion, 'Cotizacion creada')
 
 
 class TestCajaNegraProducto(LiveServerTestCase):
