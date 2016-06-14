@@ -120,7 +120,7 @@ class TestCajaNegraModeloCotizador(TestCase):
                                                    mailCliente="test@iana.org.",
                                                    descripcionObra="Nada importante")
 
-        self.assertIsInstance(self.cotizador, Cotizador, 'Cotizacion creada')
+        self.assertIsInstance(self.cotizacion, Cotizador, 'Cotizacion creada')
 
     def test_crear_cotizacion_invalida(self):
         self.cotizacion = Cotizador.objects.create(cotizadorID="iedc1234WL000",
