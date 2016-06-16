@@ -46,8 +46,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
         *Asunto
     """
     def setUp(self):
-        #self.driver = webdriver.PhantomJS()
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.PhantomJS()
+        #self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(6)
         self.driver.set_window_size(1120, 550)
 
