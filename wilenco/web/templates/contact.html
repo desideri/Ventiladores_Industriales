@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
 <script>
     /*Aquí se realizan funciones para validar lo que el usuario ingresa en el formulario*/
-    $(document).ready(function(){
+    $(document).ready(function () {
         //Muestra el menu de la página
         $(".memenu").memenu();
         $("#ErrorMessage").hide();
@@ -50,44 +50,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
         rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
-        rgtel   = new RegExp('0[0-9]{2}-[0-9]{6}');
+        rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
+        rgCel = new RegExp('09-[0-9]{8}');
 
-        $("#btnEnviar").click(function(){
+        $("#btnEnviar").click(function () {
 
-          nombre   =  $("#nombreUsuario").val();
-          email    =  $("#emailUsuario").val();
-          telefono =  $("#telUsuario").val();
-          asunto   =  $("#asuntoUsuario").val();
+            nombre = $("#nombreUsuario").val();
+            email = $("#emailUsuario").val();
+            telefono = $("#telUsuario").val();
+            asunto = $("#asuntoUsuario").val();
 
-          if(nombre.trim()==''|| !rgnombre.test(nombre)){
-            $("#ErrorMessage").text("Nombre Incorrecto");
-            $("#ErrorMessage").show();
-            //console.log("Nombre Incorrecto");
-             return false;
-          }
-          else if (email.trim()==''|| !rgemail.test(email)) {
-            $("#ErrorMessage").text("Email Incorrecto");
-            $("#ErrorMessage").show();
-            //console.log("Email Incorrecto");
-            return false;
-          }
-          else if (telefono.trim()=='' || !rgtel.test(telefono)) {
-            $("#ErrorMessage").text("Telefono Incorrecto");
-            $("#ErrorMessage").show();
-            //console.log("Telefono Incorrecto");
-            return false;
-           }
-          else if (asunto.trim()=='') {
-            $("#ErrorMessage").text("Asunto Incorrecto");
-            $("#ErrorMessage").show();
-            //console.log("Asunto Incorrecto");
-            return false;
+            if (nombre.trim() == '' || !rgnombre.test(nombre)) {
+                $("#ErrorMessage").text("Nombre Incorrecto");
+                $("#ErrorMessage").show();
+                //console.log("Nombre Incorrecto");
+                return false;
             }
-            else{
-              $("#ErrorMessage").hide();
-              $("#OkMessage").text("Formulario Enviado..!");
-              $("#OkMessage").show();
-              //alert("Formulario Enviado..!");
+            else if (email.trim() == '' || !rgemail.test(email)) {
+                $("#ErrorMessage").text("Email Incorrecto");
+                $("#ErrorMessage").show();
+                //console.log("Email Incorrecto");
+                return false;
+            }
+            else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+                $("#ErrorMessage").text("Telefono Incorrecto");
+                $("#ErrorMessage").show();
+                //console.log("Telefono Incorrecto");
+                return false;
+            }
+            else if (asunto.trim() == '') {
+                $("#ErrorMessage").text("Asunto Incorrecto");
+                $("#ErrorMessage").show();
+                //console.log("Asunto Incorrecto");
+                return false;
+            }
+            else {
+                $("#ErrorMessage").hide();
+                $("#OkMessage").text("Formulario Enviado..!");
+                $("#OkMessage").show();
+                //alert("Formulario Enviado..!");
             }
 
         });
@@ -196,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						    </div>
 						    <div>
 						     	<span><label>TEL&eacute;FONO/CELULAR</label></span>
-						    	<span><input id ="telUsuario"name="userPhone" type="text" class="textbox" placeholder="Ingrese su telefono 042-338745" required></span>
+						    	<span><input id ="telUsuario"name="userPhone" type="text" class="textbox" placeholder="Ingrese su telefono o celular 042-338745/09-08784567" required></span>
 						    </div>
 						    <div>
 						    	<span><label>ASUNTO</label></span>

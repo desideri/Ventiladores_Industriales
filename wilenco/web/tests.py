@@ -27,7 +27,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        self.driver.implicitly_wait(5)
+        #self.driver.implicitly_wait(5)
 
     def test_nombre_correcto(self):
         """
