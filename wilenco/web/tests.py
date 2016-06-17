@@ -133,7 +133,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_class_name("mybutton").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
         self.assertFalse(msg_ok.is_displayed(),"Prueba Telefono Invalido Exitosa")
-        print "Prueba de nombre correcto exitosa "
+        print "Prueba de telefono incorrecto exitosa "
 
 
 class TestCajaNegraModeloSolicitud(TestCase):

@@ -18,7 +18,9 @@
 <!-- Custom Theme files -->
 <!--theme style-->
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-<script src="{% static 'js/jquery.min.js' %}"></script>
+<!--JQUERY UPGRADED
+<script src="{% static 'js/jquery.min.js' %}"></script>-->
+<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
 <!--//theme style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,21 +35,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static 'js/memenu.js' %}"></script>
 <script src="{% static 'js/empresa.js' %}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<!-- /start menu -->
 </head>
 <body>
+
 <!--header-->
 <script src="{% static 'js/responsiveslides.min.js' %}"></script>
 <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	nav: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: false,
-      });
+    $(document).ready(function(){
+        //Muestra el menu de la página
+        $(".memenu").memenu();
     });
+
   </script>
 
 <div class="header-top">
@@ -104,8 +102,80 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <ol class="breadcrumb">
 		  <li class="active"><a href="#" data="#info" class="show">Servicios de la Empresa</a></li>
 		 </ol>
-			<!--start contact-->
+			<!--start form servicio-->
+      <div class="panel panel-default">
+        <div class="panel-heading" >
+          <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
+           Formulario Servicio
+        </div>
+        <div class="panel-body">
+          <div class="container-fluid">
+              <div class="row row-offcanvas row-offcanvas-left">
 
+              <div class="col-xs-12 col-sm-9 content">
+                </br>
+                <h5>Datos del Cliente</h5>
+                <hr>
+                <form class="form-horizontal" role="form">
+                  <div class="row">
+                    <div class="col-sm-8 col-lg-4">
+                      <div class="form-group">
+                        <label for="nombreCliente" class="col-md-4 control-label">Nombre:</label>
+                        <div class="col-md-8">
+                          <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-8 col-lg-4">
+                      <div class="form-group">
+                        <label for="apellidoCliente" class="col-md-4 control-label">Apellido:</label>
+                        <div class="col-md-8">
+                          <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-sm-8 col-lg-4">
+                       <div class="form-group">
+                         <label for="telCliente" class="col-md-4 control-label">Telefono:</label>
+                         <div class="col-md-8">
+                           <input class="form-control" id="telCliente" placeholder="Telefono" type="text">
+                         </div>
+                       </div>
+                     </div>
+                     <div class="col-sm-8 col-lg-4">
+                       <div class="form-group">
+                         <label for="emailCliente" class="col-md-4 control-label">Mail:</label>
+                         <div class="col-md-8">
+                           <input class="form-control" id="emailCliente" placeholder="Email" type="text">
+                         </div>
+                       </div>
+                     </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-8 col-lg-4">
+                        <div class="form-group">
+                          <label for="direccionCliente" class="col-md-4 control-label">Direccion:</label>
+                          <div class="col-md-8">
+                          <textarea id="direccionCliente" name="dirClie"  required> </textarea>
+                          </div>
+                        </div>
+                      </div>
+                     </div>
+                </form>
+
+              </div><!--/span-->
+
+              </div><!--/row-->
+
+          </div><!-- /.container -->
+
+        </div>
+      </div>
+
+
+     <!--fin de form servicio-->
 	  </div>
  </div>
 
