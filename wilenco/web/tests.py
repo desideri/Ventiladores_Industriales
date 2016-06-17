@@ -130,6 +130,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+<<<<<<< HEAD
         self.driver.find_element_by_id("btnEnviar").click()
         error_mensaje = self.driver.find_element_by_id("ErrorMessage")
         self.assertTrue(error_mensaje.is_displayed(),"Prueba Telefono Invalido Exitosa")
@@ -137,6 +138,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def tearDown(self):
         self.driver.quit() 
+=======
+        self.driver.find_element_by_class_name("mybutton").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Telefono Invalido Exitosa")
+        print "Prueba de telefono incorrecto exitosa "
+>>>>>>> 435fa6c7d5e381208ea72101a1ba24db683097ff
 
 
 class TestCajaNegraModeloSolicitud(TestCase):
