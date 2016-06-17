@@ -41,48 +41,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $(document).ready(function(){
         //Muestra el menu de la página
         $(".memenu").memenu();
-        $('#OkMessage').hide();
+        $("#ErrorMessage").hide();
+        $("#OkMessage").hide();
 
-        function validar() {
-            var nombre, email, telefono, asunto;
+        var nombre, email, telefono, asunto;
+        var rgnombre, rgemail, rgtel;
 
-            nombre   =  $("#nombreUsuario").val();
-            email    =  $("#emailUsuario").val();
-            telefono =  $("#telUsuario").val();
-            asunto   =  $("#asuntoUsuario").val();
+        rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
+        rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
+        rgtel   = new RegExp('0[0-9]{2}-[0-9]{6}');
 
-            if(nombre.trim()=='' || email.trim()==''|| telefono.trim()==''|| asunto.trim()=='' ){
-              alert("Ingrese campos validos al formulario.");
-            }
-            else if(validarTelefono(telefono)&&validarTelefono(telefono)&&validarTelefono(telefono)){
-              //alert("OK, formulario validado.");
-                $('#OkMessage').show();
-              console.log("OK, formulario validado.");
+        $("#btnEnviar").click(function(){
+
+          nombre   =  $("#nombreUsuario").val();
+          email    =  $("#emailUsuario").val();
+          telefono =  $("#telUsuario").val();
+          asunto   =  $("#asuntoUsuario").val();
+
+          if(nombre.trim()==''|| !rgnombre.test(nombre)){
+            $("#ErrorMessage").text("Nombre Incorrecto");
+            $("#ErrorMessage").show();
+            //console.log("Nombre Incorrecto");
+             return false;
+          }
+          else if (email.trim()==''|| !rgemail.test(email)) {
+            $("#ErrorMessage").text("Email Incorrecto");
+            $("#ErrorMessage").show();
+            //console.log("Email Incorrecto");
+            return false;
+          }
+          else if (telefono.trim()=='' || !rgtel.test(telefono)) {
+            $("#ErrorMessage").text("Telefono Incorrecto");
+            $("#ErrorMessage").show();
+            //console.log("Telefono Incorrecto");
+            return false;
+           }
+          else if (asunto.trim()=='') {
+            $("#ErrorMessage").text("Asunto Incorrecto");
+            $("#ErrorMessage").show();
+            //console.log("Asunto Incorrecto");
+            return false;
             }
             else{
-            //  alert("Error campos invalidos.");
-            console.log("Error campos invalidos.");
-            }
-        }
-
-        //Validar El campo Nombre
-          function validarNombre(nombre){
-            var n=new RegExp('/^[a-z\d_]{4,20}$/i');
-             return n.test(nombre);
-          }
-        //Validar El campo Email
-          function validarEmail(email){
-            var e=new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
-             return e.test(email);
-          }
-          //Validar El campo Telefono
-            function validarTelefono(telefono){
-              var t=new RegExp('0[0-9]{2}-[0-9]{6}'); // 042-338745
-              console.log(t.test(telefono));
-              return t.test(telefono);
+              $("#ErrorMessage").hide();
+              $("#OkMessage").text("Formulario Enviado..!");
+              $("#OkMessage").show();
+              alert("Formulario Enviado..!");
             }
 
-       $("form").bind("submit", validar);
+        });
+
+
     });
 </script>
 
@@ -169,17 +178,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 span_2_of_3">
 				  <div class="contact-form">
 					    <form>
-                <div class="alert alert-success" id="OkMessage">
-                  <strong>Success!</strong> Indicates a successful or positive action.
+                <div class="alert alert-danger" id="ErrorMessage">
                 </div>
 					    	<div>
+                  <div class="alert alert-success" id="OkMessage">
+                  <strong>Success!</strong> Indicates a successful or positive action.
+                </div>
+
 						    	<span><label>NOMBRE</label></span>
-						    	<span><input id ="nombreUsuario"name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
+						    	<span><input id ="nombreUsuario" name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
 						    </div>
 						    <div>
 						    	<span><label>E-MAIL</label></span>
 						    	<span><input id ="emailUsuario" name="userEmail" type="text" class="textbox" placeholder="Ingrese su e-mail" required>
-                  <label id="msgEmailInvalido"></label>
                   </span>
 						    </div>
 						    <div>

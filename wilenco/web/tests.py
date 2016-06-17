@@ -19,31 +19,11 @@ class TestCajaNegraContacto(LiveServerTestCase):
        Como su nombre lo indica, es una clase usada para realizar test.
        En este caso se lo usa para realizar pruebas de Caja negra a la
        Pagina Contacto de nuestro sitio web.
-       Las input que se deben probar son:
-       *Nombre
-       Para las cuales se han identificado las siguientes clases
-       de equivalencia:
-            Clases de equivalencia:
-               CE1: las cadenas de caracteres aceptados por el regex:
-              /^[a-z\d_]{4,20}$/i
-               CE2: las cadenas de caracteres no aceptados por el regex:
-              /^[a-z\d_]{4,20}$/i
-            Validez:
-                CE1: valido
-                CE2: invalido
-       * Email
-       Para las cuales se han identificado las siguientes clases
-       de equivalencia:
-            Clases de equivalencia:
-               CE1: las cadenas de caracteres aceptados por el regex:
-               ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$
-               CE2: las cadenas de caracteres no aceptados por el regex:
-                ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$
-            Validez:
-                CE1: valido
-                CE2: invalido
-        *Telefono
-        *Asunto
+       Las input que se deben probar son para el campo Nombre, Email,
+       Telefono del Usuario.
+       Pre Condiciones:
+       - Inputs No Vacio.
+       - Inputs Validos (Validados por Expresiones regulares).
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -52,8 +32,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.set_window_size(1120, 550)
 
     def tearDown(self):
-        #self.driver.quit() #Comentar para que se mantengan las paginas con las pruebas corriendo.
-        print "\n"
+        self.driver.quit() #Comentar para que se mantengan las paginas con las pruebas corriendo.
 
     def test_nombre_correcto(self):
         """
@@ -68,7 +47,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_class_name("mybutton").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Valida No Exitosa")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Nombre Valido Exitosa")
         print "Prueba de nombre correcto exitosa "
 
 
@@ -79,16 +58,14 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
-        self.driver.find_element_by_id('nombreUsuario').send_keys("Wil3nc0 S.4")
+        self.driver.find_element_by_id('nombreUsuario').send_keys("$######")
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_class_name("mybutton").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba invalida No Exitosa")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Nombre invalido Exitosa")
         print "Prueba de nombre incorrecto exitosa "
-
-
 
 
     def test_email_correcto(self):
@@ -103,12 +80,9 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_class_name("mybutton").click()
-        msg_email_invalido = self.driver.find_element_by_id("msgEmailInvalido")
-        self.assertFalse(msg_email_invalido.is_displayed())
-        email_incorrecto = msg_email_invalido.is_displayed()
-        prueba_correcta = not email_incorrecto
-        print "Prueba de mail correcto exitosa? " + str(prueba_correcta)
-
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Email Valido Exitosa")
+        print "Prueba de email correcto exitosa "
 
 
     def test_email_incorrecto(self):
@@ -123,10 +97,43 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_class_name("mybutton").click()
-        msg_email_invalido = self.driver.find_element_by_id("msgEmailInvalido")
-        self.assertFalse(msg_email_invalido.is_displayed())
-        #self.assertTrue(msg_email_invalido.is_displayed())
-        print "Prueba de mail Incorrecto exitosa? " + str(msg_email_invalido.is_displayed())
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Email Invalido Exitosa")
+        print "Prueba de email incorrecto exitosa "
+
+
+    def test_telefono_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/contacto/")
+        self.driver.find_element_by_id('nombreUsuario').send_keys("Kattya Desiderio")
+        self.driver.find_element_by_id('emailUsuario').send_keys("desideri@yahoo.com")
+        self.driver.find_element_by_id('telUsuario').send_keys("053-581152")
+        self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_class_name("mybutton").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        self.assertTrue(msg_ok.is_displayed(),"Prueba Telefono Valido Exitosa")
+        print "Prueba de telefono correcto exitosa "
+
+
+    def test_telefono_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/contacto/")
+        self.driver.find_element_by_id('nombreUsuario').send_keys("Wilson Enriquez")
+        self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telUsuario').send_keys("042-587")
+        self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_class_name("mybutton").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        self.assertFalse(msg_ok.is_displayed(),"Prueba Telefono Invalido Exitosa")
+        print "Prueba de nombre correcto exitosa "
 
 
 class TestCajaNegraModeloSolicitud(TestCase):
@@ -154,6 +161,27 @@ class TestCajaNegraModeloSolicitud(TestCase):
             self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud Invalida')
 
 
+class TestCajaNegraModeloCliente(TestCase):
+    """
+        @Autor: Wilson Enriquez
+        Clase para realizar un unit test del modelo Cliente
+        Ingresando entradas validas y no validas
+    """
+    def test_crear_cliente_valido(self):
+        self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
+                                              direccion="testlandia", telefono="0913458119",
+                                              email="test@test.com")
+
+        self.assertIsInstance(self.cliente, Cliente, 'Creacion de nuevo Cliente exitosa')
+
+    def test_crear_cliente_invalido(self):
+        self.solicitud = None
+        try:
+            self.cliente = Cliente.objects.create(cedula="012345789155621", nombre="cliente",
+                                                  direccion="testlandia", telefono="0913458119",
+                                                  email="test@test.com")
+        except:
+            self.assertNotIsInstance(self.cliente, Cliente, 'Creacion de nuevo Cliente invalida')
 
 
 class TestCajaNegraModeloCotizacion(TestCase):
@@ -211,9 +239,10 @@ class TestCajaNegraModeloCotizacion(TestCase):
 
 
 class TestCajaNegraProducto(LiveServerTestCase):
-    '''
-    Clase para realizar prueba de caja negra para la entidad Producto
-    '''
+    """
+        @Autor: Kattya Desiderio
+        Clase para realizar prueba de caja negra para la entidad Producto
+    """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
         # self.driver = webdriver.Firefox()
