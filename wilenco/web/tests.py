@@ -27,12 +27,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        #self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(6)
-        self.driver.set_window_size(1120, 550)
-
-    def tearDown(self):
-        self.driver.quit() #Comentar para que se mantengan las paginas con las pruebas corriendo.
+        self.driver.implicitly_wait(5)
 
     def test_nombre_correcto(self):
         """
@@ -45,9 +40,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
-        msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Nombre Valido Exitosa")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        self.assertTrue(formularioEnviado,"Prueba Nombre Valido Exitosa")
         print "Prueba de nombre correcto exitosa "
 
 
@@ -62,9 +58,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
+        self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Nombre invalido Exitosa")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        self.assertTrue(formularioNoEnviado,"Prueba Nombre invalido Exitosa")
         print "Prueba de nombre incorrecto exitosa "
 
 
@@ -79,9 +76,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("test@iana.org")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
-        msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Email Valido Exitosa")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        self.assertTrue(formularioEnviado,"Prueba Email Valido Exitosa")
         print "Prueba de email correcto exitosa "
 
 
@@ -96,9 +94,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("testiana.org")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
+        self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Email Invalido Exitosa")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        self.assertTrue(formularioNoEnviado)
         print "Prueba de email incorrecto exitosa "
 
 
@@ -113,13 +112,14 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("desideri@yahoo.com")
         self.driver.find_element_by_id('telUsuario').send_keys("053-581152")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
-        msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertTrue(msg_ok.is_displayed(),"Prueba Telefono Valido Exitosa")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        self.assertTrue(formularioEnviado,"Prueba Telefono Valido Exitosa")
         print "Prueba de telefono correcto exitosa "
 
 
-    def test_telefono_correcto(self):
+    def test_telefono_incorrecto(self):
         """
         En esta prueba se utiliza la clase de equivalencia CE1.
         Como resultado, el usuario no debe ver ningun mensaje
@@ -130,10 +130,13 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
-        self.driver.find_element_by_class_name("mybutton").click()
-        msg_ok = self.driver.find_element_by_id("OkMessage")
-        self.assertFalse(msg_ok.is_displayed(),"Prueba Telefono Invalido Exitosa")
-        print "Prueba de nombre correcto exitosa "
+        self.driver.find_element_by_id("btnEnviar").click()
+        error_mensaje = self.driver.find_element_by_id("ErrorMessage")
+        self.assertTrue(error_mensaje.is_displayed(),"Prueba Telefono Invalido Exitosa")
+        print "Prueba Telefono Invalido Exitosa "
+
+    def tearDown(self):
+        self.driver.quit() 
 
 
 class TestCajaNegraModeloSolicitud(TestCase):
@@ -245,10 +248,7 @@ class TestCajaNegraProducto(LiveServerTestCase):
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(6)
-        self.driver.set_window_size(1120, 550)
-
+        
     def tearDown(self):
         self.driver.quit()
 
