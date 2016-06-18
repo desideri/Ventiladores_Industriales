@@ -1,8 +1,7 @@
 '''
 @Autores: Wilenco team
-@Ultima modificacion: junio 13/2016
-@Ultimo modificador: Jorge Ayala
-Pruebas de caja negra y blanca para proyecto
+@Ultima modificacion: junio 17/2016
+Pruebas de caja negra para proyecto
 Fuente de referencia:
 https://realpython.com/blog/python/headless-selenium-testing-with-python-and-phantomjs/
 '''
@@ -36,6 +35,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Wilson Enriquez")
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
@@ -43,9 +43,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
         formularioEnviado = not mensaje_error.is_displayed()
-        self.assertTrue(formularioEnviado,"Prueba Nombre Valido Exitosa")
-        print "Prueba de nombre correcto exitosa "
-
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
 
     def test_nombre_incorrecto(self):
         """
@@ -54,6 +57,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("$######")
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
@@ -61,9 +65,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
         formularioNoEnviado = not msg_ok.is_displayed()
-        self.assertTrue(formularioNoEnviado,"Prueba Nombre invalido Exitosa")
-        print "Prueba de nombre incorrecto exitosa "
-
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)        
 
     def test_email_correcto(self):
         """
@@ -72,6 +79,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Jorge Ayala")
         self.driver.find_element_by_id('emailUsuario').send_keys("test@iana.org")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
@@ -79,8 +87,13 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
         formularioEnviado = not mensaje_error.is_displayed()
-        self.assertTrue(formularioEnviado,"Prueba Email Valido Exitosa")
-        print "Prueba de email correcto exitosa "
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+        
 
 
     def test_email_incorrecto(self):
@@ -90,6 +103,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         incorrecto en rojo.
         '''
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Jorge Ayala")
         self.driver.find_element_by_id('emailUsuario').send_keys("testiana.org")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587452")
@@ -97,10 +111,13 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
         formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioNoEnviado)
-        print "Prueba de email incorrecto exitosa "
-
-
+        
     def test_telefono_correcto(self):
         """
         En esta prueba se utiliza la clase de equivalencia CE1.
@@ -108,6 +125,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Kattya Desiderio")
         self.driver.find_element_by_id('emailUsuario').send_keys("desideri@yahoo.com")
         self.driver.find_element_by_id('telUsuario').send_keys("053-581152")
@@ -115,9 +133,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
         formularioEnviado = not mensaje_error.is_displayed()
-        self.assertTrue(formularioEnviado,"Prueba Telefono Valido Exitosa")
-        print "Prueba de telefono correcto exitosa "
-
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
 
     def test_telefono_incorrecto(self):
         """
@@ -126,6 +147,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
+        tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Wilson Enriquez")
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587")
@@ -133,8 +155,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
         formularioNoEnviado = not msg_ok.is_displayed()
-        self.assertTrue(formularioNoEnviado)
-        print "Prueba Telefono Invalido Exitosa "
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)     
 
     def tearDown(self):
         self.driver.quit() 
@@ -147,22 +173,35 @@ class TestCajaNegraModeloSolicitud(TestCase):
         Ingresando entradas validas y no validas
     """
     def test_crear_solicitud_valida(self):
+        tiempo_inicio_prueba = datetime.now().second
         self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
                                               direccion="testlandia", telefono="0913458119",
                                               email="test@test.com")
         self.solicitud = Solicitud.objects.create(tipoSolicitud="MANT", descripcion="test",
                                                   fechaEscojida=datetime.now(),
-                                                  cliente = self.cliente)
+                                                  cliente=self.cliente)
 
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(isinstance(self.solicitud, Solicitud)):
+            print "Prueba de crear Solicitud valida EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de crear Solicitud valida FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertIsInstance(self.solicitud, Solicitud, 'Solicitud exitosa')
 
     def test_crear_solicitud_invalida(self):
+        tiempo_inicio_prueba = datetime.now().second
         self.solicitud = None
         try:
             self.solicitud = Solicitud.objects.create(tipoSolicitud="INST", descripcion="test",
-                                                      fechaEscojida=datetime.now())
+                                                      fechaEscojida=datetime.now())      
         except:
+            tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+            if(isinstance(self.solicitud, Solicitud)):
+                print "Prueba de crear Solicitud invalida FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            else:
+                print "Prueba de crear Solicitud invalida EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
             self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud Invalida')
+            
 
 
 class TestCajaNegraModeloCliente(TestCase):
@@ -172,19 +211,32 @@ class TestCajaNegraModeloCliente(TestCase):
         Ingresando entradas validas y no validas
     """
     def test_crear_cliente_valido(self):
+        tiempo_inicio_prueba = datetime.now().second
         self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
                                               direccion="testlandia", telefono="0913458119",
                                               email="test@test.com")
 
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(isinstance(self.cliente, Cliente)):
+            print "Prueba de crear Cliente valida EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de crear Cliente valida FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertIsInstance(self.cliente, Cliente, 'Creacion de nuevo Cliente exitosa')
 
     def test_crear_cliente_invalido(self):
-        self.solicitud = None
+        tiempo_inicio_prueba = datetime.now().second
+        self.cliente = None
         try:
-            self.cliente = Cliente.objects.create(cedula="012345789155621", nombre="cliente",
+            self.cliente = Cliente.objects.create(cedula="012345654545782", nombre="cliente",
                                                   direccion="testlandia", telefono="0913458119",
                                                   email="test@test.com")
         except:
+            tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+            if(isinstance(self.cliente, Cliente)):
+                print "Prueba de crear Cliente invalido FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            else:
+                print "Prueba de crear Cliente invalido EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+
             self.assertNotIsInstance(self.cliente, Cliente, 'Creacion de nuevo Cliente invalida')
 
 
@@ -196,6 +248,7 @@ class TestCajaNegraModeloCotizacion(TestCase):
         con longitud correcta
     """
     def test_crear_cotizacion_valida(self):
+        tiempo_inicio_prueba = datetime.now().second
         self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
                                               direccion="testlandia", telefono="0913458119",
                                               email="test@test.com")
@@ -216,12 +269,18 @@ class TestCajaNegraModeloCotizacion(TestCase):
 
         self.cotizacion.producto.add(self.producto1)
         self.cotizacion.producto.add(self.producto2)
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(isinstance(self.cotizacion, Cotizacion)):
+            print "Prueba de crear Cotizacion valida EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Prueba de crear Cotizacion valida FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertIsInstance(self.cotizacion, Cotizacion, 'Cotizacion creada')
 
     def test_crear_cotizacion_invalida(self):
-        self.cliente = Cliente.objects.create(cedula="0123457891", nombre="cliente",
+        tiempo_inicio_prueba = datetime.now().second
+        self.cliente = Cliente.objects.create(cedula="0123457323891", nombre="cliente",
                                               direccion="testlandia", telefono="0913458119",
-                                              email="test@test.com")
+                                              email="testtestcom")
 
         self.producto1 = Producto.objects.create(noSerie="12345", nombre="testproduct",
                                                  stock=12, marca="test",
@@ -239,6 +298,11 @@ class TestCajaNegraModeloCotizacion(TestCase):
             self.cotizacion = Cotizacion.objects.create(cotizadorID="iedc1234WL",
                                                        descripcionObra="Nada importante")
         except:
+            tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+            if(isinstance(self.cotizacion, Cotizacion)):
+                print "Prueba de crear Cotizacion invalido FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            else:
+                print "Prueba de crear Cotizacion invalido EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
             self.assertNotIsInstance(self.cotizacion, Cotizacion, 'Cotizacion creada')
 
 
