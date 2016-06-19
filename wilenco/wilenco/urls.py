@@ -32,6 +32,8 @@ urlpatterns = [
 
     url(r'^productos/', 'web.views.product'), #URL para la pagina de Productos
 
+    url(r'^productos/filtrar', 'web.views.filtrar_productos'), #URL para la pagina de Productos
+
     url(r'^empresa/', 'web.views.empresa'), #URL para la pagina de Empresa: Mision, Vision, Obras
 
     url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion

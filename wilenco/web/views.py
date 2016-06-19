@@ -1,4 +1,5 @@
 # views.py
+import json
 from django.shortcuts import render
 from web.models import *
 from web.serializers import *
@@ -64,3 +65,23 @@ def servicio(request):
         Fecha de Creacion: Junio 07/2016
         Fecha de Modificacion: Junio 07/2016"""
     return render(request, 'servicio.html', {})
+
+def filtrar_productos(request):
+    """
+        Funcion: "filtrar_productos"
+        Descripcion: Funcion que devuelve un json con datos de los productos
+                     que han sido solicitados por el cliente de acuerdo con
+                     criterios como marca, tipo.
+        Fecha de Creacion: Junio 19/2016
+        Fecha de Modificacion: Junio 19/2016
+    """
+    if (request.method == 'POST'):
+        marcas_solicitadas = request.POST['marcas_para_filtrado']
+        productos_devueltos = {'productos_por_marca':[]}
+        for marca in marcas_solicitadas:
+            productos_de_esta_marca = Producto.objects.filter(marca=marca)
+            for producto in productos_de_esta_marca:
+                productos_devueltos['productos_por_marca'].append( json.dumps({'nombre': producto.nombre ,'imagen': producto.imagen}))
+        productos_devueltos_json = json.dumps(productos_devueltos)
+    return HttpResponse(productos_devueltos_json, content_type='application/json')
+        
