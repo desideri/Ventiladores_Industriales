@@ -26,7 +26,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        #self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(10)
 
     def test_nombre_correcto(self):
         """
@@ -70,7 +70,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
             print "Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
             print "Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioNoEnviado)        
+        self.assertTrue(formularioNoEnviado)
 
     def test_email_correcto(self):
         """
@@ -93,7 +93,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         else:
             print "Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioEnviado)
-        
+
 
 
     def test_email_incorrecto(self):
@@ -117,7 +117,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         else:
             print "Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioNoEnviado)
-        
+
     def test_telefono_correcto(self):
         """
         En esta prueba se utiliza la clase de equivalencia CE1.
@@ -160,10 +160,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
             print "Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
             print "Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioNoEnviado)     
+        self.assertTrue(formularioNoEnviado)
 
     def tearDown(self):
-        self.driver.quit() 
+        self.driver.quit()
 
 
 class TestCajaNegraModeloSolicitud(TestCase):
@@ -193,7 +193,7 @@ class TestCajaNegraModeloSolicitud(TestCase):
         self.solicitud = None
         try:
             self.solicitud = Solicitud.objects.create(tipoSolicitud="INST", descripcion="test",
-                                                      fechaEscojida=datetime.now())      
+                                                      fechaEscojida=datetime.now())
         except:
             tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
             if(isinstance(self.solicitud, Solicitud)):
@@ -201,7 +201,7 @@ class TestCajaNegraModeloSolicitud(TestCase):
             else:
                 print "Prueba de crear Solicitud invalida EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
             self.assertNotIsInstance(self.solicitud, Solicitud, 'Solicitud Invalida')
-            
+
 
 
 class TestCajaNegraModeloCliente(TestCase):
@@ -311,11 +311,6 @@ class TestCajaNegraProducto(LiveServerTestCase):
         @Autor: Kattya Desiderio
         Clase para realizar prueba de caja negra para la entidad Producto
     """
-    def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        
-    def tearDown(self):
-        self.driver.quit()
 
     def test_api_producto(self):
         client = Client()
