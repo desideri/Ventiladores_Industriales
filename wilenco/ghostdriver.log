@@ -1,5 +1,93 @@
-[INFO  - 2016-06-18T17:35:51.031Z] GhostDriver - Main - running on port 51430
-[INFO  - 2016-06-18T17:35:51.605Z] Session [1a114dd0-357b-11e6-84b8-d35612dd7800] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2016-06-18T17:35:51.606Z] Session [1a114dd0-357b-11e6-84b8-d35612dd7800] - page.customHeaders:  - {}
-[INFO  - 2016-06-18T17:35:51.606Z] Session [1a114dd0-357b-11e6-84b8-d35612dd7800] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2016-06-18T17:35:51.606Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 1a114dd0-357b-11e6-84b8-d35612dd7800
+[INFO  - 2016-06-20T07:11:21.158Z] GhostDriver - Main - running on port 41317
+[INFO  - 2016-06-20T07:11:22.081Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2016-06-20T07:11:22.081Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.customHeaders:  - {}
+[INFO  - 2016-06-20T07:11:22.081Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2016-06-20T07:11:22.081Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 3151c8d0-36b6-11e6-954e-2fec84cd38f3
+[ERROR - 2016-06-20T07:11:22.130Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:22.130Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  global code (http://localhost:8081/static/js/memenu.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:22.130Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:22.130Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  global code (http://localhost:8081/contacto/:42)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:22.150Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: TypeError: undefined is not a function (evaluating 'this.create(a)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:22.150Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  ELEMENT (http://localhost:8081/static/js/simpleCart.min.js:31)
+  $ (http://localhost:8081/static/js/simpleCart.min.js:9)
+  setInput (http://localhost:8081/static/js/simpleCart.min.js:31)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:30)
+  each (http://localhost:8081/static/js/simpleCart.min.js:6)
+  bindInputs (http://localhost:8081/static/js/simpleCart.min.js:30)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:39)
+  trigger (http://localhost:8081/static/js/simpleCart.min.js:28)
+  ready (http://localhost:8081/static/js/simpleCart.min.js:10)
+  init (http://localhost:8081/static/js/simpleCart.min.js:9)
+  DOMContentLoaded (http://localhost:8081/static/js/simpleCart.min.js:42)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:23.929Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: TypeError: undefined is not a function (evaluating 'this.create(a)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:23.930Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  ELEMENT (http://localhost:8081/static/js/simpleCart.min.js:31)
+  $ (http://localhost:8081/static/js/simpleCart.min.js:9)
+  setOutlet (http://localhost:8081/static/js/simpleCart.min.js:30)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:30)
+  trigger (http://localhost:8081/static/js/simpleCart.min.js:28)
+  update (http://localhost:8081/static/js/simpleCart.min.js:9)
+  init (http://localhost:8081/static/js/simpleCart.min.js:9)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.356Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.356Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  global code (http://localhost:8081/static/js/memenu.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.357Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.357Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  global code (http://localhost:8081/contacto/?userName=Wilson+Enriquez&userEmail=wilenco%40hotmail.com&userPhone=042-587&userMsg=+Mantenimiento+de+Centrales+de+Aire+tipo+Split.:42)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.363Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: TypeError: undefined is not a function (evaluating 'this.create(a)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.363Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  ELEMENT (http://localhost:8081/static/js/simpleCart.min.js:31)
+  $ (http://localhost:8081/static/js/simpleCart.min.js:9)
+  setInput (http://localhost:8081/static/js/simpleCart.min.js:31)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:30)
+  each (http://localhost:8081/static/js/simpleCart.min.js:6)
+  bindInputs (http://localhost:8081/static/js/simpleCart.min.js:30)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:39)
+  trigger (http://localhost:8081/static/js/simpleCart.min.js:28)
+  ready (http://localhost:8081/static/js/simpleCart.min.js:10)
+  init (http://localhost:8081/static/js/simpleCart.min.js:9)
+  DOMContentLoaded (http://localhost:8081/static/js/simpleCart.min.js:42)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.693Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - msg: TypeError: undefined is not a function (evaluating 'this.create(a)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2016-06-20T07:11:30.693Z] Session [3151c8d0-36b6-11e6-954e-2fec84cd38f3] - page.onError - stack:
+  ELEMENT (http://localhost:8081/static/js/simpleCart.min.js:31)
+  $ (http://localhost:8081/static/js/simpleCart.min.js:9)
+  setOutlet (http://localhost:8081/static/js/simpleCart.min.js:30)
+  (anonymous function) (http://localhost:8081/static/js/simpleCart.min.js:30)
+  trigger (http://localhost:8081/static/js/simpleCart.min.js:28)
+  update (http://localhost:8081/static/js/simpleCart.min.js:9)
+  init (http://localhost:8081/static/js/simpleCart.min.js:9)
+
+  phantomjs://platform/console++.js:263 in error

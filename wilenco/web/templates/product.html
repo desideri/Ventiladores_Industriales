@@ -43,6 +43,7 @@ Seccion head de la página:
 <!--Codigo javascript que permite hacer a la página dinámica, es decir aquí se codifica
     lo que pasa cuando el usuario da clic sobre algún elemento de la página.
 -->
+<!-- <script src="{% static 'js/product.js' %}"></script> -->
 <script>
     $(document).ready(function () {
         var marcasSeleccionadas = []; // lista de marcas seleccionadas y que serviran para el ajax.
@@ -293,148 +294,25 @@ Seccion head de la página:
 
 		     <div id="catalogo_productos" class="container">
 		     <!--En esta sección se colocan los Productos dentro de contenedores div-->
-		       <div class="col-md-3 product-model-sec">
-
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox">
-		                <img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared" width="102" height="102">
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		              <div class="product-info simpleCart_shelfItem">
-		                <div class="product-info-cust prt_name">
-		                  <h4>Split Pared</h4>
-		                  <input type="button" class="item_add items" value="DETALLES">
-		                  <input type="button" class="item_add items" value="AÑADIR">
-		                  <div class="clearfix"> </div>
-		                </div>
-
-		              </div>
-
-		        </div>
-
-		           <div class="col-md-3 product-model-sec">
-		             <!--<div class="product-grid">-->
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox">
-		                <img src="{% static 'images/ExtractorHongo.jpg' %}" class="img-responsive" alt="ExtractorHongo" width="102" height="102">
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		                <div class="product-info simpleCart_shelfItem">
-			                <div class="product-info-cust prt_name">
-			                  <h4>Extractor Hongo</h4>
-			                  <input type="button" class="item_add items" value="DETALLES">
-			                  <input type="button" class="item_add items" value="AÑADIR">
-			                  <div class="clearfix"> </div>
-			                </div>
-
-		              </div>
-		                       <!--</div>-->
-
-		        </div>
-
-		           <div class="col-md-3 product-model-sec">
-
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox">
-		                <img src="{% static 'images/chimenea.jpg' %}" class="img-responsive" alt="chimenea">
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		                          <div class="product-info simpleCart_shelfItem">
-		                <div class="product-info-cust prt_name">
-		                  <h4>Chimenea</h4>
-		                  <input type="button" class="item_add items" value="DETALLES">
-		                  <input type="button" class="item_add items" value="AÑADIR">
-		                  <div class="clearfix"> </div>
-		                </div>
-
-		              </div>
-
-
-
-		        </div>
-
-		           <div class="col-md-3 product-model-sec">
-
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox">
-		                <img src="{% static 'images/Multiwing.jpg' %}" class="img-responsive" alt="Multiwing">
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		                          <div class="product-info simpleCart_shelfItem">
-		                <div class="product-info-cust prt_name">
-		                  <h4>Multiwing</h4>
-		                  <input type="button" class="item_add items" value="DETALLES">
-		                  <input type="button" class="item_add items" value="AÑADIR">
-		                  <div class="clearfix"> </div>
-		                </div>
-
-		              </div>
-		        </div>
-		           <div class="col-md-3 product-model-sec">
-
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox" >
-		                <img src="{% static 'images/ofr.jpg' %}" class="img-responsive" alt="ofr" >
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		                          <div class="product-info simpleCart_shelfItem">
-		                <div class="product-info-cust prt_name">
-		                  <h4>ofr</h4>
-		                  <input type="button" class="item_add items" value="DETALLES">
-		                  <input type="button" class="item_add items" value="AÑADIR">
-		                  <div class="clearfix"> </div>
-		                </div>
-
-		              </div>
-
-
-
-		        </div>
-		           <div class="col-md-3 product-model-sec">
-
-		              <div class="more-product"><span> </span></div>
-		              <div class="product-img b-link-stripe b-animate-go  thickbox">
-		                <img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared">
-		                <div class="b-wrapper">
-		                <h4 class="b-animate b-from-left  b-delay03">
-		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-		                </h4>
-		                </div>
-		              </div>
-		                          <div class="product-info simpleCart_shelfItem">
-		                <div class="product-info-cust prt_name">
-		                  <h4>Split Pared</h4>
-		                  <input type="button" class="item_add items" value="DETALLES">
-		                  <input type="button" class="item_add items" value="AÑADIR">
-		                  <div class="clearfix"> </div>
-		                </div>
-
-		              </div>
-
-
-
-		        </div>
-
+			 <!--
+			 <div class="col-md-3 product-model-sec">
+					 <div class="more-product"><span> </span></div>
+					 <div class="product-img b-link-stripe b-animate-go  thickbox">
+					 <img src="{{ producto.imagen }}" class="img-responsive" width="102" height="102">
+					 <div class="b-wrapper">
+					 <h4 class="b-animate b-from-left  b-delay03">'
+					 <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+					 </h4></div></div>
+					 <div class="product-info simpleCart_shelfItem">
+					  <div class="product-info-cust prt_name">
+					  <h4>{{producto.nombre}}</h4>
+					  <input type="button" class="item_add items" value="DETALLES">
+					  <input type="button" class="item_add items" value="AÑADIR">
+					  <div class="clearfix"></div>
+				  	  </div>
+				  	  </div>
+			 </div>
+			 -->
 		    </div>
 
 		</div>

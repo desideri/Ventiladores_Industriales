@@ -143,17 +143,27 @@ h1.b1,h2.b2,h3.b3 {
 }
 /*--- slider-css --*/
 .banner1{
-	background:url(../images/bnr.jpg) no-repeat 0px 0px;
+	background:url(../images/malldelsol.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	min-height:585px;
+}
+.banner1-2{
+	background:url(../images/chimenea.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	min-height:585px;
+}
+.banner1-3{
+	background:url(../images/gases.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
 .banner2{
-	background:url(../images/bnr2.jpg) no-repeat 0px 0px;
+	background:url(../images/dulceteria.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
 .banner3{
-	background:url(../images/bnr3.jpg) no-repeat 0px 0px;
+	background:url(../images/edificio.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
@@ -2489,4 +2499,32 @@ input.item_add.items {
 .item_quantity {
     width: 61%;
 }
+}
+
+/**/
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
 }

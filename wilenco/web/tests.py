@@ -1,6 +1,6 @@
 '''
 @Autores: Wilenco team
-@Ultima modificacion: junio 17/2016
+@Ultima modificacion: junio 20/2016
 Pruebas de caja negra para proyecto
 Fuente de referencia:
 https://realpython.com/blog/python/headless-selenium-testing-with-python-and-phantomjs/
@@ -26,7 +26,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(15)
 
     def test_nombre_correcto(self):
         """
@@ -48,7 +48,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
             print "Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
             print "Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioEnviado)
+        self.assertFalse(formularioEnviado)
 
     def test_nombre_incorrecto(self):
         """
@@ -64,7 +64,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado = not msg_ok.is_displayed()
+        formularioNoEnviado =  msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
             print "Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
@@ -86,7 +86,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
-        formularioEnviado = not mensaje_error.is_displayed()
+        formularioEnviado =  mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
             print "Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
@@ -110,7 +110,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado = not msg_ok.is_displayed()
+        formularioNoEnviado = msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
             print "Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
@@ -132,7 +132,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
-        formularioEnviado = not mensaje_error.is_displayed()
+        formularioEnviado = mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
             print "Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
@@ -146,15 +146,15 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Como resultado, el usuario no debe ver ningun mensaje
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
+        self.driver.get("http://localhost:8081/contacto/")
         self.driver.find_element_by_id('nombreUsuario').send_keys("Wilson Enriquez")
         self.driver.find_element_by_id('emailUsuario').send_keys("wilenco@hotmail.com")
         self.driver.find_element_by_id('telUsuario').send_keys("042-587")
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado = not msg_ok.is_displayed()
+        formularioNoEnviado = msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
             print "Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
@@ -255,12 +255,12 @@ class TestCajaNegraModeloCotizacion(TestCase):
 
         self.producto1 = Producto.objects.create(noSerie="12345", nombre="testproduct",
                                                  stock=12, marca="test",
-                                                 modelo="test", potencia="10KW",
+                                                 categoria="test", potencia="10KW",
                                                  capacidad="120BTU", descripcion="test")
 
         self.producto2 = Producto.objects.create(noSerie="12345", nombre="testproduct",
                                                  stock=12, marca="test",
-                                                 modelo="test", potencia="10KW",
+                                                 categoria="test", potencia="10KW",
                                                  capacidad="120BTU", descripcion="test")
 
         self.cotizacion = Cotizacion.objects.create(cotizadorID="iedc1234WL",
@@ -284,12 +284,12 @@ class TestCajaNegraModeloCotizacion(TestCase):
 
         self.producto1 = Producto.objects.create(noSerie="12345", nombre="testproduct",
                                                  stock=12, marca="test",
-                                                 modelo="test", potencia="10KW",
+                                                 categoria="test", potencia="10KW",
                                                  capacidad="120BTU", descripcion="test")
 
         self.producto2 = Producto.objects.create(noSerie="12345", nombre="testproduct",
                                                  stock=12, marca="test",
-                                                 modelo="test", potencia="10KW",
+                                                 categoria="test", potencia="10KW",
                                                  capacidad="120BTU", descripcion="test")
 
         self.cotizacion = None

@@ -14,7 +14,7 @@ class Producto(models.Model):
     motor = models.CharField(max_length=50, blank=True, null=True)
     presion = models.CharField(max_length=50,blank=True, null=True)
     capacidad = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100)
+    descripcion = models.TextField()
     imagen = models.ImageField(upload_to='img/productos', blank=True,
                                null=True)
 

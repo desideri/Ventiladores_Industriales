@@ -50,7 +50,8 @@ def product(request):
          Descripcion: Funcion que hace render la pagina de Productos.
          Fecha de Creacion: Junio 03/2016
          Fecha de Modificacion: Junio 06/2016"""
-    return render(request, 'product.html', {})
+    productos = Producto.objects.all()
+    return render(request, 'product.html', {'productos':productos})
 
 def cotizacion(request):
     """  Funcion  "cotizacion"
