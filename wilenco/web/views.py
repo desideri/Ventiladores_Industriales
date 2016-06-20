@@ -52,6 +52,13 @@ def product(request):
          Fecha de Modificacion: Junio 06/2016"""
     return render(request, 'product.html', {})
 
+def cotizacion(request):
+    """  Funcion  "cotizacion"
+         Descripcion: Funcion que hace render la pagina de cotizacion.
+         Fecha de Creacion: Junio 19/2016
+         Fecha de Modificacion: Junio 20/2016"""
+    return render(request, 'cotizacion.html', {})
+
 def empresa(request):
     """ Funcion  "empresa"
         Descripcion: Funcion que hace render la pagina de Empresa.
@@ -84,4 +91,3 @@ def filtrar_productos(request):
                 productos_devueltos['productos_por_marca'].append( json.dumps({'nombre': producto.nombre ,'imagen': producto.imagen}))
         productos_devueltos_json = json.dumps(productos_devueltos)
     return HttpResponse(productos_devueltos_json, content_type='application/json')
-        

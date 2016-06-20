@@ -1,0 +1,288 @@
+<!--
+ Autor: Wilenco
+ Nombre: servicio.html
+ Descripcion: Página para la cotizacion de productos.
+ Version: 1.1
+ Fecha de Creacion: Junio 18/2016
+ Ultima modificación: Junio 19/2016
+ Ultimo modificador: Kattya Desiderio
+ License: Creative Commons Attribution 3.0 Unported
+ License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+<!--
+Seccion head de la página:
+    Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
+    -->
+<title>Wilenco | Producto-Cotizacion </title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--JQUERY UPGRADED
+<script src="{% static 'js/jquery.min.js' %}"></script>-->
+<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+<!--//theme style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<script src="{% static 'js/simpleCart.min.js' %}"> </script>
+<!-- start menu -->
+<link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/empresa.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script src="{% static 'js/memenu.js' %}"></script>
+<script src="{% static 'js/empresa.js' %}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+</head>
+<body>
+
+<!--header-->
+<script src="{% static 'js/responsiveslides.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        //Muestra el menu de la página
+        $(".memenu").memenu();
+    });
+
+  </script>
+
+<div class="header-top">
+	 <div class="header-bottom">
+				<div class="logo">
+					<h1><a href="/">Wilenco</a></h1>
+				</div>
+			 <!---->
+			 <div class="top-nav">
+				<ul class="memenu skyblue"><li class="grid"><a href="/">Inicio</a></li>
+					<li class="grid"><a href="/empresa/">Empresa</a>
+					</li>
+					<li class="active"><a href="/productos/">Productos</a>
+						<div class="mepanel">
+							<div class="row">
+								<div class="col1 me-one">
+									<h4>Centrales de Aire</h4>
+									<ul>
+										<li><a href="product.html">Split</a></li>
+										<li><a href="product.html">Piso Techo</a></li>
+									</ul>
+								</div>
+								<div class="col1 me-one">
+									<h4>Aires Acondicionados</h4>
+									<ul>
+										<li><a href="product.html">Piso Techo</a></li>
+										<li><a href="product.html">Pared</a></li>
+									</ul>
+								</div>
+								<div class="col1 me-one">
+									<h4>Extractores</h4>
+									<ul>
+										<li><a href="product.html">Tipo Hongo</a></li>
+										<li><a href="product.html">Centr&iacute;fugos</a></li>
+										<li><a href="product.html">Multiwing</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="grid"><a href="/servicio/">Servicios</a></li>
+					<li class="grid"><a href="/contacto/">Cont&aacute;ctenos</a></li>
+				</ul>
+			 </div>
+			 <!---->
+			 <div class="clearfix"> </div>
+			 <!---->
+			 </div>
+			<div class="clearfix"> </div>
+</div>
+<!---->
+<div class="contact">
+	  <div class="container">
+		 <ol class="breadcrumb">
+		  <li class="active"><a href="#" data="#info" class="show">Solicitud de Cotizacion</a></li>
+		 </ol>
+			<!--start form servicio-->
+      <div class="text-center">
+        <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
+        <h1>Formulario de Cotizaci&oacute;n</h1>
+        <p class="lead">Para poder solicitar la cotizaci&oacute;n de los productos que escojio llenar el formulario a continuaci&oacute;n.</p>
+      </div>
+      </br>
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="panel panel-default ">
+              </br>
+              <div class="text-center">
+                <h3>Detalle de los productos</h3>
+                <hr>
+              </div>
+            </br>
+         		<div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>        </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Extractor Tipo Hongo </td>
+                    <td>1</td>
+                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Central Aire - Split</td>
+                    <td>2</td>
+                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Aire Acondicionado - Piso Techo</td>
+                    <td>1</td>
+                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </br></br></br></br></br></br></br></br></br></br></br></br>
+            </br><hr></br>
+            <p>Total de Articulos</p></br>
+            </div>
+         	</div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+
+          <div class="row">
+            <div class="panel panel-default ">
+              </br>
+              <div class="text-center">
+                <h3>Informaci&oacute;n Adicional de la obra</h3>
+                <hr>
+              </div>
+            </br>
+            <div class="panel-body">
+              <div class="form-group">
+                 <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
+                 <div class="col-md-8">
+                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                 </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="panel panel-default ">
+              </br>
+              <div class="text-center">
+                <h3>Datos del cliente</h3>
+                <hr>
+              </div>
+            </br>
+            <div class="panel-body">
+              <div class="form-group">
+                 <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="emailCliente" placeholder="Email" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="telefonoCliente" placeholder="Tel&eacute;fono" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
+                 <div class="col-md-8">
+                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                 </div>
+              </div>
+            </br>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="panel panel-default text-center ">
+        <br>
+          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive">Imprimir Formulario</button>
+          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive">Enviar Formulario</button>
+        <br><br>
+        </div>
+      </div>
+
+     <!--fin de form servicio-->
+	  </div>
+ </div>
+
+<!---->
+<script src="{% static 'js/bootstrap.js' %}"> </script>
+
+<div class="footer">
+	 <div class="container">
+		 <div class="footer-grids">
+			 <div class="col-md-6 ftr-grid">
+					<h3>Nuestros Productos</h3>
+					<ul class="nav-bottom">
+						<li><a href="#">Extractores en línea para conductos</a></li>
+						<li><a href="#">Ventiladores centrífugos</a></li>
+						<li><a href="#">Sistemas Presurización</a></li>
+						<li><a href="#">Extractores de tejado</a></li>
+						<li><a href="#">Accesorios</a></li>
+					</ul>
+			 </div>
+			 <div class="col-md-6 ftr-grid">
+				 <h3>Contacto</h3>
+				 <ul class="nav-bottom">
+					 <li>General Gomez 2012 y Los Ríos</li>
+					 <li>Guayas - Guayaquil</li>
+					 <li>Ecuador</li>
+					 <li>Phone:(042) 513 374</li>
+					 <li>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></li>
+					</ul>
+			 </div>
+			 <div class="clearfix"></div>
+		 </div>
+	 </div>
+</div>
+
+<div class="copywrite">
+	 <div class="container">
+		 <div class="copy">
+			 <p>© 2016 Wilenco -Ventiladores Industriales. Todos los derechos Reservados</p>
+		 </div>
+		 <div class="clearfix"></div>
+	 </div>
+</div>
+<!---->
+</body>
+</html>

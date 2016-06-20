@@ -46,6 +46,7 @@ Seccion head de la página:
 <script>
     $(document).ready(function () {
         var marcasSeleccionadas = []; // lista de marcas seleccionadas y que serviran para el ajax.
+
         $(".tab1 .single-bottom").hide();
         $(".tab2 .single-bottom").hide();
         $(".tab3 .single-bottom").hide();
@@ -130,8 +131,6 @@ Seccion head de la página:
 
 <!--Fin de script -->
 
-
-
 </head>
 <body>
 <!--header
@@ -190,8 +189,56 @@ Seccion head de la página:
 
 <!--En esta parte se define el catálogo de los productos-->
 <div class="container-fluid">
-    <!---->
+	<!---->
 	</br>
+	<div class="row">
+    <div class="text-center">
+      <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
+      <h1>Cat&aacute;logo de Productos</h1>
+    </div>
+   <hr>
+	</div>
+  </br>
+  <!---->
+  <div class="row">
+    <div class="text-center">
+      <div class="col-sm-4 col-md-4">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    	<span id="search_concept">Filtrar por</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#contains">Tipo</a></li>
+                      <li><a href="#its_equal">Marca</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder="Buscar producto...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="cart box_4">
+             <a href="/cotizacion/">
+	            <div class="total">
+              <span class="glyphicon glyphicon-tasks"></span>
+	            <span id="simpleCart_quantity" class="simpleCart_quantity"></span></div>
+
+            </a>
+            <p><a href="javascript:;" class="simpleCart_empty">Cotizaciones</a></p>
+	            <div class="clearfix"> </div>
+           </div>
+      </div>
+    </div>
+    </br> </br>
+   <hr>
+  </div>
+  <!---->
 	<div class="row">
      <!--SIDE BAR-->
 		 <div class="col-sm-4 col-md-4">
@@ -243,10 +290,10 @@ Seccion head de la página:
 		<div class="col-sm-8 col-md-8">
     <!--GALERY PRODUCTS-->
 			<div class="product-model">
-		      <h2>Productos</h2>
+
 		     <div id="catalogo_productos" class="container">
 		     <!--En esta sección se colocan los Productos dentro de contenedores div-->
-		       <div class="col-md-4 product-model-sec">
+		       <div class="col-md-3 product-model-sec">
 
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox">
@@ -269,7 +316,7 @@ Seccion head de la página:
 
 		        </div>
 
-		           <div class="col-md-4 product-model-sec">
+		           <div class="col-md-3 product-model-sec">
 		             <!--<div class="product-grid">-->
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox">
@@ -293,7 +340,7 @@ Seccion head de la página:
 
 		        </div>
 
-		           <div class="col-md-4 product-model-sec">
+		           <div class="col-md-3 product-model-sec">
 
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox">
@@ -318,7 +365,7 @@ Seccion head de la página:
 
 		        </div>
 
-		           <div class="col-md-4 product-model-sec">
+		           <div class="col-md-3 product-model-sec">
 
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox">
@@ -339,7 +386,7 @@ Seccion head de la página:
 
 		              </div>
 		        </div>
-		           <div class="col-md-4 product-model-sec">
+		           <div class="col-md-3 product-model-sec">
 
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox" >
@@ -363,7 +410,7 @@ Seccion head de la página:
 
 
 		        </div>
-		           <div class="col-md-4 product-model-sec">
+		           <div class="col-md-3 product-model-sec">
 
 		              <div class="more-product"><span> </span></div>
 		              <div class="product-img b-link-stripe b-animate-go  thickbox">
