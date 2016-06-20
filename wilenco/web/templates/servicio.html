@@ -4,7 +4,7 @@
  Descripcion: Página para servicio mantenimiento/instalacion.
  Version: 1.1
  Fecha de Creacion: Junio 07/2016
- Ultima modificación: Junio 07/2016
+ Ultima modificación: Junio 19/2016
  Ultimo modificador: Kattya Desiderio
  License: Creative Commons Attribution 3.0 Unported
  License URL: http://creativecommons.org/licenses/by/3.0/
@@ -13,10 +13,12 @@
 <html>
 <head>
 {% load staticfiles %}
+<!--
+Seccion head de la página:
+    Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
+    -->
 <title>Wilenco | Servicio </title>
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<!--theme style-->
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!--JQUERY UPGRADED
 <script src="{% static 'js/jquery.min.js' %}"></script>-->
@@ -103,77 +105,114 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <li class="active"><a href="#" data="#info" class="show">Servicios de la Empresa</a></li>
 		 </ol>
 			<!--start form servicio-->
-      <div class="panel panel-default">
-        <div class="panel-heading" >
-          <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
-           Formulario Servicio
-        </div>
-        <div class="panel-body">
-          <div class="container-fluid">
-              <div class="row row-offcanvas row-offcanvas-left">
-
-              <div class="col-xs-12 col-sm-9 content">
-                </br>
-                <h5>Datos del Cliente</h5>
+      <div class="text-center">
+        <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
+        <h1>Formulario de Servicio</h1>
+        <p class="lead">Para poder solicitar un servicio de mantenimiento o instalaci&oacute;n llenar el formulario a continuaci&oacute;n.</p>
+      </div>
+      </br>
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="panel panel-default ">
+              </br>
+              <div class="text-center">
+                <h3>Datos del Cliente</h3>
                 <hr>
-                <form class="form-horizontal" role="form">
-                  <div class="row">
-                    <div class="col-sm-8 col-lg-4">
-                      <div class="form-group">
-                        <label for="nombreCliente" class="col-md-4 control-label">Nombre:</label>
-                        <div class="col-md-8">
-                          <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-8 col-lg-4">
-                      <div class="form-group">
-                        <label for="apellidoCliente" class="col-md-4 control-label">Apellido:</label>
-                        <div class="col-md-8">
-                          <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
-                        </div>
-                      </div>
-                    </div>
+              </div>
+            </br>
+         		<div class="panel-body">
+              <div class="form-group">
+                 <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="emailCliente" placeholder="Email" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
+                 <div class="col-md-8">
+                   <input class="form-control" id="telefonoCliente" placeholder="Tel&eacute;fono" type="text">
+                 </div>
+              </div>
+              </br></br>
+              <div class="form-group">
+                 <label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
+                 <div class="col-md-8">
+                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                 </div>
+              </div>
+
+            </div>
+         	</div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="panel panel-default ">
+              </br>
+              <div class="text-center">
+                <h3>Detalle del Servicio</h3>
+                <hr>
+              </div>
+            </br>
+            <div class="panel-body">
+                <div class="form-group">
+                  <label for="tipoServicio" class="col-md-3 control-label"><strong>Tipo: </strong></label>
+                  <div class="col-md-8">
+                    <select id="subject" name="subject" class="form-control" required="required">
+                        <option value="na" selected="">Mantemiento</option>
+                        <option value="service">Instalaci&oacute;n</option>
+                    </select>
+                  </div>
+                </div>
+              </br></br>
+                <div class="form-group">
+                 <label class="col-md-3 control-label "><strong>Fecha: </strong></label>
+                 <div class="col-md-8">
+                   <div class="input-group date" id="datePicker">
+                     <input class="form-control" type="text">
+                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                    </div>
-                   <div class="row">
-                     <div class="col-sm-8 col-lg-4">
-                       <div class="form-group">
-                         <label for="telCliente" class="col-md-4 control-label">Telefono:</label>
-                         <div class="col-md-8">
-                           <input class="form-control" id="telCliente" placeholder="Telefono" type="text">
-                         </div>
-                       </div>
-                     </div>
-                     <div class="col-sm-8 col-lg-4">
-                       <div class="form-group">
-                         <label for="emailCliente" class="col-md-4 control-label">Mail:</label>
-                         <div class="col-md-8">
-                           <input class="form-control" id="emailCliente" placeholder="Email" type="text">
-                         </div>
-                       </div>
-                     </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-8 col-lg-4">
-                        <div class="form-group">
-                          <label for="direccionCliente" class="col-md-4 control-label">Direccion:</label>
-                          <div class="col-md-8">
-                          <textarea id="direccionCliente" name="dirClie"  required> </textarea>
-                          </div>
-                        </div>
-                      </div>
-                     </div>
-                </form>
-
-              </div><!--/span-->
-
-              </div><!--/row-->
-
-          </div><!-- /.container -->
-
+                 </div>
+               </div>
+               </br></br>
+              <div class="form-group">
+                 <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
+                 <div class="col-md-8">
+                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                 </div>
+              </div>
+              </br></br></br></br></br></br></br></br></br></br>
+            </div>
+          </div>
         </div>
       </div>
-
+      <div class="row">
+        <div class="panel panel-default text-center ">
+        <br>
+          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive">Enviar Formulario</button>
+        <br><br>
+        </div>
+      </div>
 
      <!--fin de form servicio-->
 	  </div>

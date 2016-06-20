@@ -191,263 +191,246 @@ Seccion head de la página:
 <!--En esta parte se define el catálogo de los productos-->
 <div class="container-fluid">
     <!---->
-    <div id ="seccion_buscar_carroCompras_categoria" class="row">
-                <div class="col-sm-4">
-                       <h4>Categorías <select>
-                        <option value="volvo">Volvo</option>
-                        </select>
-                        </h4>
-                </div>
-                <div class="col-sm-4">
-                    <form>
-                        <input type="text" placeholder="Buscar..." required>
-                        <input type="button" value="Buscar">
-                </form>
-                </div>
-                <div class="col-sm-4">
-                    <div class="cart box_4">
-				             <a href="#">
-					            <div class="total">
-					            <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div>
-					            <span class="glyphicon glyphicon-shopping-cart" ></span>
-				            </a>
-				            <p><a href="javascript:;" class="simpleCart_empty">Carrito</a></p>
-			 	            <div class="clearfix"> </div>
-			             </div>
-                </div>
+	</br>
+	<div class="row">
+     <!--SIDE BAR-->
+		 <div class="col-sm-4 col-md-4">
+			 <div id="opciones_catalogo" class="row">
+					 <div class="rsidebar span_1_of_left">
+						 <section  class="sky-form">
+							 <div class="product_right">
+									 <h4 class="m_2"><span class="glyphicon glyphicon-minus" ></span>CATÁLOGO</h4>
+									 <!---->
+									 <div class="tab1">
+											 <ul class="place">
+												 <li class="sort">TIPO</li>
+												 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaTipo"></li>
+													<div class="clearfix"> </div>
+												</ul>
+											 <div class="single-bottom">
+													 <form>
+															 <input type="checkbox" class="tipo_item" value="Centrales" /> Centrales </br>
+															 <input type="checkbox" class="tipo_item" value="Extractores" /> Extractores </br>
+															 <input type="checkbox" class="tipo_item" value="Aires" /> Aires </br>
+															 <input type="checkbox" class="tipo_item" value="Ventiladores" /> Ventiladores
+													 </form>
+												 </div>
+								   </div>
+									<!---->
+									<div class="tab2">
+										 <ul class="place">
+											 <li class="sort">MARCA</li>
+											 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaMarca"></li>
+												<div class="clearfix"> </div>
+											</ul>
+										 <div class="single-bottom">
+												 <form>
+														 <input type="checkbox" class="marca_item" value="Carrier" /> Carrier </br>
+														 <input type="checkbox" class="marca_item" value="York" /> York </br>
+														 <input type="checkbox" class="marca_item" value="Multiwing" /> Multiwing </br>
+												 </form>
+										 </div>
+									</div>
 
-            </div>
-    
+								</div>
 
-    <div id="opciones_catalogo" class="row">
-        <div class="rsidebar span_1_of_left">
-				 <section  class="sky-form">
-					 <div class="product_right">
-						 <h4 class="m_2"><span class="glyphicon glyphicon-minus" ></span>CATÁLOGO</h4>
-						 <div class="tab1">
-							 <ul class="place">
-								 <li class="sort">TIPO</li>
-								 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaTipo"></li>
-									<div class="clearfix"> </div>
-							  </ul>
-							 <div class="single-bottom">
-                                    <form>
-                                        <input type="checkbox" class="tipo_item" value="Centrales" /> Centrales </br>                     
-                                        <input type="checkbox" class="tipo_item" value="Extractores" /> Extractores </br>
-                                        <input type="checkbox" class="tipo_item" value="Aires" /> Aires </br>
-                                        <input type="checkbox" class="tipo_item" value="Ventiladores" /> Ventiladores
-                                    </form>
-                                   
-						     </div>
-					      </div>
-						  <div class="tab2">
-							 <ul class="place">
-								 <li class="sort">MARCA</li>
-								 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaMarca"></li>
-									<div class="clearfix"> </div>
-							  </ul>
-							 <div class="single-bottom">
-                                    <form>
-                                        <input type="checkbox" class="marca_item" value="Carrier" /> Carrier </br>                     
-                                        <input type="checkbox" class="marca_item" value="York" /> York </br>
-                                        <input type="checkbox" class="marca_item" value="Multiwing" /> Multiwing </br>
-                                    </form>
-									
-						     </div>
-					      </div>
-						 </div>
+						 </section>
 
-						  
-
-				 </section>
-
-			 </div>
-        </div>
-
-<div class="product-model">
-    <h2>Productos</h2>
-	 <div id="catalogo_productos" class="container">
-<!--En esta sección se colocan los Productos dentro de contenedores div-->
-	    
-		 <div class="col-md-3 product-model-sec">
-					 
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared" width="102" height="102">
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                        <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>Split Pared</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
-
-						</div>
-                     
-                     
-						
+				  </div>
 			</div>
+		 </div>
 
-         <div class="col-md-3 product-model-sec">
-					 <!--<div class="product-grid">-->
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/ExtractorHongo.jpg' %}" class="img-responsive" alt="ExtractorHongo" width="102" height="102">
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                         <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>Extractor Hongo</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
+		<div class="col-sm-8 col-md-8">
+    <!--GALERY PRODUCTS-->
+			<div class="product-model">
+		      <h2>Productos</h2>
+		     <div id="catalogo_productos" class="container">
+		     <!--En esta sección se colocan los Productos dentro de contenedores div-->
+		       <div class="col-md-4 product-model-sec">
 
-						</div>
-                     <!--</div>-->
-						
-			</div>
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox">
+		                <img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared" width="102" height="102">
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		              <div class="product-info simpleCart_shelfItem">
+		                <div class="product-info-cust prt_name">
+		                  <h4>Split Pared</h4>
+		                  <input type="button" class="item_add items" value="DETALLES">
+		                  <input type="button" class="item_add items" value="AÑADIR">
+		                  <div class="clearfix"> </div>
+		                </div>
 
-         <div class="col-md-3 product-model-sec">
-					
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/chimenea.jpg' %}" class="img-responsive" alt="chimenea">
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                        <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>Chimenea</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
+		              </div>
 
-						</div>
-                     
-                     
-						
-			</div>
+		        </div>
 
-         <div class="col-md-3 product-model-sec">
-					 
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/Multiwing.jpg' %}" class="img-responsive" alt="Multiwing">
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                        <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>Multiwing</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
+		           <div class="col-md-4 product-model-sec">
+		             <!--<div class="product-grid">-->
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox">
+		                <img src="{% static 'images/ExtractorHongo.jpg' %}" class="img-responsive" alt="ExtractorHongo" width="102" height="102">
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		                <div class="product-info simpleCart_shelfItem">
+			                <div class="product-info-cust prt_name">
+			                  <h4>Extractor Hongo</h4>
+			                  <input type="button" class="item_add items" value="DETALLES">
+			                  <input type="button" class="item_add items" value="AÑADIR">
+			                  <div class="clearfix"> </div>
+			                </div>
 
-						</div>
-			</div>
-         <div class="col-md-3 product-model-sec">
-					 
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox" >
-							<img src="{% static 'images/ofr.jpg' %}" class="img-responsive" alt="ofr" >
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                        <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>ofr</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
+		              </div>
+		                       <!--</div>-->
 
-						</div>
-                     
-                     
-						
-			</div>
-         <div class="col-md-3 product-model-sec">
-					 
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared">
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-							<button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-							</h4>
-							</div>
-						</div>
-                        <div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust prt_name">
-								<h4>Split Pared</h4>
-								<input type="button" class="item_add items" value="DETALLES">
-								<input type="button" class="item_add items" value="AÑADIR">
-								<div class="clearfix"> </div>
-							</div>
+		        </div>
 
-						</div>
-                     
-                     
-						
-			</div>
-					
-                     
+		           <div class="col-md-4 product-model-sec">
+
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox">
+		                <img src="{% static 'images/chimenea.jpg' %}" class="img-responsive" alt="chimenea">
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		                          <div class="product-info simpleCart_shelfItem">
+		                <div class="product-info-cust prt_name">
+		                  <h4>Chimenea</h4>
+		                  <input type="button" class="item_add items" value="DETALLES">
+		                  <input type="button" class="item_add items" value="AÑADIR">
+		                  <div class="clearfix"> </div>
+		                </div>
+
+		              </div>
+
+
+
+		        </div>
+
+		           <div class="col-md-4 product-model-sec">
+
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox">
+		                <img src="{% static 'images/Multiwing.jpg' %}" class="img-responsive" alt="Multiwing">
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		                          <div class="product-info simpleCart_shelfItem">
+		                <div class="product-info-cust prt_name">
+		                  <h4>Multiwing</h4>
+		                  <input type="button" class="item_add items" value="DETALLES">
+		                  <input type="button" class="item_add items" value="AÑADIR">
+		                  <div class="clearfix"> </div>
+		                </div>
+
+		              </div>
+		        </div>
+		           <div class="col-md-4 product-model-sec">
+
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox" >
+		                <img src="{% static 'images/ofr.jpg' %}" class="img-responsive" alt="ofr" >
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		                          <div class="product-info simpleCart_shelfItem">
+		                <div class="product-info-cust prt_name">
+		                  <h4>ofr</h4>
+		                  <input type="button" class="item_add items" value="DETALLES">
+		                  <input type="button" class="item_add items" value="AÑADIR">
+		                  <div class="clearfix"> </div>
+		                </div>
+
+		              </div>
+
+
+
+		        </div>
+		           <div class="col-md-4 product-model-sec">
+
+		              <div class="more-product"><span> </span></div>
+		              <div class="product-img b-link-stripe b-animate-go  thickbox">
+		                <img src="{% static 'images/SplitPared.jpg' %}" class="img-responsive" alt="SplitPared">
+		                <div class="b-wrapper">
+		                <h4 class="b-animate b-from-left  b-delay03">
+		                <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
+		                </h4>
+		                </div>
+		              </div>
+		                          <div class="product-info simpleCart_shelfItem">
+		                <div class="product-info-cust prt_name">
+		                  <h4>Split Pared</h4>
+		                  <input type="button" class="item_add items" value="DETALLES">
+		                  <input type="button" class="item_add items" value="AÑADIR">
+		                  <div class="clearfix"> </div>
+		                </div>
+
+		              </div>
+
+
+
+		        </div>
+
+		    </div>
 
 		</div>
-
-  </div>
+ </div>
 </div>
-<!--Fin de catalogo de productos-->
+</br>
+<hr>
+</br>
+  <!---->
+	<div class="row">
+	<!--Fin de catalogo de productos-->
 
-<!--En esta parte se define las marcas de la empresa-->
-<div id ="marcas" class="row">
-    <div class="col-sm-3">
+	<!--En esta parte se define las marcas de la empresa-->
+	<div id ="marcas" >
+	    <div class="col-sm-3">
 
-    <img src="{% static 'images/york-logo.jpg' %}" alt="york-logo" class="img-responsive" >
+	    <img src="{% static 'images/york-logo.jpg' %}" alt="york-logo" class="img-responsive" >
 
-    </div>
-    <div class="col-sm-3">
+	    </div>
+	    <div class="col-sm-3">
 
-    <img src="{% static 'images/baxi-logo.png' %}" alt="baxi-logo" class="img-responsive" >
+	    <img src="{% static 'images/baxi.jpg' %}" alt="baxi-logo" class="img-responsive" >
 
-    </div>
-    <div class="col-sm-3">
+	    </div>
+	    <div class="col-sm-3">
 
-    <img src="{% static 'images/Panasonic_logo.png' %}" alt="Panasonic_logo" class="img-responsive" >
+	    <img src="{% static 'images/panasonic.jpg' %}" alt="Panasonic_logo" class="img-responsive" >
 
-    </div>
-    <div class="col-sm-3">
+	    </div>
+	    <div class="col-sm-3">
 
-    <img src="{% static 'images/Samsung-Logos-HD.gif' %}" alt="Samsung-Logos-HD" class="img-responsive" >
+	    <img src="{% static 'images/samsung.jpg' %}" alt="Samsung-Logos-HD" class="img-responsive" >
 
-    </div>
+	    </div>
 
+	</div>
+	<!--FIN marcas-->
+
+	<!---->
+	</div>
 </div>
-<!--FIN marcas-->
 
-<!---->
+
 <div class="footer">
 	 <div class="container">
 		 <div class="footer-grids">
