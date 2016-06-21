@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $("#OkMessage").hide();
         <!--Variables para validacion-->
         var nombre,apellido,cedula,email,telefono,direccion;
-        var tipo;
+        var tipo,fecha;
         var rgnombre, rgemail, rgtel;
 
         rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
@@ -65,9 +65,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             email = $("#emailCliente").val();
             telefono = $("#telCliente").val();
             direccion = $("#direccionCliente").val();
-            tipo =$('select[name=subject]').selectpicker();
+            tipo =  $('select[name=subject]').val();
+            fecha =$("#fecha").val();
 
-            alert(tipo);
 
             if (nombre.trim() == '' || !rgnombre.test(nombre)) {
                 $("#ErrorMessage").text("Nombre Incorrecto");
@@ -102,13 +102,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 //console.log("Asunto Incorrecto");
                 return false;
             }
-            else if (cedula.trim() == '') {
-                $("#ErrorMessage").text("Cedula Incorrecta");
+            else if (tipo == "default") {
+                $("#ErrorMessage").text("Escoja un servicio.");
                 $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
                 return false;
             }
-
+            else if (fecha == "") {
+                $("#ErrorMessage").text("Escoja una fecha para el servicio.");
+                $("#ErrorMessage").show();
+                return false;
+            }
             else {
                 $("#ErrorMessage").hide();
                 $("#OkMessage").text("Formulario Enviado..!");
@@ -120,7 +123,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $("#emailCliente").val("");
                 $("#telCliente").val("");
                 $("#direccionCliente").val("");
-
+                $('select[name=subject]').val("default");
+                $("#fecha").val("");
+                $("#descripcion").val("");
             }
 
         });
@@ -132,13 +137,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          $('#datePicker').datepicker({
            autoclose:true,
          }).on("changeDate", function(e){
-           console.log(e.date);
+           //console.log(e.date);
          });
 
          $('.input-daterange').datepicker({
            autoclose:true
          }).on("changeDate", function(e){
-           console.log(e.date);
+           //console.log(e.date);
          });
 
         });
@@ -216,6 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <strong>Formulario Enviado</strong>
         </div>
       </div>
+    </div>
       <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="panel panel-default ">
@@ -284,9 +290,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <label for="tipoServicio" class="col-md-3 control-label"><strong>Tipo: </strong></label>
                   <div class="col-md-8">
                     <select id="subject" name="subject" class="form-control" required="required">
-                        <option value="na" selected="">-----------</option>
-                        <option value="service">Mantemiento</option>
-                        <option value="service">Instalaci&oacute;n</option>
+                        <option value="default" selected="">-----------</option>
+                        <option value="mantenimiento">Mantemiento</option>
+                        <option value="instalacion">Instalaci&oacute;n</option>
                     </select>
                   </div>
                 </div>
@@ -295,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  <label class="col-md-3 control-label "><strong>Fecha: </strong></label>
                  <div class="col-md-8">
                    <div class="input-group date" id="datePicker">
-                     <input class="form-control" type="text"  required="required">
+                     <input class="form-control" type="text" id="fecha" required>
                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                    </div>
                  </div>
@@ -304,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <div class="form-group">
                  <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
                  <div class="col-md-8">
-                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                   <textarea id="descripcion" name="descripcion" > </textarea>
                  </div>
               </div>
               </br></br></br></br></br></br></br></br></br></br>
