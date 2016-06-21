@@ -4,7 +4,7 @@
 Pruebas de caja negra para proyecto
 Este script contienen funciones que permiten realizar pruebas de caja
 negra sobre las componentes del sistemas ya desarrolladas. Para ello
-se usan la librerìaa Selenium y PhantomJS, que permiten interactuar
+se usan la libreria Selenium y PhantomJS, que permiten interactuar
 con la interfaz grafica de la aplicacion usando un web browser que
 permite el ingreso de datos a elementos como formularios y dar clic
 sobre botones u otros elementos usando codigo.
