@@ -2,8 +2,12 @@
 @Autores: Wilenco team
 @Ultima modificacion: junio 20/2016
 Pruebas de caja negra para proyecto
-Fuente de referencia:
-https://realpython.com/blog/python/headless-selenium-testing-with-python-and-phantomjs/
+Este script contienen funciones que permiten realizar pruebas de caja
+negra sobre las componentes del sistemas ya desarrolladas. Para ello
+se usan la librerìaa Selenium y PhantomJS, que permiten interactuar
+con la interfaz grafica de la aplicacion usando un web browser que
+permite el ingreso de datos a elementos como formularios y dar clic
+sobre botones u otros elementos usando codigo.
 '''
 from datetime import datetime
 from django.test import TestCase
@@ -16,13 +20,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
     """
        @Autor: Jorge Ayala
        Como su nombre lo indica, es una clase usada para realizar test.
-       En este caso se lo usa para realizar pruebas de Caja negra a la
-       Pagina Contacto de nuestro sitio web.
-       Las input que se deben probar son para el campo Nombre, Email,
-       Telefono del Usuario.
-       Pre Condiciones:
-       - Inputs No Vacio.
-       - Inputs Validos (Validados por Expresiones regulares).
+       En este caso se lo usa para realizar pruebas de Caja negra al
+       formulario de la pagina Contacto de nuestro sitio web.
+       Las variables a probar son Nombre, Email, Telefono del Usuario.
+       Pre Condiciones para todas las pruebas:
+       - Inputs No Vacios.
+       
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -30,7 +33,16 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def test_nombre_correcto(self):
         """
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE1: cadenas de caracteres generadas por:
+            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE2: cadenas de caracteres no generados por:
+            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
         En esta prueba se utiliza la clase de equivalencia CE1.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
         Como resultado, el usuario no debe ver ningun mensaje
         y los campos del formulario se limpian.
         """
@@ -52,9 +64,18 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def test_nombre_incorrecto(self):
         """
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE1: cadenas de caracteres generadas por:
+            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE2: cadenas de caracteres no generados por:
+            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
         En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        nombre ingresado es incorrecto.
         """
         self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
@@ -74,8 +95,17 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def test_email_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable email se han definido dos clases de equivalencia:
+        CE3: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE4: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE3.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
@@ -97,11 +127,20 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
 
     def test_email_incorrecto(self):
-        '''
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario debe ver un mensaje de email
-        incorrecto en rojo.
-        '''
+        """
+        Para la variable email se han definido dos clases de equivalencia:
+        CE3: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE4: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE4.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        email ingresado es incorrecto.
+        """
         self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreUsuario').send_keys("Jorge Ayala")
@@ -120,8 +159,17 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def test_telefono_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE5: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE6: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE5.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/contacto/")
@@ -142,9 +190,18 @@ class TestCajaNegraContacto(LiveServerTestCase):
 
     def test_telefono_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE5: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE6: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE6.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        telefono ingresado es incorrecto.
         """
         tiempo_inicio_prueba = datetime.now().second
         self.driver.get("http://localhost:8081/contacto/")
@@ -314,9 +371,9 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
        Pagina Servicio de nuestro sitio web.
        Las input que se deben probar son para el campo Nombre,Apellido, Email,
        Telefono del Usuario, asi como la Descripcion del  servicio.
-       Pre Condiciones:
+       Pre Condiciones para todas las pruebas:
        - Inputs No Vacio.
-       - Inputs Validos (Validados por Expresiones regulares).
+       
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -324,8 +381,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_nombre_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE7: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE8: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE7.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/servicio/")
@@ -349,9 +415,18 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_nombre_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE7: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE8: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE8.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        nombre ingresado es incorrecto.
         """
         self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
@@ -374,8 +449,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_apellido_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable apellido se han definido dos clases de equivalencia:
+        CE9: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE10: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE9.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/servicio/")
@@ -399,9 +483,18 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_apellido_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable apellido se han definido dos clases de equivalencia:
+        CE9: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE10: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE10.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        apellido ingresado es incorrecto.
         """
         self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
@@ -424,8 +517,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_email_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable email se han definido dos clases de equivalencia:
+        CE11: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE12: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE11.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/servicio/")
@@ -449,9 +551,18 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_email_incorrecto(self):
         '''
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario debe ver un mensaje de email
-        incorrecto en rojo.
+        Para la variable email se han definido dos clases de equivalencia:
+        CE11: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE12: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE12.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        email ingresado es incorrecto.
         '''
         self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
@@ -474,8 +585,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_telefono_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE13: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE14: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE13.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/servicio/")
@@ -499,9 +619,18 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def test_telefono_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE13: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE14: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE14.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        telefono ingresado es incorrecto.
         """
         tiempo_inicio_prueba = datetime.now().second
         self.driver.get("http://localhost:8081/servicio/")
@@ -543,8 +672,17 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_nombre_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE15: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE16: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE15.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
@@ -568,9 +706,18 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_nombre_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable nombre se han definido dos clases de equivalencia:
+        CE15: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE16: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE16.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        nombre ingresado es incorrecto.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
@@ -593,8 +740,17 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_apellido_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable apellido se han definido dos clases de equivalencia:
+        CE17: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE18: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE17.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
@@ -618,9 +774,18 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_apellido_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable apellido se han definido dos clases de equivalencia:
+        CE17: cadenas de caracteres generadas por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE18: cadenas de caracteres no generados por:
+        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+         
+        En esta prueba se utiliza la clase de equivalencia CE18.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        apellido ingresado es incorrecto.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
@@ -643,8 +808,17 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_email_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable email se han definido dos clases de equivalencia:
+        CE19: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE20: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE19.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
@@ -668,9 +842,18 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_email_incorrecto(self):
         '''
-        En esta prueba se utiliza la clase de equivalencia CE2.
-        Como resultado, el usuario debe ver un mensaje de email
-        incorrecto en rojo.
+        Para la variable email se han definido dos clases de equivalencia:
+        CE19: cadenas de caracteres generadas por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE20: cadenas de caracteres no generados por:
+        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+         
+        En esta prueba se utiliza la clase de equivalencia CE20.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        email ingresado es incorrecto.
         '''
         self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
@@ -693,8 +876,17 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_telefono_correcto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE21: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE22: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE21.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
         self.driver.get("http://localhost:8081/cotizacion/")
@@ -718,9 +910,18 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
     def test_telefono_incorrecto(self):
         """
-        En esta prueba se utiliza la clase de equivalencia CE1.
-        Como resultado, el usuario no debe ver ningun mensaje
-        y los campos del formulario se limpian.
+        Para la variable telefono se han definido dos clases de equivalencia:
+        CE21: cadenas de caracteres generadas por:
+        '0[0-9]{2}-[0-9]{6}'
+        CE22: cadenas de caracteres no generados por:
+        '0[0-9]{2}-[0-9]{6}'
+         
+        En esta prueba se utiliza la clase de equivalencia CE22.
+        Precondiciones:
+            - las demas inputs son ingresados correctamente
+        Resultado:
+        Como resultado, el usuario ve un mensaje de error de que el
+        telefono ingresado es incorrecto.
         """
         tiempo_inicio_prueba = datetime.now().second
         self.driver.get("http://localhost:8081/cotizacion/")
