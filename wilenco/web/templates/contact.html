@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $("#OkMessage").hide();
 
         var nombre, email, telefono, asunto;
-        var rgnombre, rgemail, rgtel;
+        var rgnombre, rgemail, rgtel,rgCel;
 
         rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
         rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
@@ -63,41 +63,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             if (nombre.trim() == '' || !rgnombre.test(nombre)) {
                 $("#ErrorMessage").text("Nombre Incorrecto");
                 $("#ErrorMessage").show();
-
+                //console.log("Nombre Incorrecto");
                 return false;
             }
             else if (email.trim() == '' || !rgemail.test(email)) {
                 $("#ErrorMessage").text("Email Incorrecto");
                 $("#ErrorMessage").show();
-
+                //console.log("Email Incorrecto");
                 return false;
             }
             else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
                 $("#ErrorMessage").text("Telefono Incorrecto");
                 $("#ErrorMessage").show();
-
+                //console.log("Telefono Incorrecto");
                 return false;
             }
             else if (asunto.trim() == '') {
                 $("#ErrorMessage").text("Asunto Incorrecto");
                 $("#ErrorMessage").show();
-
+                //console.log("Asunto Incorrecto");
                 return false;
             }
             else {
                 $("#ErrorMessage").hide();
                 $("#OkMessage").text("Formulario Enviado..!");
                 $("#OkMessage").show();
-                //Si se envia el formulario se enceran los inputs.
-                $("#nombreUsuario").val("");
-                $("#emailUsuario").val("");
-                $("#telUsuario").val("");
-                $("#asuntoUsuario").val("");
+                //alert("Formulario Enviado..!");
             }
 
         });
 
-        
 
     });
 </script>
@@ -184,14 +179,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <!--Formulario que debe ser llenado por el usuario-->
 				<div class="col-md-6 span_2_of_3">
 				  <div class="contact-form">
-
+					    <form>
                 <div class="alert alert-danger" id="ErrorMessage">
                 </div>
 					    	<div>
                   <div class="alert alert-success" id="OkMessage">
-                  <strong>Formulario Enviado</strong>
+                  <strong>Success!</strong> Indicates a successful or positive action.
                 </div>
-                 <div>
+
 						    	<span><label>NOMBRE</label></span>
 						    	<span><input id ="nombreUsuario" name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
 						    </div>
@@ -211,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						   <div>
 						   		<span><input type="submit" class="mybutton" value="Enviar" id="btnEnviar"></span>
 						  </div>
-
+					    </form>
 
 				    </div>
   				</div>

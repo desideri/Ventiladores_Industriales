@@ -45,10 +45,10 @@ class TestCajaNegraContacto(LiveServerTestCase):
         formularioEnviado = not mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
-            print "Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertFalse(formularioEnviado)
+            print "Formulario Contacto. Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
 
     def test_nombre_incorrecto(self):
         """
@@ -64,12 +64,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado =  msg_ok.is_displayed()
+        formularioNoEnviado = not msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
-            print "Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioNoEnviado)
 
     def test_email_correcto(self):
@@ -86,12 +86,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
-        formularioEnviado =  mensaje_error.is_displayed()
+        formularioEnviado = not mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
-            print "Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioEnviado)
 
 
@@ -110,12 +110,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado = msg_ok.is_displayed()
+        formularioNoEnviado = not msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
-            print "Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioNoEnviado)
 
     def test_telefono_correcto(self):
@@ -132,12 +132,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         mensaje_error = self.driver.find_element_by_id("ErrorMessage")
-        formularioEnviado = mensaje_error.is_displayed()
+        formularioEnviado = not mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
-            print "Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioEnviado)
 
     def test_telefono_incorrecto(self):
@@ -154,12 +154,12 @@ class TestCajaNegraContacto(LiveServerTestCase):
         self.driver.find_element_by_id('asuntoUsuario').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
         self.driver.find_element_by_id("btnEnviar").click()
         msg_ok = self.driver.find_element_by_id("OkMessage")
-        formularioNoEnviado = msg_ok.is_displayed()
+        formularioNoEnviado = not msg_ok.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioNoEnviado):
-            print "Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+            print "Formulario Contacto. Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         self.assertTrue(formularioNoEnviado)
 
     def tearDown(self):
@@ -278,7 +278,7 @@ class TestCajaNegraModeloCotizacion(TestCase):
 
     def test_crear_cotizacion_invalida(self):
         tiempo_inicio_prueba = datetime.now().second
-        self.cliente = Cliente.objects.create(cedula="0123457323891", nombre="cliente",
+        self.cliente = Cliente.objects.create(cedula="0123457323", nombre="cliente",
                                               direccion="testlandia", telefono="0913458119",
                                               email="testtestcom")
 
@@ -304,6 +304,444 @@ class TestCajaNegraModeloCotizacion(TestCase):
             else:
                 print "Prueba de crear Cotizacion invalido EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
             self.assertNotIsInstance(self.cotizacion, Cotizacion, 'Cotizacion creada')
+
+
+class TestCajaNegraFormularioServicio(LiveServerTestCase):
+    """
+       @Autor: Jorge Ayala
+       Como su nombre lo indica, es una clase usada para realizar test.
+       En este caso se lo usa para realizar pruebas de Caja negra a la
+       Pagina Servicio de nuestro sitio web.
+       Las input que se deben probar son para el campo Nombre,Apellido, Email,
+       Telefono del Usuario, asi como la Descripcion del  servicio.
+       Pre Condiciones:
+       - Inputs No Vacio.
+       - Inputs Validos (Validados por Expresiones regulares).
+    """
+    def setUp(self):
+        self.driver = webdriver.PhantomJS()
+        self.driver.implicitly_wait(15)
+
+    def test_nombre_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Servicio.Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_nombre_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("$######")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Servicio.Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_apellido_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Servicio.Prueba de apellido correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de apellido correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_apellido_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("$######")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Servicio.Prueba de apellido incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de apellido incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_email_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Servicio. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_email_incorrecto(self):
+        '''
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario debe ver un mensaje de email
+        incorrecto en rojo.
+        '''
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilencohotmailom")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Servicio. Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio. Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_telefono_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/servicio/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Servicio.Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_telefono_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.get("http://localhost:8081/servicio/")
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("0978095645")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("3927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Servicio.Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Servicio.Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def tearDown(self):
+        self.driver.quit()
+     
+
+class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
+    """
+       @Autor: Jorge Ayala
+       Como su nombre lo indica, es una clase usada para realizar test.
+       En este caso se lo usa para realizar pruebas de Caja negra a la
+       Pagina Cotizacion de nuestro sitio web.
+       Las input que se deben probar son para el campo Nombre,Apellido, Email,
+       Telefono del Usuario, asi como la Descripcion del  servicio.
+       Pre Condiciones:
+       - Inputs No Vacio.
+       - Inputs Validos (Validados por Expresiones regulares).
+    """
+    def setUp(self):
+        self.driver = webdriver.PhantomJS()
+        self.driver.implicitly_wait(15)
+
+    def test_nombre_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Cotizacion.Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_nombre_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("$######")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Cotizacion.Prueba de nombre incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_apellido_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Cotizacion.Prueba de apellido correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de apellido correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_apellido_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("$######")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Cotizacion.Prueba de apellido incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de apellido incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_email_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Cotizacion. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_email_incorrecto(self):
+        '''
+        En esta prueba se utiliza la clase de equivalencia CE2.
+        Como resultado, el usuario debe ver un mensaje de email
+        incorrecto en rojo.
+        '''
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilencohotmailom")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Cotizacion. Prueba de email incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion. Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def test_telefono_correcto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        self.driver.get("http://localhost:8081/cotizacion/")
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("042-587452")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("0927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        self.driver.find_element_by_id("btnEnviar").click()
+        mensaje_error = self.driver.find_element_by_id("ErrorMessage")
+        formularioEnviado = not mensaje_error.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioEnviado):
+            print "Formulario Cotizacion.Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioEnviado)
+
+    def test_telefono_incorrecto(self):
+        """
+        En esta prueba se utiliza la clase de equivalencia CE1.
+        Como resultado, el usuario no debe ver ningun mensaje
+        y los campos del formulario se limpian.
+        """
+        tiempo_inicio_prueba = datetime.now().second
+        self.driver.get("http://localhost:8081/cotizacion/")
+        self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
+        self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
+        self.driver.find_element_by_id('emailCliente').send_keys("wilenco@hotmail.com")
+        self.driver.find_element_by_id('telCliente').send_keys("0978095645")
+        self.driver.find_element_by_id('cedulaCliente').send_keys("3927219915")
+        self.driver.find_element_by_id('direccionCliente').send_keys("General Gomez 2012 y Los Rios")
+        self.driver.find_element_by_id('descripcion').send_keys("Mantenimiento de Centrales de Aire tipo Split.")
+        msg_ok = self.driver.find_element_by_id("OkMessage")
+        formularioNoEnviado = not msg_ok.is_displayed()
+        tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
+        if(formularioNoEnviado):
+            print "Formulario Cotizacion.Prueba de telefono incorrecto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        else:
+            print "Formulario Cotizacion.Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertTrue(formularioNoEnviado)
+
+    def tearDown(self):
+        self.driver.quit()
 
 
 class TestCajaNegraProducto(LiveServerTestCase):

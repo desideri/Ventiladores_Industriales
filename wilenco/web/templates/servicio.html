@@ -51,7 +51,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--Variables para validacion-->
         var nombre,apellido,cedula,email,telefono,direccion;
         var tipo,fecha;
-        var rgnombre, rgemail, rgtel;
+        var rgnombre, rgemail, rgtel, rgCel;
+        rgCel = new RegExp('09-[0-9]{8}');
 
         rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
         rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
