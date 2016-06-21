@@ -4,7 +4,7 @@
  Descripcion: Página para la cotizacion de productos.
  Version: 1.1
  Fecha de Creacion: Junio 18/2016
- Ultima modificación: Junio 19/2016
+ Ultima modificación: Junio 20/2016
  Ultimo modificador: Kattya Desiderio
  License: Creative Commons Attribution 3.0 Unported
  License URL: http://creativecommons.org/licenses/by/3.0/
@@ -46,8 +46,73 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $(document).ready(function(){
         //Muestra el menu de la página
         $(".memenu").memenu();
+        $("#ErrorMessage").hide();
+        $("#OkMessage").hide();
+        <!--Variables para validacion-->
+        var nombre,apellido,cedula,email,telefono,direccion;
+        var tipo,fecha;
+        var rgnombre, rgemail, rgtel, rgCel;
+        rgCel = new RegExp('09-[0-9]{8}');
+        rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
+        rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
+        rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
+        $("#btnEnviar").click(function () {
+            nombre = $("#nombreCliente").val();
+            apellido = $("#apellidoCliente").val();
+            cedula = $("#cedulaCliente").val();
+            email = $("#emailCliente").val();
+            telefono = $("#telCliente").val();
+            direccion = $("#direccionCliente").val();
+            tipo =  $('select[name=subject]').val();
+            fecha =$("#fecha").val();
+            if (nombre.trim() == '' || !rgnombre.test(nombre)) {
+                $("#ErrorMessage").text("Nombre Incorrecto");
+                $("#ErrorMessage").show();
+                return false;
+            }
+            else if (apellido.trim() == '' || !rgnombre.test(apellido)) {
+                $("#ErrorMessage").text("Apellido Incorrecto");
+                $("#ErrorMessage").show();
+                return false;
+            }
+            else if (email.trim() == '' || !rgemail.test(email)) {
+                $("#ErrorMessage").text("Email Incorrecto");
+                $("#ErrorMessage").show();
+                return false;
+            }
+            else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+                $("#ErrorMessage").text("Telefono Incorrecto");
+                $("#ErrorMessage").show();
+                //console.log("Telefono Incorrecto");
+                return false;
+            }
+            else if (direccion.trim() == '') {
+                $("#ErrorMessage").text("Direccion Incorrecta");
+                $("#ErrorMessage").show();
+                //console.log("Asunto Incorrecto");
+                return false;
+            }
+            else if (cedula.trim() == '') {
+                $("#ErrorMessage").text("Cedula Incorrecta");
+                $("#ErrorMessage").show();
+                //console.log("Asunto Incorrecto");
+                return false;
+            }
+            else {
+                $("#ErrorMessage").hide();
+                $("#OkMessage").text("Formulario Enviado..!");
+                $("#OkMessage").show();
+                //Si se envia el formulario se enceran los inputs.
+                $("#nombreCliente").val("");
+                $("#apellidoCliente").val("");
+                $("#cedulaCliente").val("");
+                $("#emailCliente").val("");
+                $("#telefonoCliente").val("");
+                $("#direccionCliente").val("");
+                $("#descripcion").val("");
+            }
+        });
     });
-
   </script>
 
 <div class="header-top">
@@ -108,9 +173,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="text-center">
         <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
         <h3>Formulario de Cotizaci&oacute;n</h3>
-        <p class="lead">Para poder solicitar la cotizaci&oacute;n de los productos que escojio llenar el formulario a continuaci&oacute;n.</p>
+        <p class="lead">Para poder solicitar la cotizaci&oacute;n de los productos, llenar el formulario a continuaci&oacute;n.</p>
       </div>
       </br>
+      <div class="row">
+        <div class="alert alert-danger" id="ErrorMessage">
+        </div>
+        <div>
+          <div class="alert alert-success" id="OkMessage">
+          <strong>Formulario Enviado</strong>
+        </div>
+      </div>
+    </div>
       <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="panel panel-default ">
@@ -133,23 +207,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <tr>
                     <td>Extractor Tipo Hongo </td>
                     <td>1</td>
-                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                    <td><button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
                   </tr>
                   <tr>
                     <td>Central Aire - Split</td>
                     <td>2</td>
-                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                    <td><button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
                   </tr>
                   <tr>
                     <td>Aire Acondicionado - Piso Techo</td>
                     <td>1</td>
-                    <td><button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
+                    <td><button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-remove"></i></button></td>
                   </tr>
                 </tbody>
               </table>
             </br></br></br></br></br></br></br></br></br></br></br></br>
             </br><hr></br>
-            <p>Total de Articulos</p></br>
+            <p><strong>Total de Art&iacute;culos</strong> : 4</p></br>
+
             </div>
          	</div>
         </div>
@@ -167,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <div class="form-group">
                  <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
                  <div class="col-md-8">
-                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                   <textarea id="descripcion" name="descripcion" required> </textarea>
                  </div>
               </div>
             </div>
@@ -214,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <div class="form-group">
                  <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
                  <div class="col-md-8">
-                   <input class="form-control" id="telefonoCliente" placeholder="Tel&eacute;fono" type="text">
+                   <input class="form-control" id="telCliente" placeholder="Tel&eacute;fono" type="text">
                  </div>
               </div>
               </br></br>
@@ -235,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="panel panel-default text-center ">
         <br>
           <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive">Imprimir</button>
-          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive">Enviar</button>
+          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive" id="btnEnviar">Enviar</button>
         <br><br>
         </div>
       </div>
