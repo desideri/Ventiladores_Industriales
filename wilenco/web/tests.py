@@ -34,10 +34,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_nombre_correcto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE1: cadenas de caracteres generadas por:
-            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE2: cadenas de caracteres no generados por:
-            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE1: cadenas de caracteres generadas por el regex definido en el codigo
+        CE2: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE1.
         Precondiciones:
@@ -65,10 +63,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_nombre_incorrecto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE1: cadenas de caracteres generadas por:
-            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE2: cadenas de caracteres no generados por:
-            '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE1: cadenas de caracteres generadas por el regex definido en el codigo
+        CE2: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE2.
         Precondiciones:
@@ -96,10 +92,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_email_correcto(self):
         """
         Para la variable email se han definido dos clases de equivalencia:
-        CE3: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE4: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE3: cadenas de caracteres generadas por el regex definido en el codigo
+        CE4: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE3.
         Precondiciones:
@@ -129,10 +123,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_email_incorrecto(self):
         """
         Para la variable email se han definido dos clases de equivalencia:
-        CE3: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE4: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE3: cadenas de caracteres generadas por el regex definido en el codigo
+        CE4: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE4.
         Precondiciones:
@@ -160,10 +152,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_telefono_correcto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE5: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE6: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE5: cadenas de caracteres generadas por el regex definido en el codigo
+        CE6: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE5.
         Precondiciones:
@@ -191,10 +181,8 @@ class TestCajaNegraContacto(LiveServerTestCase):
     def test_telefono_incorrecto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE5: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE6: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE5: cadenas de caracteres generadas por el regex definido en el codigo
+        CE6: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE6.
         Precondiciones:
@@ -382,10 +370,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_nombre_correcto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE7: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE8: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE7: cadenas de caracteres generadas por el regex definido en el codigo
+        CE8: cadenas de caracteres no generados  por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE7.
         Precondiciones:
@@ -416,10 +402,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_nombre_incorrecto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE7: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE8: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE7: cadenas de caracteres generadas por el regex definido en el codigo
+        CE8: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE8.
         Precondiciones:
@@ -450,10 +434,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_apellido_correcto(self):
         """
         Para la variable apellido se han definido dos clases de equivalencia:
-        CE9: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE10: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE9: cadenas de caracteres generadas por el regex definido en el codigo
+        CE10: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE9.
         Precondiciones:
@@ -484,10 +466,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_apellido_incorrecto(self):
         """
         Para la variable apellido se han definido dos clases de equivalencia:
-        CE9: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE10: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE9: cadenas de caracteres generadas por el regex definido en el codigo
+        CE10: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE10.
         Precondiciones:
@@ -518,10 +498,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_email_correcto(self):
         """
         Para la variable email se han definido dos clases de equivalencia:
-        CE11: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE12: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE11: cadenas de caracteres generadas por el regex definido en el codigo
+        CE12: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE11.
         Precondiciones:
@@ -552,10 +530,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_email_incorrecto(self):
         '''
         Para la variable email se han definido dos clases de equivalencia:
-        CE11: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE12: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE11: cadenas de caracteres generadas por el regex definido en el codigo
+        CE12: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE12.
         Precondiciones:
@@ -586,10 +562,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_telefono_correcto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE13: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE14: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE13: cadenas de caracteres generadas por el regex definido en el codigo
+        CE14: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE13.
         Precondiciones:
@@ -620,10 +594,8 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
     def test_telefono_incorrecto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE13: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE14: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE13: cadenas de caracteres generadas por el regex definido en el codigo
+        CE14: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE14.
         Precondiciones:
@@ -673,10 +645,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_nombre_correcto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE15: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE16: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE15: cadenas de caracteres generadas por el regex definido en el codigo
+        CE16: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE15.
         Precondiciones:
@@ -707,10 +677,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_nombre_incorrecto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
-        CE15: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE16: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE15: cadenas de caracteres generadas por el regex definido en el codigo
+        CE16: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE16.
         Precondiciones:
@@ -741,10 +709,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_apellido_correcto(self):
         """
         Para la variable apellido se han definido dos clases de equivalencia:
-        CE17: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE18: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE17: cadenas de caracteres generadas por el regex definido en el codigo
+        CE18: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE17.
         Precondiciones:
@@ -775,10 +741,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_apellido_incorrecto(self):
         """
         Para la variable apellido se han definido dos clases de equivalencia:
-        CE17: cadenas de caracteres generadas por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
-        CE18: cadenas de caracteres no generados por:
-        '[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*'
+        CE17: cadenas de caracteres generadas por el regex definido en el codigo
+        CE18: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE18.
         Precondiciones:
@@ -809,10 +773,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_email_correcto(self):
         """
         Para la variable email se han definido dos clases de equivalencia:
-        CE19: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE20: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE19: cadenas de caracteres generadas por el regex definido en el codigo
+        CE20: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE19.
         Precondiciones:
@@ -843,10 +805,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_email_incorrecto(self):
         '''
         Para la variable email se han definido dos clases de equivalencia:
-        CE19: cadenas de caracteres generadas por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
-        CE20: cadenas de caracteres no generados por:
-        '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
+        CE19: cadenas de caracteres generadas por el regex definido en el codigo
+        CE20: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE20.
         Precondiciones:
@@ -877,10 +837,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_telefono_correcto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE21: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE22: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE21: cadenas de caracteres generadas por el regex definido en el codigo
+        CE22: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE21.
         Precondiciones:
@@ -911,10 +869,8 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     def test_telefono_incorrecto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
-        CE21: cadenas de caracteres generadas por:
-        '0[0-9]{2}-[0-9]{6}'
-        CE22: cadenas de caracteres no generados por:
-        '0[0-9]{2}-[0-9]{6}'
+        CE21: cadenas de caracteres generadas por el regex definido en el codigo
+        CE22: cadenas de caracteres no generados por el regex definido en el codigo
          
         En esta prueba se utiliza la clase de equivalencia CE22.
         Precondiciones:
