@@ -25,7 +25,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
        Las variables a probar son Nombre, Email, Telefono del Usuario.
        Pre Condiciones para todas las pruebas:
        - Inputs No Vacios.
-       
+
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -36,7 +36,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable nombre se han definido dos clases de equivalencia:
         CE1: cadenas de caracteres generadas por el regex definido en el codigo
         CE2: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE1.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -65,7 +65,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable nombre se han definido dos clases de equivalencia:
         CE1: cadenas de caracteres generadas por el regex definido en el codigo
         CE2: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE2.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -94,7 +94,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable email se han definido dos clases de equivalencia:
         CE3: cadenas de caracteres generadas por el regex definido en el codigo
         CE4: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE3.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -125,7 +125,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable email se han definido dos clases de equivalencia:
         CE3: cadenas de caracteres generadas por el regex definido en el codigo
         CE4: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE4.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -154,7 +154,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable telefono se han definido dos clases de equivalencia:
         CE5: cadenas de caracteres generadas por el regex definido en el codigo
         CE6: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE5.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -183,7 +183,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Para la variable telefono se han definido dos clases de equivalencia:
         CE5: cadenas de caracteres generadas por el regex definido en el codigo
         CE6: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE6.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -361,7 +361,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
        Telefono del Usuario, asi como la Descripcion del  servicio.
        Pre Condiciones para todas las pruebas:
        - Inputs No Vacio.
-       
+
     """
     def setUp(self):
         self.driver = webdriver.PhantomJS()
@@ -372,7 +372,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Para la variable nombre se han definido dos clases de equivalencia:
         CE7: cadenas de caracteres generadas por el regex definido en el codigo
         CE8: cadenas de caracteres no generados  por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE7.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -394,17 +394,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         formularioEnviado = not mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
-            print "Formulario Servicio.Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        else:
             print "Formulario Servicio.Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioEnviado)
+        else:
+            print "Formulario Servicio.Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertFalse(formularioEnviado)
 
     def test_nombre_incorrecto(self):
         """
         Para la variable nombre se han definido dos clases de equivalencia:
         CE7: cadenas de caracteres generadas por el regex definido en el codigo
         CE8: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE8.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -436,7 +436,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Para la variable apellido se han definido dos clases de equivalencia:
         CE9: cadenas de caracteres generadas por el regex definido en el codigo
         CE10: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE9.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -460,15 +460,15 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         if(formularioEnviado):
             print "Formulario Servicio.Prueba de apellido correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Formulario Servicio.Prueba de apellido correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioEnviado)
+            print "Formulario Servicio.Prueba de apellido correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertFalse(formularioEnviado)
 
     def test_apellido_incorrecto(self):
         """
         Para la variable apellido se han definido dos clases de equivalencia:
         CE9: cadenas de caracteres generadas por el regex definido en el codigo
         CE10: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE10.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -500,7 +500,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Para la variable email se han definido dos clases de equivalencia:
         CE11: cadenas de caracteres generadas por el regex definido en el codigo
         CE12: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE11.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -524,15 +524,15 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         if(formularioEnviado):
             print "Formulario Servicio. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         else:
-            print "Formulario Servicio. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioEnviado)
+            print "Formulario Servicio. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertFalse(formularioEnviado)
 
     def test_email_incorrecto(self):
         '''
         Para la variable email se han definido dos clases de equivalencia:
         CE11: cadenas de caracteres generadas por el regex definido en el codigo
         CE12: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE12.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -564,7 +564,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Para la variable telefono se han definido dos clases de equivalencia:
         CE13: cadenas de caracteres generadas por el regex definido en el codigo
         CE14: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE13.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -586,17 +586,17 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         formularioEnviado = not mensaje_error.is_displayed()
         tiempo_fin_prueba = datetime.now().second - tiempo_inicio_prueba
         if(formularioEnviado):
-            print "Formulario Servicio.Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        else:
             print "Formulario Servicio.Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
-        self.assertTrue(formularioEnviado)
+        else:
+            print "Formulario Servicio.Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
+        self.assertFalse(formularioEnviado)
 
     def test_telefono_incorrecto(self):
         """
         Para la variable telefono se han definido dos clases de equivalencia:
         CE13: cadenas de caracteres generadas por el regex definido en el codigo
         CE14: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE14.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -624,7 +624,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
 
     def tearDown(self):
         self.driver.quit()
-     
+
 
 class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
     """
@@ -647,7 +647,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable nombre se han definido dos clases de equivalencia:
         CE15: cadenas de caracteres generadas por el regex definido en el codigo
         CE16: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE15.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -679,7 +679,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable nombre se han definido dos clases de equivalencia:
         CE15: cadenas de caracteres generadas por el regex definido en el codigo
         CE16: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE16.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -711,7 +711,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable apellido se han definido dos clases de equivalencia:
         CE17: cadenas de caracteres generadas por el regex definido en el codigo
         CE18: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE17.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -743,7 +743,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable apellido se han definido dos clases de equivalencia:
         CE17: cadenas de caracteres generadas por el regex definido en el codigo
         CE18: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE18.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -775,7 +775,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable email se han definido dos clases de equivalencia:
         CE19: cadenas de caracteres generadas por el regex definido en el codigo
         CE20: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE19.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -807,7 +807,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable email se han definido dos clases de equivalencia:
         CE19: cadenas de caracteres generadas por el regex definido en el codigo
         CE20: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE20.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -839,7 +839,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable telefono se han definido dos clases de equivalencia:
         CE21: cadenas de caracteres generadas por el regex definido en el codigo
         CE22: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE21.
         Precondiciones:
             - las demas inputs son ingresados correctamente
@@ -871,7 +871,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Para la variable telefono se han definido dos clases de equivalencia:
         CE21: cadenas de caracteres generadas por el regex definido en el codigo
         CE22: cadenas de caracteres no generados por el regex definido en el codigo
-         
+
         En esta prueba se utiliza la clase de equivalencia CE22.
         Precondiciones:
             - las demas inputs son ingresados correctamente
