@@ -13,3 +13,4 @@
     Django 1.8          (pip install django==1.8)
     DjangoRestFramework (pip install djangorestframework)
     DjangoFilter (pip install django-filter)
+    Django-Cors-Header (pip install django-cors-headers)

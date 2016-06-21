@@ -1,7 +1,12 @@
 /*
+Product.js
 @Autor: Israel Fernandez
+@Version: 1.0
+@Desde: 19/06/2016
 
-Script que carga los productos mediante una llamada ajax
+Script que carga los productos en la base mediante una llamada AJAX
+Almacena la informacion de los productos dentro de un ARRAY de JSONS
+llamada productos.
 */
 $(document).ready(function(){
     // array de json que contiene los productos

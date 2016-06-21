@@ -6,14 +6,12 @@ Ultima modificación: Junio 19/2016
 Descripción:
 En esta página, el usuario podrá obtener un catálogo de productos,en el cual podrá observar cada uno de ellos
 por medio filtros, es decir podrá ver los productos ofrecidos por la empresa por tipo, marca, descripción,lo cual
-facilita al usuario encontrar el producto que realmente necesita y busca
--->
+facilita al usuario encontrar el producto que realmente necesita y busca-->
 <!DOCTYPE html>
 <html>
-<!--
-Seccion head de la página:
-    Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
-    -->
+<!-- Seccion head de la pagina:
+    Aqui se define el título de la página y todas las librerías que se necesitan para que funcione la página
+-->
 <head>
 {% load staticfiles %}
 <title>Wilenco | Productos</title>
@@ -22,6 +20,7 @@ Seccion head de la página:
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="{% static 'js/bootstrap.js' %}" ></script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="{% static 'js/simpleCart.min.js' %}"> </script>
 <!-- menu de inicio -->
@@ -38,13 +37,16 @@ Seccion head de la página:
 				$('.scroll-pane').jScrollPane();
 			});
 		</script>
-<!-- //the jScrollPane script -->
+<!--the jScrollPane script -->
 
 <!--Codigo javascript que permite hacer a la página dinámica, es decir aquí se codifica
     lo que pasa cuando el usuario da clic sobre algún elemento de la página.
 -->
-<!-- <script src="{% static 'js/product.js' %}"></script> -->
 <script>
+
+</script>
+<script src="{% static 'js/product.js' %}"></script>
+<!-- <script>
     $(document).ready(function () {
         var marcasSeleccionadas = []; // lista de marcas seleccionadas y que serviran para el ajax.
 
@@ -129,14 +131,10 @@ Seccion head de la página:
 
     });
 </script>
-
-<!--Fin de script -->
-
+Fin de script -->
 </head>
 <body>
-<!--header
-    Aquí se encuentra definido el menú princiipal, el nombre de la empresa y su logo
-    -->
+<!--Aqui se encuentra definido el menu principal, el nombre de la empresa-->
 <div class="header-top">
 	 <div class="header-bottom">
 				<div class="logo">
@@ -144,11 +142,11 @@ Seccion head de la página:
 				</div>
 			 <!---->
 			 <div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="/">Inicio</a></li>
-                <li class="grid"><a href="/empresa/">Empresa</a>
+				<ul class="memenu skyblue"><li class="grid"><a href="/">Inicio</a></li>
+					<li class="grid"><a href="/empresa/">Empresa</a>
 					</li>
-					<li class="grid"><a href="/productos/">Productos</a>
-						<div class="mepanel">
+					<li class="active"><a href="/productos/">Productos</a>
+						<!-- <div class="mepanel">
 							<div class="row">
 								<div class="col1 me-one">
 									<h4>Centrales de Aire</h4>
@@ -173,10 +171,10 @@ Seccion head de la página:
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 					<li class="grid"><a href="/servicio/">Servicios</a></li>
-					<li class="grid"><a href="/contacto/">Cont&aacute;ctenos</a></li>
+					<li class="grid"><a href="/contacto/">Contacto</a></li>
 				</ul>
 			 </div>
 			 <!---->
@@ -185,177 +183,99 @@ Seccion head de la página:
 			 </div>
 			<div class="clearfix"> </div>
 </div>
-
 <!-- Fin del Header-->
 
 <!--En esta parte se define el catálogo de los productos-->
-<div class="container">
-	<!---->
-	</br>
-	<div class="row">
-    <div class="text-center">
-      <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
-      <h1>Cat&aacute;logo de Productos</h1>
-    </div>
-   <hr>
-	</div>
-  </br>
-  <!---->
-  <div class="row">
-    <div class="text-center">
-      <div class="col-sm-4 col-md-4">
-      </div>
-      <div class="col-sm-4 col-md-4">
-        <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">Filtrar por</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#contains">Tipo</a></li>
-                      <li><a href="#its_equal">Marca</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Buscar producto...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-            </div>
-      </div>
-      <div class="col-sm-4 col-md-4">
-        <div class="cart box_4">
-             <a href="/cotizacion/">
-	            <div class="total">
-              <span class="glyphicon glyphicon-inbox"></span>
-	            <span id="simpleCart_quantity" class="simpleCart_quantity"></span></div>
-
-            </a>
-            <p><a href="javascript:;" class="simpleCart_empty">Baul de productos</a></p>
-	            <div class="clearfix"> </div>
-           </div>
-      </div>
-    </div>
-    </br> </br>
-   <hr>
-  </div>
-  <!---->
-	<div class="row">
-     <!--SIDE BAR-->
-		 <div class="col-sm-4 col-md-4">
-			 <div id="opciones_catalogo" class="row">
-					 <div class="rsidebar span_1_of_left">
-						 <section  class="sky-form">
-							 <div class="product_right">
-									 <h4 class="m_2"><span class="glyphicon glyphicon-minus" ></span>CATÁLOGO</h4>
-									 <!---->
-									 <div class="tab1">
-											 <ul class="place">
-												 <li class="sort">TIPO</li>
-												 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaTipo"></li>
-													<div class="clearfix"> </div>
-												</ul>
-											 <div class="single-bottom">
-													 <form>
-															 <input type="checkbox" class="tipo_item" value="Centrales" /> Centrales </br>
-															 <input type="checkbox" class="tipo_item" value="Extractores" /> Extractores </br>
-															 <input type="checkbox" class="tipo_item" value="Aires" /> Aires </br>
-															 <input type="checkbox" class="tipo_item" value="Ventiladores" /> Ventiladores
-													 </form>
-												 </div>
-								   </div>
-									<!---->
-									<div class="tab2">
-										 <ul class="place">
-											 <li class="sort">MARCA</li>
-											 <li class="by"><img src="{% static 'images/do.png' %}" alt="flechaMarca"></li>
-												<div class="clearfix"> </div>
-											</ul>
-										 <div class="single-bottom">
-												 <form>
-														 <input type="checkbox" class="marca_item" value="Carrier" /> Carrier </br>
-														 <input type="checkbox" class="marca_item" value="York" /> York </br>
-														 <input type="checkbox" class="marca_item" value="Multiwing" /> Multiwing </br>
-												 </form>
-										 </div>
-									</div>
-
-								</div>
-
-						 </section>
-
-				  </div>
-			</div>
-		 </div>
-
-		<div class="col-sm-8 col-md-8">
-    <!--GALERY PRODUCTS-->
-			<div class="product-model">
-
-		     <div id="catalogo_productos" class="container">
-		     <!--En esta sección se colocan los Productos dentro de contenedores div-->
-			 <!--
-			 <div class="col-md-3 product-model-sec">
-					 <div class="more-product"><span> </span></div>
-					 <div class="product-img b-link-stripe b-animate-go  thickbox">
-					 <img src="{{ producto.imagen }}" class="img-responsive" width="102" height="102">
-					 <div class="b-wrapper">
-					 <h4 class="b-animate b-from-left  b-delay03">'
-					 <button><span class="glyphicon glyphicon-zoom-in" ></span>Quick View</button>
-					 </h4></div></div>
-					 <div class="product-info simpleCart_shelfItem">
-					  <div class="product-info-cust prt_name">
-					  <h4>{{producto.nombre}}</h4>
-					  <input type="button" class="item_add items" value="DETALLES">
-					  <input type="button" class="item_add items" value="AÑADIR">
-					  <div class="clearfix"></div>
-				  	  </div>
-				  	  </div>
-			 </div>
-			 -->
-		    </div>
-
+<div class="product-model">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li class="active">Productos</li>
+		</ol>
+		<div class=text-center>
+			<img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
 		</div>
- </div>
-</div>
-</br>
-<hr>
-</br>
-  <!---->
-	<div class="row">
-	<!--Fin de catalogo de productos-->
-
-	<!--En esta parte se define las marcas de la empresa-->
-	<div id ="marcas" >
-	    <div class="col-sm-3">
-
-	    <img src="{% static 'images/york-logo.jpg' %}" alt="york-logo" class="img-responsive" >
-
-	    </div>
-	    <div class="col-sm-3">
-
-	    <img src="{% static 'images/baxi.jpg' %}" alt="baxi-logo" class="img-responsive" >
-
-	    </div>
-	    <div class="col-sm-3">
-
-	    <img src="{% static 'images/panasonic.jpg' %}" alt="Panasonic_logo" class="img-responsive" >
-
-	    </div>
-	    <div class="col-sm-3">
-
-	    <img src="{% static 'images/samsung.jpg' %}" alt="Samsung-Logos-HD" class="img-responsive" >
-
-	    </div>
-
+		<h2>Nuestros Productos</h2>
+		<div class="col-md-9 product-model-sec">
+			<!-- Estructura de Producto
+			<a href="#">
+			<div class="product-grid">
+				<div class="more-product"><span></span></div>
+				<div class="product-img b-link-stripe b-animate-go  thickbox">
+					<img src="{% static 'images/si3.jpg' %}" class="img-responsive" />
+					<div class="b-wrapper">
+						<h4 class="b-animate b-from-left  b-delay03">
+						<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>
+						</h4>
+					</div>
+				</div>
+			</a>
+				<div class="product-info simpleCart_shelfItem">
+					<div class="product-info-cust prt_name">
+						<h4>nombre producto</h4>
+						<input type="text" class="item_quantity" value="1" />
+						<input type="button" class="item_add items" value="ADD">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="rsidebar span_1_of_left">
+			<div class="input-group">
+				<input type="hidden" name="search_param" value="all" id="search_param">
+				<input type="text" class="form-control" name="x" placeholder="Buscar producto...">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+				</span>
+	        </div>
+			<div class="clearfix"> </div>
+			<section  class="sky-form">
+				<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categorias</h4>
+				<div class="row row1 scroll-pane">
+					<div class="col col-4">
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Categoria1</label>
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Categoria2</label>
+					</div>
+				</div>
+			</section>
+			<section  class="sky-form">
+				<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Marcas</h4>
+				<div class="row row1 scroll-pane">
+					<div class="col col-4">
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>marca1</label>
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>marca2</label>
+					</div>
+				</div>
+			</section>
+			<div class="cart box_1 text-center" style="margin: 0 auto;">
+					<a href="/cotizacion/">
+   					<div class="total">
+   					(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div>
+   					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+	   				</a>
+	   				<p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
+			 	<div class="clearfix"> </div>
+			</div>
+		</div>
 	</div>
-	<!--FIN marcas-->
-
-	<!---->
+</div>
+<div class="subscribe">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img src="{% static 'images/york-logo.jpg' %}" alt="york-logo" class="img-responsive" />
+			</div>
+			<div class="col-md-3">
+				<img src="{% static 'images/carrierLogo.png' %}" alt="carrier-logo" class="img-responsive" />
+			</div>
+			<div class="col-md-3">
+				<img src="{% static 'images/multiwingLogo.png' %}" alt="multiwing-logo" class="img-responsive" style="padding-top:0.5em;" />
+			</div>
+			<div class="col-md-3">
+				<img src="{% static 'images/greenheckLogo.jpg' %}" alt="greenheck-logo" class="img-responsive"  style="padding-top:3em"/>
+			</div>
+		</div>
 	</div>
 </div>
-
-
 <div class="footer">
 	 <div class="container">
 		 <div class="footer-grids">
@@ -393,5 +313,42 @@ Seccion head de la página:
 	 </div>
 </div>
 <!---->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" style="color: #000;ffont-size: 2em;font-family: 'Dosis-Medium';">Detalle Producto</h4>
+		</div>
+		<div class="modal-body">
+			<div class="container">
+	  		  <div class="product-price1" style="margin-top:-5em !important">
+	  			  <div class="top-sing">
+	  				  <div class="col-md-7 single-top">
+	  					  <img id="photoProducto" src="" data-imagezoom="true" class="img-responsive" style="width: 262px; height: 307px;" />
+	  				  </div>
+	  				  <script src="{% static 'js/imagezoom.js' %}"></script>
+	  				  <div class="col-md-5 single-top-in simpleCart_shelfItem">
+	  					  <div class="single-para " style="margin-left:-11em !important">
+	  						  <h5 class="item_price"></h5>
+	  						  <p class="para"></p>
+	  						  <div class="prdt-info-grid">
+	  							   <ul>
+	  							   </ul>
+	  						  </div>
+	  						  <a href="#" class="add-cart item_add">ADD</a>
+	  						  <br/><br/>
+	  					  </div>
+	  				  </div>
+	  			  </div>
+	  		  </div>
+	  	  </div>
+		</div>
+		<div class="modal-footer">
+    	</div>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
