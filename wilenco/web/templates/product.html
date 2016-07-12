@@ -26,6 +26,7 @@ facilita al usuario encontrar el producto que realmente necesita y busca-->
 <!-- menu de inicio -->
 <link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
+<script src="{% static 'js/jspdf.js' %}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!-- menu de inicio -->
 <link href="{% static 'css/form.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -329,14 +330,15 @@ Fin de script -->
 	  				  </div>
 	  				  <script src="{% static 'js/imagezoom.js' %}"></script>
 	  				  <div class="col-md-5 single-top-in simpleCart_shelfItem">
-	  					  <div class="single-para " style="margin-left:-11em !important">
-	  						  <h5 class="item_price"></h5>
-	  						  <p class="para"></p>
+	  					  <div class="single-para " style="margin-left:-5em !important">
+	  						  <h4 class="item_price"></h4> <br>
+	  						  <p class="para" ></p>
 	  						  <div class="prdt-info-grid">
 	  							   <ul>
 	  							   </ul>
 	  						  </div>
-	  						  <a href="#" class="add-cart item_add">ADD</a>
+	  						  <p style="text-align:center;"><a href="#" class="add-cart item_add">Agregar</a></p>
+
 	  						  <br/><br/>
 	  					  </div>
 	  				  </div>

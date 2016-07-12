@@ -39,10 +39,12 @@ urlpatterns = [
     url(r'^empresa/', 'web.views.empresa'), #URL para la pagina de Empresa: Mision, Vision, Obras
 
     url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion
-
+    #CorreoElectronico
+    url(r'^enviarContacto/', 'web.views.enviarContacto'), 
     #RestFramework
     url(r'^api/', include(router.urls)),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,6 +13,10 @@ from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+"""Para el correo electronico"""
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+
 """
  Django Views for wilenco project.
  Autor: Wilenco
@@ -20,7 +24,7 @@ from rest_framework.views import APIView
  Descripcion: Archivo que contiene las vistas del sitio web.
  Version: 2.1
  Fecha de Creacion: Mayo 30/2016
- Ultima modificacion: junio 07/2016
+ Ultima modificacion: Julio 06/2016
  Ultimo modificador: Kattya Desiderio
 """
 
@@ -92,3 +96,26 @@ def filtrar_productos(request):
                 productos_devueltos['productos_por_marca'].append( json.dumps({'nombre': producto.nombre ,'imagen': producto.imagen}))
         productos_devueltos_json = json.dumps(productos_devueltos)
     return HttpResponse(productos_devueltos_json, content_type='application/json')
+
+def enviarContacto(request):
+    """
+        Funcion: ""
+        Descripcion:
+        Fecha de Creacion: Julio 06/2016
+        Fecha de Modificacion: Julio 07/2016
+    """
+    if (request.method == 'POST'):
+        nombre = request.POST['nombre']
+        asunto = request.POST.get('asunto', '')
+        # #from_email = request.POST.get('from_email', '')
+        if subject and message:
+            try:
+
+                send_mail('Your Email subject', 'Your Email message.', 'waenriqu@gmail.com',None, fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/')
+        else:
+            # In reality we'd use a form class
+            # to get proper validation errors.
+            return HttpResponse('Make sure all fields are entered and valid.')

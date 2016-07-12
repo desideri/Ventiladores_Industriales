@@ -60,12 +60,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             telefono = $("#telUsuario").val();
             asunto = $("#asuntoUsuario").val();
 
+            $.post('/enviarContacto/',{'nombre':nombre,'asunto':asunto, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+           alert("hey!");
+         });
+           /*
             if (nombre.trim() == '' || !rgnombre.test(nombre)) {
                 $("#ErrorMessage").text("Nombre Incorrecto");
                 $("#ErrorMessage").show();
                 //console.log("Nombre Incorrecto");
                 return false;
             }
+
             else if (email.trim() == '' || !rgemail.test(email)) {
                 $("#ErrorMessage").text("Email Incorrecto");
                 $("#ErrorMessage").show();
@@ -88,8 +93,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $("#ErrorMessage").hide();
                 $("#OkMessage").text("Formulario Enviado..!");
                 $("#OkMessage").show();
+                console.log(nombre);
+                console.log(asunto);
+                console.log("VA A POST");
+
                 //alert("Formulario Enviado..!");
-            }
+            }*/
 
         });
 
@@ -196,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   </span>
 						    </div>
 						    <div>
-						     	<span><label>TEL&eacute;FONO/CELULAR</label></span>
+						     	<span><label>TEL&eacute;FONO/CELULAR <b>Ej: 042-338745/09-08784567</b></label></span>
 						    	<span><input id ="telUsuario"name="userPhone" type="text" class="textbox" placeholder="Ingrese su telefono o celular 042-338745/09-08784567" required></span>
 						    </div>
 						    <div>
@@ -252,4 +261,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!---->
 </body>
+{% csrf_token %}
 </html>

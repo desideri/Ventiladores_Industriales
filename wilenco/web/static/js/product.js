@@ -12,12 +12,14 @@ var productos = [];
 function LoadProducto(index){
     $('.item_price').empty();
     $('p.para').empty();
+    $('.prdt-info-grid').empty();
     $('#photoProducto').attr('src',productos[index].imagen);
-    $('.item_price').append(productos[index].nombre);
+    $('.item_price').append("<b>"+productos[index].nombre+"</b>");
     $('p.para').append(productos[index].descripcion);
-    $(".prdt-info-grid ul").append("<li>- Categoria : "+productos[index].categoria+"</li>");
-    $(".prdt-info-grid ul").append("<li>- Marca : "+productos[index].marca+"</li>");
-    $(".prdt-info-grid ul").append("<li>- Capacidad : "+productos[index].capacidad+"</li>");
+    $(".prdt-info-grid").append($('<ul>').attr("class", "hul"));
+    $(".hul").append("<li><b> -Categoria : </b>"+productos[index].categoria+"</li>");
+    $(".hul").append("<li><b> -Capacidad : </b>"+productos[index].capacidad+"</li>");
+    $(".hul").append("<li><b> -Marca : </b>"+productos[index].marca+"</li>");
 }
 $(document).ready(function(){
     // array de json que contiene los productos
@@ -44,7 +46,8 @@ $(document).ready(function(){
              $('.product-model-sec').append(html);
         }
 
-    });
+
+        });
 
 
 });
