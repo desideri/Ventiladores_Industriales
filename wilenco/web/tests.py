@@ -49,7 +49,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Como resultado, el usuario no debe ver ningun mensaje
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("Wilson Enriquez")
@@ -67,7 +67,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         else:
             print "Formulario Contacto. Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("$######")
@@ -101,7 +101,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("Jorge Ayala")
@@ -119,7 +119,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         else:
             print "Formulario Contacto. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("Jorge Ayala")
@@ -153,7 +153,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("Kattya Desiderio")
@@ -171,7 +171,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
         else:
             print "Formulario Contacto. Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/contacto/")
+        self.driver.get("http://localhost:8081/contacto/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id(
             'nombreUsuario').send_keys("Kattya Desiderio")
@@ -414,7 +414,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -435,7 +435,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         else:
             print "Formulario Servicio.Prueba de nombre correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("$######")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -472,7 +472,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -493,7 +493,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         else:
             print "Formulario Servicio.Prueba de apellido correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("$######")
@@ -529,7 +529,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -550,7 +550,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         else:
             print "Formulario Servicio. Prueba de email correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -587,7 +587,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -608,7 +608,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         else:
             print "Formulario Servicio.Prueba de telefono correcto EXITOSA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/servicio/")
+        self.driver.get("http://localhost:8081/servicio/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -667,7 +667,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -688,7 +688,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         else:
             print "Formulario Cotizacion.Prueba de nombre correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("$######")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -725,7 +725,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -746,7 +746,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         else:
             print "Formulario Cotizacion.Prueba de apellido correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("$######")
@@ -783,7 +783,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -804,7 +804,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         else:
             print "Formulario Cotizacion. Prueba de email correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -841,7 +841,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         Como resultado, el usuario ve un mensaje de exito
         y los campos del formulario se limpian.
         """
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -862,7 +862,7 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
         else:
             print "Formulario Cotizacion.Prueba de telefono correcto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
-        self.driver.get("http://localhost:8000/cotizacion/")
+        self.driver.get("http://localhost:8081/cotizacion/")
         tiempo_inicio_prueba = datetime.now().second
         self.driver.find_element_by_id('nombreCliente').send_keys("Wilson")
         self.driver.find_element_by_id('apellidoCliente').send_keys("Enriquez")
@@ -898,5 +898,5 @@ class TestCajaNegraProducto(LiveServerTestCase):
     def test_api_producto(self):
         client = Client()
         response = client.get(
-            'http://localhost:8000/api/producto/?format=json')
+            'http://localhost:8081/api/producto/?format=json')
         self.assertEqual(response.status_code, 200)
