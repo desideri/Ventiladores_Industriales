@@ -46,7 +46,12 @@ facilita al usuario encontrar el producto que realmente necesita y busca-->
 <script>
 
 </script>
+
+
+<link href="{% static 'css/jquery.typeahead.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script src="{% static 'js/jquery.typeahead.js' %}"></script>
 <script src="{% static 'js/product.js' %}"></script>
+
 <!-- <script>
     $(document).ready(function () {
         var marcasSeleccionadas = []; // lista de marcas seleccionadas y que serviran para el ajax.
@@ -85,7 +90,7 @@ facilita al usuario encontrar el producto que realmente necesita y busca-->
             else {
                 //
                 var marca_elegida = $(this).val();
-                for (var i = marcasSeleccionadas.length - 1; i >= 0; i--) {
+                for (var i = marcasSeleccionadas.length - 1; i >= 0; i) {
                     if (marcasSeleccionadas[i] === marca_elegida) {
                         marcasSeleccionadas.splice(i, 1);
                     }
@@ -223,10 +228,21 @@ Fin de script -->
 		<div class="rsidebar span_1_of_left">
 			<div class="input-group">
 				<input type="hidden" name="search_param" value="all" id="search_param">
-				<input type="text" class="form-control" name="x" placeholder="Buscar producto...">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-				</span>
+				<form id="form-lista_productos" name="form-lista_productos">
+				    <div class="typeahead__container">
+				        <div class="typeahead__field">
+				            <span class="typeahead__query">
+				                <input class="form-control js-typeahead-lista_productos" name="lista_productos[query]" type="search" placeholder="Buscar producto..." autocomplete="off">
+				            </span>
+										<span class="typeahead__button">
+										 <button type="submit">
+												 <i class="typeahead__search-icon"></i>
+										 </button>
+								 </span>
+				        </div>
+				    </div>
+				</form>
+        <br>
 	        </div>
 			<div class="clearfix"> </div>
 			<section  class="sky-form">

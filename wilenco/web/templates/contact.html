@@ -60,7 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             telefono = $("#telUsuario").val();
             asunto = $("#asuntoUsuario").val();
 
-            $.post('/enviarContacto/',{'nombre':nombre,'asunto':asunto, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+            //$.post('/enviarContacto/',{'nombre':nombre,'asunto':asunto, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+            $.get('/enviarContacto/',{'nombre':nombre,'asunto':asunto}, function(data){
            alert("hey!");
          });
            /*

@@ -118,14 +118,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CORS_ORIGIN_ALLOW_ALL = True
 
 # START email configuration #USE_TLS=True
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST_USER = 'kattyadesiderio@gmail.com' # put your gmail email
+#EMAIL_HOST_PASSWORD = '-----' # put your gmail password
+#EMAIL_PORT = 587
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'correo@gmail.com' # put your gmail email
-EMAIL_HOST_PASSWORD = 'password' # put your gmail password
-EMAIL_PORT = 587
-
-EMAIL_SUBJECT_PREFIX = '[Simple Project] ' # personalize this prefix
-
-SEND_BROKEN_LINK_EMAILS = False
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # END email configuration #

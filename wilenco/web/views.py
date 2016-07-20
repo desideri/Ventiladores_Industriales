@@ -16,6 +16,7 @@ from rest_framework.views import APIView
 """Para el correo electronico"""
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import EmailMessage
 
 """
  Django Views for wilenco project.
@@ -104,18 +105,38 @@ def enviarContacto(request):
         Fecha de Creacion: Julio 06/2016
         Fecha de Modificacion: Julio 07/2016
     """
-    if (request.method == 'POST'):
-        nombre = request.POST['nombre']
-        asunto = request.POST.get('asunto', '')
-        # #from_email = request.POST.get('from_email', '')
-        if subject and message:
-            try:
+        #if (request.method == 'POST'):
+    nombre = request.GET['nombre']
+    """email = request.POST.get('email', '')
+    telefono = request.POST.get('telefono', '')"""
+    asunto = request.GET['asunto']
+    print nombre + '-'+ asunto
+    mensaje = nombre + '-'  + asunto
+    """mensaje = nombre + '-' + email +  '-' + telefono + '-'  + asunto"""
+    status = send_mail('kattyadesiderio@gmail.com','Mensaje ...', mensaje)
+    data=[]
+    data.append(status)
+    return HttpResponse(json.dumps(data))
 
-                send_mail('Your Email subject', 'Your Email message.', 'waenriqu@gmail.com',None, fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('/')
-        else:
-            # In reality we'd use a form class
-            # to get proper validation errors.
-            return HttpResponse('Make sure all fields are entered and valid.')
+def send_mail(recipient, subject, body):
+    import smtplib
+
+    gmail_user = 'kattyadesiderio@gmail.com'
+    gmail_pwd = '-----'
+    FROM = 'kattyadesiderio@gmail.com'
+    TO = recipient if type(recipient) is list else [recipient]
+    SUBJECT = subject
+    TEXT = body
+
+    message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
+    """ % (FROM, ", ".join(TO),SUBJECT,TEXT)
+    try:
+        server = smtplib.SMTP("smtp.gmail.com",587)
+        server.ehlo()
+        server.startls()
+        server.login(gmail_user, gmail_pwd)
+        server.send_mail(FROM, TO, message)
+        server.close()
+        return 'correo enviado con exito.'
+    except:
+        return 'envio de correo fallido'

@@ -22,8 +22,9 @@ function LoadProducto(index){
     $(".hul").append("<li><b> -Marca : </b>"+productos[index].marca+"</li>");
 }
 $(document).ready(function(){
-    // array de json que contiene los productos
+    var nombreProductos = [];
 
+    // array de json que contiene los productos
     $.getJSON('http://162.243.121.93/api/producto/?format=json',function(data){
         productos = data;
         for(var i = 0; i < productos.length; i++){
@@ -44,10 +45,22 @@ $(document).ready(function(){
                     +'<div class="clearfix"></div>'
                     +'</div></div></div>';
              $('.product-model-sec').append(html);
+             	nombreProductos.push(productos[i].nombre);
         }
-
-
+        //llamada a typeahead para el buscador
+        $.typeahead({
+            input: '.js-typeahead-lista_productos',
+            order: "desc",
+            searchOnFocus: true,
+            source: nombreProductos,
+            callback: {
+                onInit: function (node) {
+                    console.log('Typeahead Initiated on ' + node.selector);
+                }
+            }
         });
 
+        //Fin del GETJSON
+        });
 
 });
