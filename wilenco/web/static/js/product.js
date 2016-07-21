@@ -23,7 +23,7 @@ function LoadProducto(index){
 }
 $(document).ready(function(){
     var nombreProductos = [];
-
+    var p= new Object();
     // array de json que contiene los productos
     $.getJSON('http://162.243.121.93/api/producto/?format=json',function(data){
         productos = data;
@@ -45,20 +45,32 @@ $(document).ready(function(){
                     +'<div class="clearfix"></div>'
                     +'</div></div></div>';
              $('.product-model-sec').append(html);
-             	nombreProductos.push(productos[i].nombre);
+             	nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
+              valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
+              p[valor] = i;
         }
+        var id=-1;
         //llamada a typeahead para el buscador
         $.typeahead({
             input: '.js-typeahead-lista_productos',
             order: "desc",
-            searchOnFocus: true,
+            searchOnFocus: true, // minLength: 3
+            highlight:true,
+            hint:true,
             source: nombreProductos,
             callback: {
                 onInit: function (node) {
                     console.log('Typeahead Initiated on ' + node.selector);
+                },
+                onClickAfter: function (node, a, item, event) {
+                  var text = $('.js-typeahead-lista_productos').val();
+                   id = p[text]; // id del producto seleccionado
+                   console.log(id);
+                   //mostrar el modal en base al id seleccionado
                 }
             }
         });
+
 
         //Fin del GETJSON
         });
