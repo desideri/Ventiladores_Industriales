@@ -40,7 +40,12 @@ urlpatterns = [
 
     url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion
     #CorreoElectronico
-    url(r'^enviarContacto/', 'web.views.enviarContacto'), 
+    url(r'^enviarContacto/', 'web.views.enviarContacto'),
+
+    url(r'^get_categorias/$','web.views.get_categorias', name="categorias"),
+
+    url(r'^get_marcas/$', 'web.views.get_marcas', name="marcas"),
+
     #RestFramework
     url(r'^api/', include(router.urls)),
 

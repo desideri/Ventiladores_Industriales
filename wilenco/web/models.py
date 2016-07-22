@@ -1,15 +1,80 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
+import re
 
+"""
+Validadores
+Conjunto de funciones que validan los datos ingresados antes de guardarlos
+"""
+
+"""
+@is1394 (Israel Fernandez)
+Funcion que valida que un string sea un nombre correcto
+"""
+def validate_nombre(nombre):
+    ex_reg = re.compile("[a-zA-Z]+")
+    result = re.match(ex_reg,nombre)
+    if bool(result) == False:
+        raise ValidationError(
+        _('%(nombre)s no es valido, inserte un nombre valido'),
+        params={'nombre': nombre},
+    )
+
+"""
+@is1394 (Israel Fernandez)
+Funcion que valida que una categoria correcta
+"""
+def validate_categoria(categoria):
+    ex_reg = re.compile("[a-zA-Z]+")
+    result = re.match(ex_reg,categoria)
+    if bool(result) == False:
+        raise ValidationError(
+        _('%(categoria)s no es valido, inserte una categoria valida'),
+        params={'categoria': categoria},
+    )
+
+"""
+@is1394 (Israel Fernandez)
+Funcion que valida que una marca sea correcta
+"""
+def validate_marca(marca):
+    ex_reg = re.compile("[a-zA-Z]+")
+    result = re.match(ex_reg,marca)
+    if bool(result) == False:
+        raise ValidationError(
+        _('%(marca)s no es valido, inserte una marca valida'),
+        params={'marca': marca},
+    )
+
+"""
+@is1394 (Israel Fernandez)
+Funcion que valida que el stock  sea consistente
+"""
+def validate_stock(stock):
+    if stock > 100 or stock < 0:
+        raise ValidationError(
+        _('%(stock)s no es un valor consistente, inserte un valor valido entre 0 - 100'),
+        params={'stock': stock},
+        )
+
+
+
+
+"""
+Modelos
+"""
 class Producto(models.Model):
     """
     @is1394 (Israel Fernandez)
     Entidad Producto contiene informacion relevante sobre cada uno de los productos
     ofrecidos por la empresa"""
-    noSerie = models.CharField(max_length=10)
-    nombre = models.CharField(max_length=50)
-    stock = models.IntegerField()
-    marca = models.CharField(max_length=50)
-    categoria = models.CharField(max_length=50)
+
+    noSerie = models.CharField(max_length=10,blank=True,null=True)
+    nombre = models.CharField(max_length=50, validators=[validate_nombre])
+    stock = models.IntegerField(validators=[validate_stock])
+    marca = models.CharField(max_length=50, validators=[validate_marca])
+    categoria = models.CharField(max_length=50,validators=[validate_categoria])
     potencia = models.CharField(max_length=50, blank=True,null=True)
     motor = models.CharField(max_length=50, blank=True, null=True)
     presion = models.CharField(max_length=50,blank=True, null=True)
@@ -17,6 +82,18 @@ class Producto(models.Model):
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='img/productos', blank=True,
                                null=True)
+
+
+
+    def __str__(self):
+        return "{}".format(self.nombre)
+
+    def __unicode__(self):
+        return unicode(str(self))
+
+    def save(self, *args, **kwargs):
+        self.noSerie  = "PROD" + str(len(Producto.objects.all()) + 1)
+        super(Producto, self).save(*args, **kwargs)
 
 class Cliente(models.Model):
     """

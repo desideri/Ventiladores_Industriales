@@ -82,10 +82,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wilencodb',
+        # 'USER': 'root',
         'USER': 'root',
         'PASSWORD': '',
         'HOST':'localhost',
         'PORT': '3306',
+
     }
 }
 

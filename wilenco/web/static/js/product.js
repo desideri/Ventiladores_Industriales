@@ -21,6 +21,16 @@ function LoadProducto(index){
     $(".hul").append("<li><b> -Capacidad : </b>"+productos[index].capacidad+"</li>");
     $(".hul").append("<li><b> -Marca : </b>"+productos[index].marca+"</li>");
 }
+
+
+function searchByMark(marca){
+    console.log("holi");
+}
+
+function searchByCategory(categoria){
+    console.log("holi");
+}
+var dpr;
 $(document).ready(function(){
     var nombreProductos = [];
     var p= new Object();
@@ -73,6 +83,24 @@ $(document).ready(function(){
 
 
         //Fin del GETJSON
-        });
+    });
+
+    $.getJSON('/get_categorias',function(data){
+        dpr = data;
+        categorias = $('#categorias_list');
+        for (var i = 0; i < data.categorias.length ; i++) {
+            var categoria = data.categorias[i];
+            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByCategory('"+String(categoria.split(" ")[0])+"') ><i></i>"+data.categorias[i]+"</label>";
+            categorias.append(item);
+        }
+    });
+    $.getJSON('/get_marcas',function(data){
+        marcas = $('#marcas_list');
+        for (var i = 0; i < data.marcas.length ; i++) {
+            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByMark('"+data.marcas[i]+"') ><i></i>"+data.marcas[i]+"</label>";
+            marcas.append(item);
+        }
+    });
+
 
 });

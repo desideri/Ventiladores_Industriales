@@ -140,3 +140,23 @@ def send_mail(recipient, subject, body):
         return 'correo enviado con exito.'
     except:
         return 'envio de correo fallido'
+
+def get_categorias(request):
+    data = {
+        'categorias' : []
+    }
+    categorias = Producto.objects.values('categoria').distinct()
+    for categoria in categorias:
+        data['categorias'].append(categoria['categoria'])
+    # print q.query
+    return HttpResponse(json.dumps(data))
+
+def get_marcas(request):
+    data = {
+        'marcas' : []
+    }
+    marcas = Producto.objects.values('marca').distinct()
+    for marca in marcas:
+        data['marcas'].append(marca['marca'])
+    # print q.query
+    return HttpResponse(json.dumps(data))
