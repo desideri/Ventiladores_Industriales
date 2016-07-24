@@ -58,36 +58,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             nombre = $("#nombreUsuario").val();
             email = $("#emailUsuario").val();
             telefono = $("#telUsuario").val();
-            asunto = $("#asuntoUsuario").val();
+            mensaje = $("#asuntoUsuario").val();
 
-            //$.post('/enviarContacto/',{'nombre':nombre,'asunto':asunto, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
-            $.get('/enviarContacto/',{'nombre':nombre,'asunto':asunto}, function(data){
-           alert("hey!");
-         });
-           /*
-            if (nombre.trim() == '' || !rgnombre.test(nombre)) {
+            if (nombre == '' || !rgnombre.test(nombre)) {
                 $("#ErrorMessage").text("Nombre Incorrecto");
                 $("#ErrorMessage").show();
-                //console.log("Nombre Incorrecto");
+                console.log("Nombre Incorrecto");
                 return false;
             }
-
-            else if (email.trim() == '' || !rgemail.test(email)) {
+            else if (email == '' || !rgemail.test(email)) {
                 $("#ErrorMessage").text("Email Incorrecto");
                 $("#ErrorMessage").show();
-                //console.log("Email Incorrecto");
+                console.log("Email Incorrecto");
                 return false;
             }
             else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
                 $("#ErrorMessage").text("Telefono Incorrecto");
                 $("#ErrorMessage").show();
-                //console.log("Telefono Incorrecto");
+                console.log("Telefono Incorrecto");
                 return false;
             }
-            else if (asunto.trim() == '') {
+            else if (asunto == '') {
                 $("#ErrorMessage").text("Asunto Incorrecto");
                 $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
+                console.log("Asunto Incorrecto");
                 return false;
             }
             else {
@@ -95,15 +89,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $("#OkMessage").text("Formulario Enviado..!");
                 $("#OkMessage").show();
                 console.log(nombre);
-                console.log(asunto);
-                console.log("VA A POST");
-
-                //alert("Formulario Enviado..!");
-            }*/
-
-        });
-
-
+                console.log(telefono);
+                console.log(email);
+                console.log(mensaje);
+                $.post('/enviarContacto/',{'nombre':nombre,'email':email,'telefono':telefono,'mensaje':mensaje, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+                  console.log("mail enviado exitosamente!!");
+                  });
+                }
+            });
     });
 </script>
 
@@ -197,7 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <strong>Success!</strong> Indicates a successful or positive action.
                 </div>
 
-						    	<span><label>NOMBRE</label></span>
+						    	<span><label>NOMBRES/APELLIDOS</label></span>
 						    	<span><input id ="nombreUsuario" name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
 						    </div>
 						    <div>

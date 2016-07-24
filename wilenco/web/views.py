@@ -17,6 +17,8 @@ from rest_framework.views import APIView
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import EmailMessage
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
 
 """
  Django Views for wilenco project.
@@ -98,49 +100,6 @@ def filtrar_productos(request):
         productos_devueltos_json = json.dumps(productos_devueltos)
     return HttpResponse(productos_devueltos_json, content_type='application/json')
 
-def enviarContacto(request):
-    """
-        Funcion: ""
-        Descripcion:
-        Fecha de Creacion: Julio 06/2016
-        Fecha de Modificacion: Julio 07/2016
-    """
-        #if (request.method == 'POST'):
-    nombre = request.GET['nombre']
-    """email = request.POST.get('email', '')
-    telefono = request.POST.get('telefono', '')"""
-    asunto = request.GET['asunto']
-    print nombre + '-'+ asunto
-    mensaje = nombre + '-'  + asunto
-    """mensaje = nombre + '-' + email +  '-' + telefono + '-'  + asunto"""
-    status = send_mail('kattyadesiderio@gmail.com','Mensaje ...', mensaje)
-    data=[]
-    data.append(status)
-    return HttpResponse(json.dumps(data))
-
-def send_mail(recipient, subject, body):
-    import smtplib
-
-    gmail_user = 'kattyadesiderio@gmail.com'
-    gmail_pwd = '-----'
-    FROM = 'kattyadesiderio@gmail.com'
-    TO = recipient if type(recipient) is list else [recipient]
-    SUBJECT = subject
-    TEXT = body
-
-    message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
-    """ % (FROM, ", ".join(TO),SUBJECT,TEXT)
-    try:
-        server = smtplib.SMTP("smtp.gmail.com",587)
-        server.ehlo()
-        server.startls()
-        server.login(gmail_user, gmail_pwd)
-        server.send_mail(FROM, TO, message)
-        server.close()
-        return 'correo enviado con exito.'
-    except:
-        return 'envio de correo fallido'
-
 def get_categorias(request):
     data = {
         'categorias' : []
@@ -160,3 +119,37 @@ def get_marcas(request):
         data['marcas'].append(marca['marca'])
     # print q.query
     return HttpResponse(json.dumps(data))
+
+def enviarContacto(request):
+    """
+        Funcion: "enviarContacto"
+        Descripcion: Esta funcion permite al usuario de la pagina enviar los
+        datos que ingreso en el formulario de contactenos del sitio web.
+        Fecha de Creacion: Julio 06/2016
+        Fecha de Modificacion: Julio 23/2016
+    """
+    if (request.method == 'POST'):
+        """nombre,email,telefono,asunto"""
+        nombre = request.POST.get('nombre', None)
+        asunto = "Infomacion de contacto de" + " " + nombre
+        from_email = request.POST.get('email', None)
+        to_email=settings.EMAIL_HOST_USER
+        telefono = request.POST.get('telefono', None)
+        contenido_mensaje = request.POST.get('mensaje', None)
+        if asunto and contenido_mensaje and from_email:
+            try:
+                titulo = '<h2>Formulario de Cont&aacute;ctenos</h2><br>'
+                c_nombre = '<p ><strong>Nombre: </strong>' + nombre
+                c_email = '</p><br><p><strong>Email: </strong>' + from_email
+                c_telefono ='</p><br><p><strong>Tel&eacute;fono: </strong>' + telefono
+                c_mensaje = '</p><br><p><strong>Mensaje: </strong>' + contenido_mensaje + '</p>'
+                html_content = titulo + c_nombre + c_email + c_telefono + c_mensaje
+                msg = EmailMultiAlternatives(asunto, html_content, from_email, [to_email])
+                msg.content_subtype = "html"
+                msg.send()
+                return HttpResponseRedirect('/contacto/')
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/contact/thanks/')
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
