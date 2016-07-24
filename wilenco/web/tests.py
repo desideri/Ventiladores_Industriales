@@ -1,6 +1,6 @@
 '''
 @Autores: Wilenco team
-@Ultima modificacion: julio 17/2016
+@Ultima modificacion: julio 24/2016
 @Modificado por: Jorge Ayala
 Pruebas de caja negra para proyecto
 Este script contienen funciones que permiten realizar pruebas de caja
@@ -884,6 +884,66 @@ class TestCajaNegraFormularioCotizacion(LiveServerTestCase):
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
         self.assertTrue(pruebaExitosa)
+
+    def tearDown(self):
+        self.driver.quit()
+
+
+class TestTypeAheadProductos(LiveServerTestCase):
+    '''@Autor: Jorge Ayala
+        Clase definida para realizar prueba de integracion entre la base de
+        datos y el modulo de filtrado de productos.
+    '''
+
+    def setUp(self):
+        self.driver = webdriver.PhantomJS()
+        self.driver.implicitly_wait(15)
+
+    def testTypeAheadProductoValido(self):
+        '''
+            La prueba es exitosa si al ingresar palabras clave como aire, extractor, etc
+            se activa la funcion typeahead y se muestra una lista con recomendaciones
+            al usuario
+        '''
+
+        self.driver.get("http://localhost:8081/productos/")
+        palabrasValidas = [
+            "aire",
+            "extractor",
+            "acondicionador",
+            "ventilador",
+            "central"]
+        correcto = True
+        for palabraValida in palabrasValidas:
+            self.driver.find_element_by_class_name(
+                "js-typeahead-lista_productos").send_keys(palabraValida)
+            resultado = self.driver.find_element_by_class_name(
+                "typeahead__result")
+            correcto = correcto and resultado.is_displayed()
+        if(correcto):
+            print "Prueba typeaheadProductosValido EXITOSA"
+        else:
+            print "Prueba typeaheadProductosValido FALLIDA"
+
+        self.assertTrue(correcto)
+
+    def testTypeAheadProductoInvalido(self):
+        '''
+            La prueba es exitosa si se ingresan palabras diferentes a ["aire","extractor","acondicionador","ventilador","central"]
+            y no se activa la funcion  de typeahead
+        '''
+
+        self.driver.get("http://localhost:8081/productos/")
+        self.driver.find_element_by_class_name(
+            "js-typeahead-lista_productos").send_keys("jifewrr")
+        resultado = self.driver.find_element_by_class_name("typeahead__result")
+        correcto = not resultado.is_displayed()
+        if(correcto):
+            print "Prueba testTypeAheadProductoInvalido EXITOSA"
+        else:
+            print "Prueba testTypeAheadProductoInvalido FALLIDA"
+
+        self.assertTrue(correcto)
 
     def tearDown(self):
         self.driver.quit()
