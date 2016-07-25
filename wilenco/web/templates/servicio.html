@@ -4,155 +4,167 @@
  Descripcion: Página para servicio mantenimiento/instalacion.
  Version: 1.1
  Fecha de Creacion: Junio 07/2016
- Ultima modificación: Junio 20/2016
+ Ultima modificación: Junio 24/2016
  Ultimo modificador: Kattya Desiderio
  License: Creative Commons Attribution 3.0 Unported
  License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-<head>
-{% load staticfiles %}
 <!--
 Seccion head de la página:
     Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
     -->
-<title>Wilenco | Servicio </title>
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-<!--JQUERY UPGRADED
-<script src="{% static 'js/jquery.min.js' %}"></script>-->
-<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
-<!--//theme style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- start menu -->
-<script src="{% static 'js/simpleCart.min.js' %}"> </script>
-<!-- start menu -->
-<link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/empresa.css' %}" rel="stylesheet" type="text/css" media="all" />
-<script src="{% static 'js/memenu.js' %}"></script>
-<script src="{% static 'js/empresa.js' %}"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<head>
+  {% load staticfiles %}
+
+  <title>Wilenco | Servicio </title>
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+  <!--JQUERY UPGRADED
+  <script src="{% static 'js/jquery.min.js' %}"></script>-->
+  <script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+  <!--//theme style-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+  Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!-- start menu -->
+  <script src="{% static 'js/simpleCart.min.js' %}"> </script>
+  <!-- start menu -->
+  <link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+  <script src="{% static 'js/memenu.js' %}"></script>
+  <!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
+  <script>
+      $(document).ready(function(){
+          //Muestra el menu de la página
+          $(".memenu").memenu();
+          $("#ErrorMessage").hide();
+          $("#OkMessage").hide();
+          <!--Variables para validacion-->
+          var nombre,apellido,cedula,email,telefono,direccion;
+          var tipo,fecha;
+          var rgnombre, rgemail, rgtel, rgCel;
+          rgCel = new RegExp('09-[0-9]{8}');
+
+          rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
+          rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
+          rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
+
+          $("#btnEnviar").click(function () {
+
+              nombre = $("#nombreCliente").val();
+              apellido = $("#apellidoCliente").val();
+              cedula = $("#cedulaCliente").val();
+              email = $("#emailCliente").val();
+              telefono = $("#telCliente").val();
+              direccion = $("#direccionCliente").val();
+              tipo =  $('select[name=subject]').val();
+              fecha =$("#fecha").val();
+              descripcion =$("#descripcion").val();
+
+              if (nombre.trim() == '' || !rgnombre.test(nombre)) {
+                  $("#ErrorMessage").text("Nombre Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (apellido.trim() == '' || !rgnombre.test(apellido)) {
+                  $("#ErrorMessage").text("Apellido Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (email.trim() == '' || !rgemail.test(email)) {
+                  $("#ErrorMessage").text("Email Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+                  $("#ErrorMessage").text("Telefono Incorrecto");
+                  $("#ErrorMessage").show();
+                  //console.log("Telefono Incorrecto");
+                  return false;
+              }
+              else if (direccion.trim() == '') {
+                  $("#ErrorMessage").text("Direccion Incorrecta");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (cedula.trim() == '') {
+                  $("#ErrorMessage").text("Cedula Incorrecta");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (tipo == "default") {
+                  $("#ErrorMessage").text("Escoja un servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (fecha == "") {
+                  $("#ErrorMessage").text("Escoja una fecha para el servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (descripcion == "") {
+                  $("#ErrorMessage").text("Escriba el motivo del Servicio escojido.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else {
+
+                  //Datos del Cliente : Nombre, Apellido, Cedula, email, telefono, direcccion
+                  //Detalle del Servicio : Tipo, Fecha, Descripcion
+
+                  $.post('/enviarServicio/',{'nombre':nombre,'apellido':apellido,'cedula':cedula, 'email':email,'telefono':telefono,'direccion':direccion,'tipo':tipo,'fecha':fecha,'descripcion':descripcion, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+
+                      console.log("mail enviado exitosamente!!");
+                      $("#ErrorMessage").hide();
+                      $("#OkMessage").text("Formulario Enviado..!");
+                      $("#OkMessage").show();
+                      //Si se envia el formulario se enceran los inputs.
+                      $("#nombreCliente").val("");
+                      $("#apellidoCliente").val("");
+                      $("#cedulaCliente").val("");
+                      $("#emailCliente").val("");
+                      $("#telCliente").val("");
+                      $("#direccionCliente").val("");
+                      $('select[name=subject]').val("default");
+                      $("#fecha").val("");
+                      $("#descripcion").val("");
+                    });
+
+              }
+
+          });
+
+          //Codigo para setear el dia cita para el servicio.
+          //Referencias: http://www.bootply.com/d7BS6aIoKK
+          $.getScript('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js',function(){
+
+           $('#datePicker').datepicker({
+             autoclose:true,
+           }).on("changeDate", function(e){
+             //console.log(e.date);
+           });
+
+           $('.input-daterange').datepicker({
+             autoclose:true
+           }).on("changeDate", function(e){
+             //console.log(e.date);
+           });
+
+          });
+
+      });
+
+    </script>
+
 </head>
 <body>
-
 <!--header-->
-<script src="{% static 'js/responsiveslides.min.js' %}"></script>
-<script>
-    $(document).ready(function(){
-        //Muestra el menu de la página
-        $(".memenu").memenu();
-        $("#ErrorMessage").hide();
-        $("#OkMessage").hide();
-        <!--Variables para validacion-->
-        var nombre,apellido,cedula,email,telefono,direccion;
-        var tipo,fecha;
-        var rgnombre, rgemail, rgtel, rgCel;
-        rgCel = new RegExp('09-[0-9]{8}');
-
-        rgnombre = new RegExp('[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)*');
-        rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
-        rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
-
-        $("#btnEnviar").click(function () {
-
-            nombre = $("#nombreCliente").val();
-            apellido = $("#apellidoCliente").val();
-            cedula = $("#cedulaCliente").val();
-            email = $("#emailCliente").val();
-            telefono = $("#telCliente").val();
-            direccion = $("#direccionCliente").val();
-            tipo =  $('select[name=subject]').val();
-            fecha =$("#fecha").val();
-
-
-            if (nombre.trim() == '' || !rgnombre.test(nombre)) {
-                $("#ErrorMessage").text("Nombre Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (apellido.trim() == '' || !rgnombre.test(apellido)) {
-                $("#ErrorMessage").text("Apellido Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (email.trim() == '' || !rgemail.test(email)) {
-                $("#ErrorMessage").text("Email Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
-                $("#ErrorMessage").text("Telefono Incorrecto");
-                $("#ErrorMessage").show();
-                //console.log("Telefono Incorrecto");
-                return false;
-            }
-            else if (direccion.trim() == '') {
-                $("#ErrorMessage").text("Direccion Incorrecta");
-                $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
-                return false;
-            }
-            else if (cedula.trim() == '') {
-                $("#ErrorMessage").text("Cedula Incorrecta");
-                $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
-                return false;
-            }
-            else if (tipo == "default") {
-                $("#ErrorMessage").text("Escoja un servicio.");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (fecha == "") {
-                $("#ErrorMessage").text("Escoja una fecha para el servicio.");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else {
-                $("#ErrorMessage").hide();
-                $("#OkMessage").text("Formulario Enviado..!");
-                $("#OkMessage").show();
-                //Si se envia el formulario se enceran los inputs.
-                $("#nombreCliente").val("");
-                $("#apellidoCliente").val("");
-                $("#cedulaCliente").val("");
-                $("#emailCliente").val("");
-                $("#telCliente").val("");
-                $("#direccionCliente").val("");
-                $('select[name=subject]').val("default");
-                $("#fecha").val("");
-                $("#descripcion").val("");
-            }
-
-        });
-
-        //Codigo para setear el dia cita para el servicio.
-        //Referencias: http://www.bootply.com/d7BS6aIoKK
-        $.getScript('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js',function(){
-
-         $('#datePicker').datepicker({
-           autoclose:true,
-         }).on("changeDate", function(e){
-           //console.log(e.date);
-         });
-
-         $('.input-daterange').datepicker({
-           autoclose:true
-         }).on("changeDate", function(e){
-           //console.log(e.date);
-         });
-
-        });
-
-    });
-
-  </script>
-
 <div class="header-top">
 	 <div class="header-bottom">
 				<div class="logo">
@@ -215,14 +227,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </div>
       </br>
       <div class="row">
-        <div class="alert alert-danger" id="ErrorMessage">
-        </div>
+        <div class="alert alert-danger" id="ErrorMessage"></div>
         <div>
           <div class="alert alert-success" id="OkMessage">
-          <strong>Formulario Enviado</strong>
+            <strong>Formulario Enviado</strong>
+          </div>
         </div>
       </div>
-    </div>
+
       <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="panel panel-default ">
@@ -233,90 +245,97 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </br>
          		<div class="panel-body">
-              <div class="form-group">
-                 <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
-                 <div class="col-md-8">
-                   <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
-                 </div>
+              <div class="contact-form">
+                  <form>
+                    <div class="form-group">
+                       <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                       <div class="col-md-8">
+                         <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                       </div>
+                    </div>
+                    </br></br></br>
+                    <div class="form-group">
+                       <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
+                       <div class="col-md-8">
+                         <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                       </div>
+                    </div>
+                    </br></br>
+                    <div class="form-group">
+                       <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                       <div class="col-md-8">
+                         <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                       </div>
+                    </div>
+                    </br></br>
+                    <div class="form-group">
+                       <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
+                       <div class="col-md-8">
+                         <input class="form-control" id="emailCliente" placeholder="Email" type="text">
+                       </div>
+                    </div>
+                    </br></br>
+                    <div class="form-group">
+                       <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
+                       <div class="col-md-8">
+                         <input class="form-control" id="telCliente" placeholder="Tel&eacute;fono" type="text">
+                          <label><b>Ej: 042-338745/09-08784567</b></</label></br></br>
+                       </div>
+                    </div>
+                    </br></br>
+                    <div class="form-group">
+                       </br></br>
+                       <label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
+                       <div class="col-md-8">
+                         <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
+                       </div>
+                     </div>
+                </form>
               </div>
-              </br></br>
-              <div class="form-group">
-                 <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
-                 <div class="col-md-8">
-                   <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
-                 </div>
-              </div>
-              </br></br>
-              <div class="form-group">
-                 <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
-                 <div class="col-md-8">
-                   <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
-                 </div>
-              </div>
-              </br></br>
-              <div class="form-group">
-                 <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
-                 <div class="col-md-8">
-                   <input class="form-control" id="emailCliente" placeholder="Email" type="text">
-                 </div>
-              </div>
-              </br></br>
-              <div class="form-group">
-                 <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
-                 <div class="col-md-8">
-                   <input class="form-control" id="telCliente" placeholder="Tel&eacute;fono" type="text">
-                 </div>
-              </div>
-              </br></br>
-              <div class="form-group">
-                 <label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
-                 <div class="col-md-8">
-                   <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
-                 </div>
-              </div>
-
             </div>
          	</div>
         </div>
         <div class="col-sm-6 col-md-6">
             <div class="panel panel-default ">
-              </br>
-              <div class="text-center">
-                <h3>Detalle del Servicio</h3>
-                <hr>
-              </div>
-            </br>
-            <div class="panel-body">
-                <div class="form-group">
-                  <label for="tipoServicio" class="col-md-3 control-label"><strong>Tipo: </strong></label>
-                  <div class="col-md-8">
-                    <select id="subject" name="subject" class="form-control" required="required">
-                        <option value="default" selected="">-----------</option>
-                        <option value="mantenimiento">Mantemiento</option>
-                        <option value="instalacion">Instalaci&oacute;n</option>
-                    </select>
-                  </div>
+                </br>
+                <div class="text-center">
+                  <h3>Detalle del Servicio</h3>
+                  <hr>
                 </div>
-              </br></br>
-                <div class="form-group">
-                 <label class="col-md-3 control-label "><strong>Fecha: </strong></label>
-                 <div class="col-md-8">
-                   <div class="input-group date" id="datePicker">
-                     <input class="form-control" type="text" id="fecha" required>
-                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </br>
+              <div class="panel-body">
+                  <div class="form-group">
+                    <label for="tipoServicio" class="col-md-3 control-label"><strong>Tipo: </strong></label>
+                    <div class="col-md-8">
+                      <select id="subject" name="subject" class="form-control" required="required">
+                          <option value="default" selected="">-----------</option>
+                          <option value="mantenimiento">Mantemiento</option>
+                          <option value="instalacion">Instalaci&oacute;n</option>
+                      </select>
+                        <label><b>Ej: Serv. Mantenimiento / Serv. Instalaci&oacute;n</b></</label></br></br>
+                    </div>
+                  </div>
+                </br></br></br>
+                  <div class="form-group">
+                   <label class="col-md-3 control-label "><strong>Fecha: </strong></label>
+                   <div class="col-md-8">
+                     <div class="input-group date" id="datePicker">
+                       <input class="form-control" type="text" id="fecha" required>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                     </div>
                    </div>
                  </div>
-               </div>
-               </br></br>
-              <div class="form-group">
-                 <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
-                 <div class="col-md-8">
-                   <textarea id="descripcion" name="descripcion" > </textarea>
-                 </div>
+                 </br></br>
+                <div class="form-group"></br>
+                   <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
+                   <div class="col-md-8">
+                     <textarea id="descripcion" name="descripcion" > </textarea>
+                   </div>
+                </div>
+                </br></br></br></br></br></br></br></br></br></br>
+                </br></br></br></br></br></br></br></br>
               </div>
-              </br></br></br></br></br></br></br></br></br></br>
             </div>
-          </div>
         </div>
       </div>
       <div class="row">
@@ -330,10 +349,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
      <!--fin de form servicio-->
 	  </div>
  </div>
-
 <!---->
-<script src="{% static 'js/bootstrap.js' %}"> </script>
-
 <div class="footer">
 	 <div class="container">
 		 <div class="footer-grids">
@@ -372,4 +388,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!---->
 </body>
+{% csrf_token %}
 </html>

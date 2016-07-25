@@ -40,7 +40,12 @@ urlpatterns = [
 
     url(r'^servicio/', 'web.views.servicio'), #URL para la pagina de Servicio: Mantenimiento, Instalacion
     #CorreoElectronico
+    #Formulario de Contactenos
     url(r'^enviarContacto/', 'web.views.enviarContacto'),
+    #Formulario de Servicio
+    url(r'^enviarServicio/', 'web.views.enviarServicio'),
+    #Formulario de Cotizacion
+    url(r'^enviarCotizacion/', 'web.views.enviarCotizacion'),
 
     url(r'^get_categorias/$','web.views.get_categorias', name="categorias"),
 

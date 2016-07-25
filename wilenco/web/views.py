@@ -153,3 +153,91 @@ def enviarContacto(request):
             return HttpResponseRedirect('/contact/thanks/')
         else:
             return HttpResponse('Make sure all fields are entered and valid.')
+
+def enviarCotizacion(request):
+    """
+        Funcion: "enviarCotizacion"
+        Descripcion: Esta funcion permite al usuario de la pagina enviar los
+        datos que ingreso en el formulario de cotizacion del sitio web.
+        Fecha de Creacion: Julio 24/2016
+        Fecha de Modificacion: Julio 24/2016
+    """
+    if (request.method == 'POST'):
+        """nombre,email,telefono,asunto"""
+        nombre = request.POST.get('nombre', None)
+        apellido = request.POST.get('apellido', None)
+        asunto = "Cotizacion de " + " " + nombre + " " + apellido
+        from_email = request.POST.get('email', None)
+        to_email=settings.EMAIL_HOST_USER
+        cedula = request.POST.get('cedula', None)
+        telefono = request.POST.get('telefono', None)
+        direccion = request.POST.get('direccion', None)
+        descripcion = request.POST.get('descripcion', None)
+        if asunto and from_email:
+            try:
+                titulo = '<h2>Formulario de Cotizaci&oacute;n</h2><br>'
+                c_articulos= '<h3>Lista de Productos Cotizados</h3><br>'
+                c_divCli= '<h3>Datos del Cliente</h3>'
+                c_nombre = '<br><p><strong>Cliente: </strong>' + nombre + " " + apellido
+                c_cedula = '</p><br><p><strong>C&eacute;dula: </strong>' + cedula
+                c_email = '</p><br><p><strong>Email: </strong>' + from_email
+                c_telefono ='</p><br><p><strong>Tel&eacute;fono: </strong>' + telefono
+                c_direccion ='</p><br><p><strong>Direcci&oacute;n: </strong>' + direccion
+                c_divObra= '</p><br><h3>Datos de la Obra</h3>'
+                c_mensaje = '<br><p><strong>Descripci&oacute;n de la Obra: </strong>' + descripcion + '</p>'
+                html_content = titulo + c_articulos + c_divCli + c_nombre + c_cedula + c_email + c_telefono + c_direccion + c_divObra + c_mensaje
+                msg = EmailMultiAlternatives(asunto, html_content, from_email, [to_email])
+                msg.content_subtype = "html"
+                msg.send()
+                return HttpResponseRedirect('/cotizacion/')
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/contact/thanks/')
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
+
+def enviarServicio(request):
+    """
+        Funcion: "enviarServicio"
+        Descripcion: Esta funcion permite al usuario de la pagina enviar los
+        datos que ingreso en el formulario de contactenos del sitio web.
+        Fecha de Creacion: Julio 24/2016
+        Fecha de Modificacion: Julio 24/2016
+    """
+    if (request.method == 'POST'):
+        nombre =  request.POST.get('nombre', None)
+        apellido =  request.POST.get('apellido', None)
+        cedula =  request.POST.get('cedula', None)
+        from_email =  request.POST.get('email', None)
+        telefono =  request.POST.get('telefono', None)
+        direccion =  request.POST.get('direccion', None)
+        fecha =  request.POST.get('fecha', None)
+        tipo =  request.POST.get('tipo', None)
+        descripcion =  request.POST.get('descripcion', None)
+        to_email=settings.EMAIL_HOST_USER
+        asunto = "Agendar Servicio de " + tipo +  " para " + nombre + " " + apellido
+        if asunto and from_email:
+            try:
+                titulo = '<h2>Formulario de Servicio</h2><br>'
+                c_divCli= '<h3>Datos del Cliente</h3><br>'
+                c_nombre = '<p><strong>Nombre: </strong>' + nombre
+                c_apellido = '</p><br><p><strong>Apellido: </strong>' + apellido
+                c_cedula = '</p><br><p><strong>Cedula: </strong>' + cedula
+                c_email = '</p><br><p><strong>Email: </strong>' + from_email
+                c_telefono ='</p><br><p><strong>Tel&eacute;fono: </strong>' + telefono
+                c_direccion ='</p><br><p><strong>Direcci&oacute;n: </strong>' + direccion
+                c_divServ= '<h3>Datos del Servicio</h3><br>'
+                c_fecha = '</p><br><p><strong>Fecha: </strong>' + fecha
+                c_tipo ='</p><br><p><strong>Tipo: </strong>' + tipo
+                c_descripcion ='</p><br><p><strong>Descripci&oacute;n: </strong>' + descripcion
+                html_content = titulo + c_divCli + c_nombre + c_apellido + c_cedula + c_email + c_telefono + c_direccion + c_divServ + c_fecha + c_tipo + c_descripcion
+
+                msg = EmailMultiAlternatives(asunto, html_content, from_email, [to_email])
+                msg.content_subtype = "html"
+                msg.send()
+                return HttpResponseRedirect('/servicio/')
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/contact/thanks/')
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
