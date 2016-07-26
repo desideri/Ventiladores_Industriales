@@ -9,6 +9,7 @@ Almacena la informacion de los productos dentro de un ARRAY de JSONS
 llamada productos.
 */
 var productos = [];
+var all_products = "" ;
 function LoadProducto(index){
     $('.item_price').empty();
     $('p.para').empty();
@@ -51,9 +52,10 @@ $(document).ready(function(){
                     +'<div class="product-info-cust prt_name">'
                     +'<h4>'+productos[i].nombre+'</h4>'
                     +'<input type="text" class="item_quantity" value="1" />'
-                    +'<input type="button" class="item_add items" value="ADD">'
+                    +'<input type="button" class="item_add items" value="+">'
                     +'<div class="clearfix"></div>'
                     +'</div></div></div>';
+                all_products = all_products + html;
              $('.product-model-sec').append(html);
              	nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
               valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
@@ -77,6 +79,8 @@ $(document).ready(function(){
                    id = p[text]; // id del producto seleccionado
                    console.log(id);
                    //mostrar el modal en base al id seleccionado
+                   LoadProducto(id);
+                   $('.bs-example-modal-lg').modal('show');
                 }
             }
         });
