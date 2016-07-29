@@ -4,8 +4,8 @@
  Descripcion: Página para la cotizacion de productos.
  Version: 1.1
  Fecha de Creacion: Junio 18/2016
- Ultima modificación: Junio 20/2016
- Ultimo modificador: Kattya Desiderio
+ Ultima modificación: Junio 28/2016
+ Ultimo modificador: Jorge Ayala
  License: Creative Commons Attribution 3.0 Unported
  License URL: http://creativecommons.org/licenses/by/3.0/
 -->
@@ -36,9 +36,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{% static 'css/empresa.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
 <script src="{% static 'js/empresa.js' %}"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="{% static 'js/html2canvas.js' %}"></script>
+<script src="{% static 'js/jspdf.js' %}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();
+    
+        function genPDF() {
+           /* 
+            html2canvas(document.body, {
+             onrendered: function(canvas) {
+                // canvas is the final rendered <canvas> element
+                var cotizacionImg = canvas.toDataURL('images/png')
+
+
+            }
+        });*/
+
+            html2canvas(document.body, {
+                onrendered: function(canvas) {         
+                
+                    var img = canvas.toDataURL("image/png");
+                    var doc = new jsPDF();
+                    doc.addImage(img,'JPEG',20,20);
+                    doc.save('test.pdf');
+            }
+            });
+
+
+
+        }
+    
+    });</script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         //Muestra el menu de la página
         $(".memenu").memenu();
         $("#ErrorMessage").hide();
@@ -52,7 +81,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
         rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
 
-        $("#btnEnviar").click(function () {
+        $("#btnEnviar").click(function () 
+        {
             nombre = $("#nombreCliente").val();
             apellido = $("#apellidoCliente").val();
             cedula = $("#cedulaCliente").val();
@@ -114,7 +144,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 });
 
          }
+         
         });
+
+        function genPDF() {
+           /* 
+            html2canvas(document.body, {
+             onrendered: function(canvas) {
+                // canvas is the final rendered <canvas> element
+                var cotizacionImg = canvas.toDataURL('images/png')
+
+
+            }
+        });*/
+
+            html2canvas(document.body, {
+                onrendered: function(canvas) {         
+                
+                    var img = canvas.toDataURL("image/png");
+                    var doc = new jsPDF();
+                    doc.addImage(img,'JPEG',20,20);
+                    doc.save('test.pdf');
+            }
+            });
+
+
+
+        }
+        
+        
+        
+        
+
     });
   </script>
 
@@ -163,6 +224,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 					<li class="grid"><a href="/servicio/">Servicios</a></li>
 					<li class="grid"><a href="/contacto/">Contacto</a></li>
+                    <li class="grid"><div class="cart box_1 text-center" style="margin:initial auto">
+					                    <a href="/cotizacion/">
+   					                        <div class="total">
+   					                            (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+                                             </div>
+   					                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+	   				                    </a>
+	   				                    <p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
+			 	                        <div class="clearfix"> </div>
+			                        </div>
+                    </li>
 				</ul>
 			 </div>
 			 <!---->
@@ -194,7 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </div>
     </div>
       <div class="row">
-        <div class="col-sm-6 col-md-6">
+        <div id="detProductos" class="col-sm-6 col-md-6">
             <div class="panel panel-default ">
               </br>
               <div class="text-center">
@@ -326,6 +398,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="panel panel-default text-center ">
         <br>
           <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive" id="btnEnviar">Enviar</button>
+          <button type="button" class="btn btn-primary btn-lg btn-pressure btn-sensitive" id="btnImprimirCotizacion">Imprimir</button>
+          <a href="javascript:genPDF()">Bajar</a>
         <br><br>
         </div>
       </div>
