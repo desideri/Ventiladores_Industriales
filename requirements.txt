@@ -5,3 +5,5 @@ djangorestframework
 django-filter
 MySQL-python
 django-cors-headers
+coverage
+coveralls
