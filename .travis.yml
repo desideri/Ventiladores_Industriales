@@ -3,12 +3,11 @@ python:
   - "2.7"
 
 before_install:
-  - travis_wait
   - "pip install -r requirements.txt"
 
 script:
   - "cd wilenco"
-  - "python manage.py test"
+  - travis_wait "python manage.py test"
   - "coverage run --source=web manage.py test"
 
 after_script: "coveralls"
