@@ -7,7 +7,8 @@ before_install:
   -"pip install -r requeriments.txt"
 
 script:
-  - "coverage run --source=wilenco/web manage.py test"
-  - "pip install -r requirements.txt"
+  - "cd wilenco"
+  - "python manage.py test"
+  - "coverage run --source=web manage.py test"
 
 after_script: "coveralls"
