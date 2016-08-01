@@ -2,10 +2,12 @@ language: python
 python:
   - "2.7"
 
-install:
-  - travis_wait 30 mvn install
-  - "pip install -r requirements.txt"
+before_install:
+  - "travis_wait 30 mvn install" 
+  -"pip install -r requeriments.txt"
 
 script:
-  - cd wilenco
-  - python manage.py test
+  - "coverage run --source=wilenco/web manage.py test"
+  - "pip install -r requirements.txt"
+
+after_script: "coveralls"
