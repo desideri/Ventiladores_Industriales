@@ -122,6 +122,13 @@ def get_marcas(request):
     return HttpResponse(json.dumps(data))
 
 def enviarContacto(request):
+    """
+         Funcion: "enviarContacto"
+         Descripcion: Esta funcion permite al usuario de la pagina enviar los
+         datos que ingreso en el formulario de contactenos del sitio web.
+         Fecha de Creacion: Julio 06/2016
+         Fecha de Modificacion: Julio 23/2016
+     """
     if (request.method == 'POST'):
         """nombre,email,telefono,asunto"""
         nombre = request.POST.get('nombre', None)
@@ -132,8 +139,16 @@ def enviarContacto(request):
         contenido_mensaje = request.POST.get('mensaje', None)
         if asunto and contenido_mensaje and from_email:
             try:
-                send_mail('Su correo se envio exitosamente!', get_template('templates/email.html').render(Context({'nombre': nombre, 'mail': mail, 'mensaje': contenido_mensaje})),settings.EMAIL_HOST_USER,['kattyadesiderio@gmail.com'], fail_silently = True)
-                return HttpResponseRedirect('/contacto/')
+                 titulo = '<h2>Formulario de Cont&aacute;ctenos</h2><br>'
+                 c_nombre = '<p ><strong>Nombre: </strong>' + nombre
+                 c_email = '</p><br><p><strong>Email: </strong>' + from_email
+                 c_telefono ='</p><br><p><strong>Tel&eacute;fono: </strong>' + telefono
+                 c_mensaje = '</p><br><p><strong>Mensaje: </strong>' + contenido_mensaje + '</p>'
+                 html_content = titulo + c_nombre + c_email + c_telefono + c_mensaje
+                 msg = EmailMultiAlternatives(asunto, html_content, from_email, [to_email])
+                 msg.content_subtype = "html"
+                 msg.send()
+                 return HttpResponseRedirect('/contacto/')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/contact/thanks/')

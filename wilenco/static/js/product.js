@@ -50,7 +50,7 @@ $(document).ready(function(){
                     +'</h4></div></div></a>'
                     +'<div class="product-info simpleCart_shelfItem">'
                     +'<div class="product-info-cust prt_name">'
-                    +'<h4>'+productos[i].nombre+'</h4>'
+                    +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
                     +'<input type="text" class="item_quantity" value="1" />'
                     +'<input type="button" class="item_add items" value="+">'
                     +'<div class="clearfix"></div>'
