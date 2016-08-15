@@ -40,26 +40,26 @@ $(document).ready(function(){
         productos = data;
         for(var i = 0; i < productos.length; i++){
             var html = '<a class="infoProducto" href="#" onclick="LoadProducto('+i+')" data-toggle="modal" data-target=".bs-example-modal-lg" data-index="'+i+'">'
-                    +'<div class="product-grid">'
-                    +'<div class="more-product"><span></span></div>'
-                    +'<div class="product-img b-link-stripe b-animate-go  thickbox">'
-                    +'<img src="'+productos[i].imagen+'" class="img-responsive" style="width:203px;height: 157px;" />'
-                    +'<div class="b-wrapper">'
-                    +'<h4 class="b-animate b-from-left  b-delay03">'
-                    +'<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>'
-                    +'</h4></div></div></a>'
-                    +'<div class="product-info simpleCart_shelfItem">'
-                    +'<div class="product-info-cust prt_name">'
-                    +'<h4>'+productos[i].nombre+'</h4>'
-                    +'<input type="text" class="item_quantity" value="1" />'
-                    +'<input type="button" class="item_add items" value="+">'
-                    +'<div class="clearfix"></div>'
-                    +'</div></div></div>';
-                all_products = all_products + html;
-             $('.product-model-sec').append(html);
-             	nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
-              valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
-              p[valor] = i;
+            +'<div class="product-grid">'
+            +'<div class="more-product"><span></span></div>'
+            +'<div class="product-img b-link-stripe b-animate-go  thickbox">'
+            +'<img src="'+productos[i].imagen+'" class="img-responsive" style="width:203px;height: 157px;" />'
+            +'<div class="b-wrapper">'
+            +'<h4 class="b-animate b-from-left  b-delay03">'
+            +'<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>'
+            +'</h4></div></div></a>'
+            +'<div class="product-info simpleCart_shelfItem">'
+            +'<div class="product-info-cust prt_name">'
+            +'<h4>'+productos[i].nombre+'</h4>'
+            +'<input type="text" class="item_quantity" value="1" />'
+            +'<input type="button" class="item_add items" value="+">'
+            +'<div class="clearfix"></div>'
+            +'</div></div></div>';
+            all_products = all_products + html;
+            $('.product-model-sec').append(html);
+            nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
+            valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
+            p[valor] = i;
         }
         var id=-1;
         //llamada a typeahead para el buscador
@@ -75,30 +75,27 @@ $(document).ready(function(){
                     console.log('Typeahead Initiated on ' + node.selector);
                 },
                 onClickAfter: function (node, a, item, event) {
-                  var text = $('.js-typeahead-lista_productos').val();
-                   id = p[text]; // id del producto seleccionado
-                   console.log(id);
-                   //mostrar el modal en base al id seleccionado
-                   LoadProducto(id);
-                   $('.bs-example-modal-lg').modal('show');
+                    var text = $('.js-typeahead-lista_productos').val();
+                    id = p[text]; // id del producto seleccionado
+                    console.log(id);
+                    //mostrar el modal en base al id seleccionado
+                    LoadProducto(id);
+                    $('.bs-example-modal-lg').modal('show');
                 }
             }
         });
-
-
-        //Fin del GETJSON
     });
-
-    $.getJSON('/get_categorias',function(data){
+    //http://162.243.121.93/api/categoria/?format=json
+    $.getJSON('/api/categoria/?format=json',function(data){
         dpr = data;
         categorias = $('#categorias_list');
-        for (var i = 0; i < data.categorias.length ; i++) {
-            var categoria = data.categorias[i];
-            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByCategory('"+String(categoria.split(" ")[0])+"') ><i></i>"+data.categorias[i]+"</label>";
+        for (var i = 0; i < data.length ; i++) {
+            var categoria = data[i].categoria;
+            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByCategory('"+String(categoria.split(" ")[0])+"') ><i></i>"+categoria+"</label>";
             categorias.append(item);
         }
     });
-    $.getJSON('/get_marcas',function(data){
+    $.getJSON('/get_marcas/',function(data){
         marcas = $('#marcas_list');
         for (var i = 0; i < data.marcas.length ; i++) {
             var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByMark('"+data.marcas[i]+"') ><i></i>"+data.marcas[i]+"</label>";

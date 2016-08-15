@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wilencodb',
         # 'USER': 'root',
-        'USER': 'root',
+        'USER': 'pez',
         'PASSWORD': '',
         'HOST':'localhost',
         'PORT': '3306',

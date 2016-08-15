@@ -38,6 +38,11 @@ class ProductoViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('noSerie','nombre', 'marca')
 
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+    # filter_backends = (filters.DjangoFilterBackend,)
+    # filter_fields = ('categoria')
 
 def index(request):
     """ Funcion  "index"

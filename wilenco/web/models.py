@@ -64,6 +64,15 @@ def validate_stock(stock):
 """
 Modelos
 """
+class Categoria(models.Model):
+    categoria = models.CharField(max_length=50, validators=[validate_categoria], primary_key=True)
+
+    def __str__(self):
+        return "{}".format(self.categoria)
+
+    def __unicode__(self):
+        return unicode(str(self))
+
 class Producto(models.Model):
     """
     @is1394 (Israel Fernandez)
@@ -74,7 +83,8 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50, validators=[validate_nombre])
     stock = models.IntegerField(validators=[validate_stock])
     marca = models.CharField(max_length=50, validators=[validate_marca])
-    categoria = models.CharField(max_length=50,validators=[validate_categoria])
+    # categoria = models.CharField(max_length=50,validators=[validate_categoria])
+    categoria = models.OneToOneField(Categoria,blank=False,null=False)
     potencia = models.CharField(max_length=50, blank=True,null=True)
     motor = models.CharField(max_length=50, blank=True, null=True)
     presion = models.CharField(max_length=50,blank=True, null=True)

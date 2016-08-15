@@ -20,6 +20,7 @@ from web import views
 
 router = routers.DefaultRouter()
 router.register(r'producto', views.ProductoViewSet)
+router.register(r'categoria', views.CategoriaViewSet)
 
 
 urlpatterns = [
