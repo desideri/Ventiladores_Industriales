@@ -106,7 +106,7 @@ $(document).ready(function(){
         });
     });
     //http://162.243.121.93/api/categoria/?format=json
-    $.getJSON('/api/categoria/?format=json',function(data){
+    $.getJSON('http://162.243.121.93/api/categoria/?format=json',function(data){
         dpr = data;
         categorias = $('#categorias_list');
         for (var i = 0; i < data.length ; i++) {
@@ -115,7 +115,7 @@ $(document).ready(function(){
             categorias.append(item);
         }
     });
-    $.getJSON('/get_marcas/',function(data){
+    $.getJSON('http://162.243.121.93/get_marcas/',function(data){
         marcas = $('#marcas_list');
         for (var i = 0; i < data.marcas.length ; i++) {
             var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByMark('"+data.marcas[i]+"') ><i></i>"+data.marcas[i]+"</label>";
