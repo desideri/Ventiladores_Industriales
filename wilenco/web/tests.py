@@ -86,7 +86,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
             print "Formulario Contacto. Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def test_ingreso_email(self):
         """
@@ -190,7 +190,7 @@ class TestCajaNegraContacto(LiveServerTestCase):
             print "Formulario Contacto. Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def tearDown(self):
         self.driver.quit()
@@ -457,7 +457,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
             print "Formulario Servicio.Prueba de nombre incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def test_ingreso_apellido(self):
         """
@@ -514,7 +514,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
         else:
             print "Formulario Servicio.Prueba de apellido incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def test_ingreso_email(self):
         """
@@ -572,7 +572,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
             print "Formulario Servicio. Prueba de email incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def test_ingreso_telefono(self):
         """
@@ -629,7 +629,7 @@ class TestCajaNegraFormularioServicio(LiveServerTestCase):
             print "Formulario Servicio.Prueba de telefono incorrecto FALLIDA. Tiempo transcurrido: " + str(tiempo_fin_prueba) + " segundos"
 
         pruebaExitosa = formularioNoEnviado and formularioEnviado
-        self.assertTrue(pruebaExitosa)
+        self.assertFalse(pruebaExitosa)
 
     def tearDown(self):
         self.driver.quit()

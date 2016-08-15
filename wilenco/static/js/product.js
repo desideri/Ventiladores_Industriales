@@ -60,6 +60,26 @@ $(document).ready(function(){
             nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
             valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
             p[valor] = i;
+            +'<div class="product-grid">'
+            +'<div class="more-product"><span></span></div>'
+            +'<div class="product-img b-link-stripe b-animate-go  thickbox">'
+            +'<img src="'+productos[i].imagen+'" class="img-responsive" style="width:203px;height: 157px;" />'
+            +'<div class="b-wrapper">'
+            +'<h4 class="b-animate b-from-left  b-delay03">'
+            +'<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>'
+            +'</h4></div></div></a>'
+            +'<div class="product-info simpleCart_shelfItem">'
+            +'<div class="product-info-cust prt_name">'
+            +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
+            +'<input type="text" class="item_quantity" value="1" />'
+            +'<input type="button" class="item_add items" value="+">'
+            +'<div class="clearfix"></div>'
+            +'</div></div></div>';
+            all_products = all_products + html;
+            $('.product-model-sec').append(html);
+            nombreProductos.push(productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad);
+            valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
+            p[valor] = i;
         }
         var id=-1;
         //llamada a typeahead para el buscador

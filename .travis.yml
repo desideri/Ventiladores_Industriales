@@ -7,7 +7,7 @@ before_install:
 
 script:
   - "cd wilenco"
-  - travis_wait "python manage.py test"
+  - travis_wait 30 "python manage.py test"
   - "coverage run --source=web manage.py test"
 
 after_script: "coveralls"
