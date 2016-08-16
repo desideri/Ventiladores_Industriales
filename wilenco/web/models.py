@@ -84,7 +84,7 @@ class Producto(models.Model):
     stock = models.IntegerField(validators=[validate_stock])
     marca = models.CharField(max_length=50, validators=[validate_marca])
     # categoria = models.CharField(max_length=50,validators=[validate_categoria])
-    categoria = models.OneToOneField(Categoria,blank=False,null=False)
+    categoria = models.ForeignKey(Categoria,blank=False,null=False)
     potencia = models.CharField(max_length=50, blank=True,null=True)
     motor = models.CharField(max_length=50, blank=True, null=True)
     presion = models.CharField(max_length=50,blank=True, null=True)
