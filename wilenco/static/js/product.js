@@ -51,6 +51,7 @@ $(document).ready(function(){
             +'<div class="product-info simpleCart_shelfItem">'
             +'<div class="product-info-cust prt_name">'
             +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
+            +'<h5 class="item_marca">'+productos[i].marca+'</h5>'
             +'<input type="text" class="item_quantity" value="1" />'
             +'<input type="button" class="item_add items" value="+">'
             +'<div class="clearfix"></div>'
