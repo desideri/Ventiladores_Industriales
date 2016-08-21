@@ -25,65 +25,12 @@ function LoadProducto(index){
 
 
 function searchByMark(marca){
-    $('.product-model-sec').empty();
-    for (var i = 0; i < productos.length; i++) {
-        if(productos[i].marca.includes(marca)){
-            var html = '<a class="infoProducto" href="#" onclick="LoadProducto('+i+')" data-toggle="modal" data-target=".bs-example-modal-lg" data-index="'+i+'">'
-            +'<div class="product-grid">'
-            +'<div class="more-product"><span></span></div>'
-            +'<div class="product-img b-link-stripe b-animate-go  thickbox">'
-            +'<img src="'+productos[i].imagen+'" class="img-responsive" style="width:203px;height: 157px;" />'
-            +'<div class="b-wrapper">'
-            +'<h4 class="b-animate b-from-left  b-delay03">'
-            +'<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>'
-            +'</h4></div></div></a>'
-            +'<div class="product-info simpleCart_shelfItem">'
-            +'<div class="product-info-cust prt_name">'
-            +'<h4>'+productos[i].nombre+'</h4>'
-            +'<input type="text" class="item_quantity" value="1" />'
-            +'<input type="button" class="item_add items" value="+">'
-            +'<div class="clearfix"></div>'
-            +'</div></div></div>';
-
-            $('.product-model-sec').append(html);
-        }
-    }
+    console.log("holi");
 }
 
 function searchByCategory(categoria){
-    $('.product-model-sec').empty();
-    for (var i = 0; i < productos.length; i++) {
-        if(productos[i].categoria.includes(categoria)){
-            var html = '<a class="infoProducto" href="#" onclick="LoadProducto('+i+')" data-toggle="modal" data-target=".bs-example-modal-lg" data-index="'+i+'">'
-            +'<div class="product-grid">'
-            +'<div class="more-product"><span></span></div>'
-            +'<div class="product-img b-link-stripe b-animate-go  thickbox">'
-            +'<img src="'+productos[i].imagen+'" class="img-responsive" style="width:203px;height: 157px;" />'
-            +'<div class="b-wrapper">'
-            +'<h4 class="b-animate b-from-left  b-delay03">'
-            +'<button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver M&aacute;s</button>'
-            +'</h4></div></div></a>'
-            +'<div class="product-info simpleCart_shelfItem">'
-            +'<div class="product-info-cust prt_name">'
-            +'<h4>'+productos[i].nombre+'</h4>'
-            +'<input type="text" class="item_quantity" value="1" />'
-            +'<input type="button" class="item_add items" value="+">'
-            +'<div class="clearfix"></div>'
-            +'</div></div></div>';
-
-            $('.product-model-sec').append(html);
-        }
-    }
+    console.log("holi");
 }
-
-function displayProducts(){
-    $('.product-model-sec').empty();
-    $('.product-model-sec').append(all_products);
-    $("input[name='categoriascheck']").prop('checked',false);
-    $("input[name='marcascheck']").prop('checked',false);
-
-}
-
 var dpr;
 $(document).ready(function(){
     var nombreProductos = [];
@@ -103,7 +50,8 @@ $(document).ready(function(){
             +'</h4></div></div></a>'
             +'<div class="product-info simpleCart_shelfItem">'
             +'<div class="product-info-cust prt_name">'
-            +'<h4>'+productos[i].nombre+'</h4>'
+            +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
+            +'<h5 class="item_marca">'+productos[i].marca+'</h5>'
             +'<input type="text" class="item_quantity" value="1" />'
             +'<input type="button" class="item_add items" value="+">'
             +'<div class="clearfix"></div>'
@@ -114,7 +62,6 @@ $(document).ready(function(){
             valor= productos[i].categoria + "  " + productos[i].marca + "   " + productos[i].capacidad;
             p[valor] = i;
         }
-
         var id=-1;
         //llamada a typeahead para el buscador
         $.typeahead({
@@ -139,36 +86,23 @@ $(document).ready(function(){
             }
         });
     });
-
-    $('.product-model-sec').bind('DOMSubtreeModified', function(){
-        /*
-        El evento DOMSubtreeModified detecta si se ha modificado algun elemento
-        dentro del objeto, guarda la longitud original
-        */
-        len = $('.product-model-sec > a').length;
-        if(len < productos.length){
-            $('#label_allproducts').show();
-        }
-        else{
-            $('#label_allproducts').hide();
-        }
-    });
-
+    //http://162.243.121.93/api/categoria/?format=json
     $.getJSON('http://162.243.121.93/api/categoria/?format=json',function(data){
         dpr = data;
         categorias = $('#categorias_list');
         for (var i = 0; i < data.length ; i++) {
             var categoria = data[i].categoria;
-            var item = "<label class='checkbox cat'><input type='radio' name='categoriascheck' onclick=searchByCategory('"+String(categoria.split(" ")[0])+"') ><i></i>"+categoria+"</label>";
+            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByCategory('"+String(categoria.split(" ")[0])+"') ><i></i>"+categoria+"</label>";
             categorias.append(item);
         }
     });
     $.getJSON('http://162.243.121.93/get_marcas/',function(data){
         marcas = $('#marcas_list');
         for (var i = 0; i < data.marcas.length ; i++) {
-            var item = "<label class='checkbox mar'><input type='radio' name='marcascheck' onclick=searchByMark('"+data.marcas[i]+"') ><i></i>"+data.marcas[i]+"</label>";
+            var item = "<label class='checkbox'><input type='checkbox' name='checkbox' onclick=searchByMark('"+data.marcas[i]+"') ><i></i>"+data.marcas[i]+"</label>";
             marcas.append(item);
         }
     });
+
 
 });
