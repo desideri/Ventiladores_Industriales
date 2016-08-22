@@ -44,6 +44,14 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     # filter_backends = (filters.DjangoFilterBackend,)
     # filter_fields = ('categoria')
 
+class SolicitudViewSet(viewsets.ModelViewSet):
+    queryset = Solicitud.objects.all()
+    serializer_class = SolicitdSerializer
+
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
 def index(request):
     """ Funcion  "index"
         Descripcion: Funcion que hace render el index.

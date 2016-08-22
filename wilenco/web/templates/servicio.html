@@ -38,6 +38,9 @@ Aquí se define el título de la página y todas las librerías que se necesitan
     <script src="{% static 'js/memenu.js' %}"></script>
     <!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
     <script>
+    var clientes ;
+    var fechita;
+    var descripcion;
     $(document).ready(function(){
         var today = new Date();
         var dd = today.getDate();
@@ -52,6 +55,9 @@ Aquí se define el título de la página y todas las librerías que se necesitan
 
         today = yyyy+'-'+mm+'-'+dd;
         document.getElementById("fecha").setAttribute("min", today);
+        $.getJSON('/api/cliente/',function(data){
+            clientes = data;
+        });
         //Muestra el menu de la página
         $(".memenu").memenu();
         $("#ErrorMessage").hide();
@@ -75,8 +81,15 @@ Aquí se define el título de la página y todas las librerías que se necesitan
             telefono = $("#telCliente").val();
             direccion = $("#direccionCliente").val();
             tipo =  $('select[name=subject]').val();
-            fecha =$("#fecha").val();
-            descripcion =$("#descripcion").val();
+            fecha = $("#fecha").val();
+            descripcion = $("#descripcion").val();
+
+            tipotmp ="";
+            if (tipo = "mantenimiento" ){
+                tipotmp = "MANT";
+            }else{
+                tipotmp = "INST";
+            }
 
             if (nombre.trim() == '' || !rgnombre.test(nombre)) {
                 $("#ErrorMessage").text("Nombre Incorrecto");
@@ -134,20 +147,80 @@ Aquí se define el título de la página y todas las librerías que se necesitan
                 $.post('/enviarServicio/',{'nombre':nombre,'apellido':apellido,'cedula':cedula, 'email':email,'telefono':telefono,'direccion':direccion,'tipo':tipo,'fecha':fecha,'descripcion':descripcion, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
 
                     console.log("mail enviado exitosamente!!");
-                    $("#ErrorMessage").hide();
-                    $("#OkMessage").text("Formulario Enviado..!");
-                    $("#OkMessage").show();
-                    //Si se envia el formulario se enceran los inputs.
-                    $("#nombreCliente").val("");
-                    $("#apellidoCliente").val("");
-                    $("#cedulaCliente").val("");
-                    $("#emailCliente").val("");
-                    $("#telCliente").val("");
-                    $("#direccionCliente").val("");
-                    $('select[name=subject]').val("default");
-                    $("#fecha").val("");
-                    $("#descripcion").val("");
+
                 });
+                cliente = null;
+
+                for(var i = 0; i < clientes.length; i++){
+                    if ( $("#cedulaCliente").val() == clientes[i].cedula){
+                        cliente = clientes[i];
+                        solicitudat = {
+                            'tipoSolicitud': tipotmp,
+                            'descripcion': $("#descripcion").val(),
+                            'fechaEscojida': $("#fecha").val(),
+                            'cliente': cliente.id,
+                            'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                        };
+                        console.log(solicitudat);
+                        $.post('/api/solicitud/',solicitudat,function(data){
+                            console.log("solicitud enviada");
+                        }).fail(function(data) {
+                            console.log( "error del for  " + data );
+                            console.log(data);
+                        });
+                    }
+                }
+                if (cliente == null){
+                    fechita = $("#fecha").val();
+                    console.log("entre aqui")
+                    datos ={
+                        'nombre':nombre + " "+ apellido,
+                        'cedula':$("#cedulaCliente").val(),
+                        'email':email,
+                        'telefono':telefono.replace('-',''),
+                        'direccion':direccion,
+                        'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                    };
+                    console.log(datos);
+                    $.post('/api/cliente/',datos ,function(data){
+                        console.log($("#descripcion").val());
+                        console.log($("#fecha").val());
+                        id = data.id;
+                        solicitudatos = {
+                            'tipoSolicitud': tipotmp,
+                            'descripcion': descripcion,
+                            'fechaEscojida': fechita,
+                            'cliente': id,
+                            'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                        };
+                        console.log(solicitudatos);
+                        $.post('/api/solicitud/',solicitudatos,function(data){
+                            console.log(data);
+                            console.log("solicitud enviada");
+                        }).fail(function(data) {
+                            alert( "error con client null en solicitud" );
+                            console.log("error ");
+                            console.log(data);
+                        });
+                    }).fail(function(){
+                        console.log("error " + data.responseText);
+                    });
+                }
+
+                $("#ErrorMessage").hide();
+                $("#OkMessage").text("Formulario Enviado..!");
+                $("#OkMessage").show();
+                //Si se envia el formulario se enceran los inputs.
+                $("#nombreCliente").val("");
+                $("#apellidoCliente").val("");
+                $("#cedulaCliente").val("");
+                $("#emailCliente").val("");
+                $("#telCliente").val("");
+                $("#direccionCliente").val("");
+                $('select[name=subject]').val("default");
+                $("#fecha").val("");
+                $("#descripcion").val("");
+
 
             }
 

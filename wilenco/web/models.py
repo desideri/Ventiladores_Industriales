@@ -114,6 +114,12 @@ class Cliente(models.Model):
     direccion = models.TextField()
     telefono = models.CharField(max_length=10)
     email = models.EmailField()
+    
+    def __str__(self):
+        return "{}".format(self.nombre)
+
+    def __unicode__(self):
+        return unicode(str(self))
 
 class Solicitud(models.Model):
     """

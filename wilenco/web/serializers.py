@@ -10,3 +10,13 @@ class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         fields = ('categoria',)
+
+class SolicitdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Solicitud
+        fields = ( 'tipoSolicitud', 'descripcion', 'fechaEscojida', 'cliente')
+
+class ClienteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ('id','cedula', 'nombre', 'direccion', 'telefono', 'email')
