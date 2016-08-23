@@ -59,6 +59,8 @@ urlpatterns = [
 
     url(r'^guardarCotizacion/$', 'web.views.save_cotizacion', name="guardarCotizacion"),
 
+    url(r'^register_device/$', 'web.views.register_device' , name="register_device"),
+
     #RestFramework
     url(r'^api/', include(router.urls)),
 

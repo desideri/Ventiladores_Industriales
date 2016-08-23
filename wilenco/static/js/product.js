@@ -14,6 +14,7 @@ function LoadProducto(index){
     $('.item_price').empty();
     $('div.single-para>h4.item_name').empty();
     $('div.single-para>h5.item_marca').empty();
+    $('div.single-para>h5.item_capacidad').empty();
     $('p.para').empty();
     $('.prdt-info-grid').empty();
     $('#photoProducto').attr('src',productos[index].imagen);

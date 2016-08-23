@@ -47,7 +47,13 @@ INSTALLED_APPS = (
     'web',
     'rest_framework',
     'corsheaders',
+    'push_notifications',
 )
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+    'GCM_API_KEY':'AIzaSyCRT2gOKZPLiiEEVhlyV2LArIJm6oyIlSc',
+}
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,16 +91,25 @@ WSGI_APPLICATION = 'wilenco.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 # 'HOST':'162.243.121.93',
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wilencodb',
-        # 'USER': 'root',
-        'USER': 'pez',
-        'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT': '3306',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'wilencodb',
+    #     # 'USER': 'root',
+    #     'USER': 'pez',
+    #     'PASSWORD': '',
+    #     'HOST':'localhost',
+    #     'PORT': '3306',
 
-    }
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'wilencodb',
+        'USER': 'postgres',
+        'PASSWORD': 'star__714',
+        'HOST': 'localhost',
+        'PORT': '5432',
+       },
+
 }
 
 

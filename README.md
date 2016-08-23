@@ -14,3 +14,4 @@
     DjangoRestFramework (pip install djangorestframework)
     DjangoFilter (pip install django-filter)
     Django-Cors-Header (pip install django-cors-headers)
+    Push Notifications (pip install django-push-notifications)

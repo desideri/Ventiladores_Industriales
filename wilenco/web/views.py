@@ -20,6 +20,8 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
+from push_notifications.models import GCMDevice
+from django.views.decorators.csrf import csrf_exempt
 
 """
  Django Views for wilenco project.
@@ -324,3 +326,25 @@ def enviarServicio(request):
             return HttpResponseRedirect('/contact/thanks/')
         else:
             return HttpResponse('Make sure all fields are entered and valid.')
+
+# Save information device for Notification Push
+@csrf_exempt
+def register_device(request):
+
+    response = {}
+    device_id = request.POST.get('device_id',None)
+    registration_id = request.POST.get('registration_id',None)
+
+    if device_id and registration_id:
+        gcm_device = GCMDevice.objects.filter(device_id=device_id)
+
+        if gcm_device:
+            gcm_device = gcm_device.firts()
+
+        else:
+            gcm_device = GCMDevice.objects.create(name="wilenco",device_id=device_id,registration_id=registration_id)
+            gcm_device.save()
+
+        response = {'id':gcm_device.id,}
+
+    return JsonResponde(response)
