@@ -14,32 +14,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--
 Seccion head de la página:
     Aquí se define el título de la página y todas las librerías que se necesitan para que funcione la página
-    -->
+-->
 <head>
-{% load staticfiles %}
+	{% load staticfiles %}
 
-<title>Wilenco | Contacto </title>
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<title>Wilenco | Contacto </title>
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!--JQUERY UPGRADED
-<script src="{% static 'js/jquery.min.js' %}"></script>-->
-<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
-<!--//theme style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- start menu -->
-<script src="{% static 'js/simpleCart.min.js' %}"> </script>
-<!-- start menu -->
-<link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
-<script src="{% static 'js/memenu.js' %}"></script>
-<!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
-<script>
-    /*Aquí se realizan funciones para validar lo que el usuario ingresa en el formulario*/
-    $(document).ready(function () {
+	<script src="{% static 'js/jquery.min.js' %}"></script>-->
+	<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+	<!--//theme style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- start menu -->
+	<script src="{% static 'js/simpleCart.min.js' %}"> </script>
+	<!-- start menu -->
+	<link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<script src="{% static 'js/memenu.js' %}"></script>
+	<!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
+	<script>
+		/*Aquí se realizan funciones para validar lo que el usuario ingresa en el formulario*/
+		$(document).ready(function () {
         //Muestra el menu de la página
         $(".memenu").memenu();
         $("#ErrorMessage").hide();
@@ -55,61 +55,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         $("#btnEnviar").click(function () {
 
-            nombre = $("#nombreUsuario").val();
-            email = $("#emailUsuario").val();
-            telefono = $("#telUsuario").val();
-            mensaje = $("#asuntoUsuario").val();
+        	nombre = $("#nombreUsuario").val();
+        	email = $("#emailUsuario").val();
+        	telefono = $("#telUsuario").val();
+        	mensaje = $("#asuntoUsuario").val();
 
-            if (nombre == '' || !rgnombre.test(nombre)) {
-                $("#ErrorMessage").text("Nombre Incorrecto");
-                $("#ErrorMessage").show();
-                console.log("Nombre Incorrecto");
-                return false;
-            }
-            else if (email == '' || !rgemail.test(email)) {
-                $("#ErrorMessage").text("Email Incorrecto");
-                $("#ErrorMessage").show();
-                console.log("Email Incorrecto");
-                return false;
-            }
-            else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
-                $("#ErrorMessage").text("Telefono Incorrecto");
-                $("#ErrorMessage").show();
-                console.log("Telefono Incorrecto");
-                return false;
-            }
-            else if (asunto == '') {
-                $("#ErrorMessage").text("Asunto Incorrecto");
-                $("#ErrorMessage").show();
-                console.log("Asunto Incorrecto");
-                return false;
-            }
-            else {
-                $("#ErrorMessage").hide();
-                $("#OkMessage").text("Formulario Enviado..!");
-                $("#OkMessage").show();
-                console.log(nombre);
-                console.log(telefono);
-                console.log(email);
-                console.log(mensaje);
-                $.post('/enviarContacto/',{'nombre':nombre,'email':email,'telefono':telefono,'mensaje':mensaje, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
-                  console.log("mail enviado exitosamente!!");
-                  });
-                }
-            });
+        	if (nombre == '' || !rgnombre.test(nombre)) {
+        		$("#ErrorMessage").text("Nombre Incorrecto");
+        		$("#ErrorMessage").show();
+        		console.log("Nombre Incorrecto");
+        		return false;
+        	}
+        	else if (email == '' || !rgemail.test(email)) {
+        		$("#ErrorMessage").text("Email Incorrecto");
+        		$("#ErrorMessage").show();
+        		console.log("Email Incorrecto");
+        		return false;
+        	}
+        	else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+        		$("#ErrorMessage").text("Telefono Incorrecto");
+        		$("#ErrorMessage").show();
+        		console.log("Telefono Incorrecto");
+        		return false;
+        	}
+        	else if (asunto == '') {
+        		$("#ErrorMessage").text("Asunto Incorrecto");
+        		$("#ErrorMessage").show();
+        		console.log("Asunto Incorrecto");
+        		return false;
+        	}
+        	else {
+        		$("#ErrorMessage").hide();
+        		$("#OkMessage").text("Formulario Enviado..!");
+        		$("#OkMessage").show();
+        		console.log(nombre);
+        		console.log(telefono);
+        		console.log(email);
+        		console.log(mensaje);
+        		$.post('/enviarContacto/',{'nombre':nombre,'email':email,'telefono':telefono,'mensaje':mensaje, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+        			console.log("mail enviado exitosamente!!");
+        		});
+        	}
+        });
     });
 </script>
 
 </head>
 <body>
-<!---->
-<div class="header-top">
-	 <div class="header-bottom">
-				<div class="logo">
-					<h1><a href="/">Wilenco</a></h1>
-				</div>
-			 <!---->
-			 <div class="top-nav">
+	<!---->
+	<div class="header-top">
+		<div class="header-bottom">
+			<div class="logo">
+				<h1><a href="/">Wilenco</a></h1>
+			</div>
+			<!---->
+			<div class="top-nav">
 				<ul class="memenu skyblue"><li class="grid"><a href="/">Inicio</a></li>
 					<li class="grid"><a href="/empresa/">Empresa</a>
 					</li>
@@ -143,96 +143,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 					<li class="grid"><a href="/servicio/">Servicios</a></li>
 					<li class="active"><a href="/contacto/">Contacto</a></li>
-                    <li class="grid"><div class="cart box_1 text-center" style="margin:initial auto">
-					                    <a href="/cotizacion/">
-   					                        <div class="total">
-   					                            (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
-                                             </div>
-   					                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-	   				                    </a>
-	   				                    <p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
-			 	                        <div class="clearfix"> </div>
-			                        </div>
-                    </li>
-				</ul>
-			 </div>
-			 <!---->
-			 <div class="clearfix"> </div>
-			 <!---->
-			 </div>
+					</ul>
+			</div>
+			<div class="cart box_1" style="float:right; margin-top:2em;" >
+				<a href="/cotizacion/">
+					<div class="total">
+						(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+					</div>
+					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+				</a>
+				<p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
+				<div class="clearfix"> </div>
+			</div>
+			<!---->
 			<div class="clearfix"> </div>
-</div>
+			<!---->
+		</div>
+		<div class="clearfix"> </div>
+	</div>
 
-<!-- Fin del Header-->
-<!---->
-<div class="contact">
-	  <div class="container">
-		 <ol class="breadcrumb">
-		  <li class="active">Contacto</li>
-		 </ol>
+	<!-- Fin del Header-->
+	<!---->
+	<div class="contact">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="active">Contacto</li>
+			</ol>
 			<!--start contact-->
 			<h3>Cont&aacute;ctenos</h3>
-		  <div class="section group">
+			<div class="section group">
 				<div class="col-md-6 span_1_of_3">
 					<div class="contact_info">
-			    	 	<h4>Wilenco</h4>
-			    	 		<div class="map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.861770902672!2d-79.90175978524474!3d-2.2058727983921544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6e14f8c26db5%3A0x49a884cc44b19448!2sLos+R%C3%ADos+%26+Gral+Jos%C3%A9+A.G%C3%B3mez%2C+Guayaquil+090308!5e0!3m2!1ses-419!2sec!4v1465014386485" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-								</div>
-      				</div>
-                    <!--Información general de la compañía-->
-      			<div class="company_address">
-				     <h4>Informaci&oacute;n de la Compañia :</h4>
-						 <p>General Gomez 2012 y Los Ríos</p>
-						 <p>Guayas - Guayaquil</p>
-						 <p>Ecuador</p>
-						 <p>Phone:(042) 513 374</p>
-						 <p>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></p>
-				   </div>
+						<h4>Wilenco</h4>
+						<div class="map">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.861770902672!2d-79.90175978524474!3d-2.2058727983921544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6e14f8c26db5%3A0x49a884cc44b19448!2sLos+R%C3%ADos+%26+Gral+Jos%C3%A9+A.G%C3%B3mez%2C+Guayaquil+090308!5e0!3m2!1ses-419!2sec!4v1465014386485" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<!--Información general de la compañía-->
+					<div class="company_address">
+						<h4>Informaci&oacute;n de la Compañia :</h4>
+						<p>General Gomez 2012 y Los Ríos</p>
+						<p>Guayas - Guayaquil</p>
+						<p>Ecuador</p>
+						<p>Phone:(042) 513 374</p>
+						<p>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></p>
+					</div>
 				</div>
-              <!--Formulario que debe ser llenado por el usuario-->
+				<!--Formulario que debe ser llenado por el usuario-->
 				<div class="col-md-6 span_2_of_3">
-				  <div class="contact-form">
-					    <form>
-                <div class="alert alert-danger" id="ErrorMessage">
-                </div>
-					    	<div>
-                  <div class="alert alert-success" id="OkMessage">
-                  <strong>Success!</strong> Indicates a successful or positive action.
-                </div>
+					<div class="contact-form">
+						<form>
+							<div class="alert alert-danger" id="ErrorMessage">
+							</div>
+							<div>
+								<div class="alert alert-success" id="OkMessage">
+									<strong>Success!</strong> Indicates a successful or positive action.
+								</div>
 
-						    	<span><label>NOMBRES/APELLIDOS</label></span>
-						    	<span><input id ="nombreUsuario" name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
-						    </div>
-						    <div>
-						    	<span><label>E-MAIL</label></span>
-						    	<span><input id ="emailUsuario" name="userEmail" type="text" class="textbox" placeholder="Ingrese su e-mail" required>
-                  </span>
-						    </div>
-						    <div>
-						     	<span><label>TEL&eacute;FONO/CELULAR <b>Ej: 042-338745/09-08784567</b></label></span>
-						    	<span><input id ="telUsuario"name="userPhone" type="text" class="textbox" placeholder="Ingrese su telefono o celular 042-338745/09-08784567" required></span>
-						    </div>
-						    <div>
-						    	<span><label>ASUNTO</label></span>
-						    	<span><textarea id="asuntoUsuario" name="userMsg" required> </textarea></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" class="mybutton" value="Enviar" id="btnEnviar"></span>
-						  </div>
-					    </form>
+								<span><label>NOMBRES/APELLIDOS</label></span>
+								<span><input id ="nombreUsuario" name="userName" type="text" class="textbox" placeholder="Ingrese su nombre" required></span>
+							</div>
+							<div>
+								<span><label>E-MAIL</label></span>
+								<span><input id ="emailUsuario" name="userEmail" type="text" class="textbox" placeholder="Ingrese su e-mail" required>
+								</span>
+							</div>
+							<div>
+								<span><label>TEL&eacute;FONO/CELULAR <b>Ej: 042-338745/09-08784567</b></label></span>
+								<span><input id ="telUsuario"name="userPhone" type="text" class="textbox" placeholder="Ingrese su telefono o celular 042-338745/09-08784567" required></span>
+							</div>
+							<div>
+								<span><label>ASUNTO</label></span>
+								<span><textarea id="asuntoUsuario" name="userMsg" required> </textarea></span>
+							</div>
+							<div>
+								<span><input type="submit" class="mybutton" value="Enviar" id="btnEnviar"></span>
+							</div>
+						</form>
 
-				    </div>
-  				</div>
-		  </div>
-	  </div>
- </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<!---->
-<div class="footer">
-	 <div class="container">
-		 <div class="footer-grids">
-			 <div class="col-md-6 ftr-grid">
+	<!---->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-grids">
+				<div class="col-md-6 ftr-grid">
 					<h3>Nuestros Productos</h3>
 					<ul class="nav-bottom">
 						<li><a href="#">Extractores en línea para conductos</a></li>
@@ -241,30 +240,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#">Extractores de tejado</a></li>
 						<li><a href="#">Accesorios</a></li>
 					</ul>
-			 </div>
-			 <div class="col-md-6 ftr-grid">
-						<h3>Contacto</h3>
-						<ul class="nav-bottom">
-							<li>General Gomez 2012 y Los Ríos</li>
-							<li>Guayas - Guayaquil</li>
-							<li>Ecuador</li>
-							<li>Phone:(042) 513 374</li>
-							<li>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></li>
+				</div>
+				<div class="col-md-6 ftr-grid">
+					<h3>Contacto</h3>
+					<ul class="nav-bottom">
+						<li>General Gomez 2012 y Los Ríos</li>
+						<li>Guayas - Guayaquil</li>
+						<li>Ecuador</li>
+						<li>Phone:(042) 513 374</li>
+						<li>Email: <a href="mailto:wilse56@hotmail.com">wilse56@hotmail.com</a></li>
 					</ul>
-			 </div>
-			 <div class="clearfix"></div>
-		 </div>
-	 </div>
-</div>
-<div class="copywrite">
-	 <div class="container">
-		 <div class="copy">
-			 <p>© 2016 Wilenco -Ventiladores Industriales. Todos los derechos Reservados</p>
-		 </div>
-		 <div class="clearfix"></div>
-	 </div>
-</div>
-<!---->
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="copywrite">
+		<div class="container">
+			<div class="copy">
+				<p>© 2016 Wilenco -Ventiladores Industriales. Todos los derechos Reservados</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!---->
 </body>
 {% csrf_token %}
 </html>

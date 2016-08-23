@@ -38,12 +38,12 @@ Aquí se define el título de la página y todas las librerías que se necesitan
     <script src="{% static 'js/memenu.js' %}"></script>
     <!--Funciones que permiten tener control sobre la información que el usuario ingresa en el formulario-->
     <script>
-    var clientes ;
-    var fechita;
-    var descripcion;
-    $(document).ready(function(){
-        var today = new Date();
-        var dd = today.getDate();
+        var clientes ;
+        var fechita;
+        var descripcion;
+        $(document).ready(function(){
+            var today = new Date();
+            var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!
         var yyyy = today.getFullYear();
         if(dd<10){
@@ -245,7 +245,7 @@ Aquí se define el título de la página y todas las librerías que se necesitan
         // });
 
     });
-    </script>
+</script>
 
 </head>
 <body>
@@ -290,98 +290,97 @@ Aquí se define el título de la página y todas las librerías que se necesitan
                     </li>
                     <li class="active"><a href="/servicio/">Servicios</a></li>
                     <li class="grid"><a href="/contacto/">Contacto</a></li>
-                    <li class="grid"><div class="cart box_1 text-center" style="margin:initial auto">
-                        <a href="/cotizacion/">
-                            <div class="total">
-                                (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
-                            </div>
-                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                        </a>
-                        <p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
-                        <div class="clearfix"> </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!---->
-        <div class="clearfix"> </div>
-        <!---->
-    </div>
-    <div class="clearfix"> </div>
-</div>
-<!---->
-<div class="contact">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li class="active"><a href="#" data="#info" class="show">Servicios de la Empresa</a></li>
-        </ol>
-        <!--start form servicio-->
-        <div class="text-center">
-            <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
-            <h3>Formulario de Servicio</h3>
-            <p class="lead">Para poder solicitar un servicio de mantenimiento o instalaci&oacute;n llenar el formulario a continuaci&oacute;n.</p>
-        </div>
-    </br>
-    <div class="row">
-        <div class="alert alert-danger" id="ErrorMessage"></div>
-        <div>
-            <div class="alert alert-success" id="OkMessage">
-                <strong>Formulario Enviado</strong>
+                </ul>
             </div>
+            <!---->
+            <div class="cart box_1" style="float:right; margin-top:2em;" >
+                <a href="/cotizacion/">
+                    <div class="total">
+                        (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+                    </div>
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </a>
+                <p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+            <!---->
         </div>
+        <div class="clearfix"> </div>
     </div>
-
-    <div class="row">
-        <div class="col-sm-6 col-md-6">
-            <div class="panel panel-default ">
-            </br>
+    <!---->
+    <div class="contact">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="active"><a href="#" data="#info" class="show" style="color:#777;">Servicios de la Empresa</a></li>
+            </ol>
+            <!--start form servicio-->
             <div class="text-center">
-                <h3>Datos del Cliente</h3>
-                <hr>
+                <img src="{% static 'images/logo_empresa.jpg' %}" alt="Samsung-Logos-HD"  class="img-circle" width="100" height="70" style="margin-top:20px">
+                <h3>Formulario de Servicio</h3>
+                <p class="lead">Para poder solicitar un servicio de mantenimiento o instalaci&oacute;n llenar el formulario a continuaci&oacute;n.</p>
             </div>
         </br>
-        <div class="panel-body">
-            <div class="contact-form">
-                <form>
+        <div class="row">
+            <div class="alert alert-danger" id="ErrorMessage"></div>
+            <div>
+                <div class="alert alert-success" id="OkMessage">
+                    <strong>Formulario Enviado</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="panel panel-default ">
+                </br>
+                <div class="text-center">
+                    <h3>Datos del Cliente</h3>
+                    <hr>
+                </div>
+            </br>
+            <div class="panel-body">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                            </div>
+                        </div>
+                    </br></br></br>
                     <div class="form-group">
-                        <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                        <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
                         <div class="col-md-8">
-                            <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                            <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
                         </div>
                     </div>
-                </br></br></br>
+                </br></br>
                 <div class="form-group">
-                    <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
+                    <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                        <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
                     </div>
                 </div>
             </br></br>
             <div class="form-group">
-                <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
                 <div class="col-md-8">
-                    <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                    <input class="form-control" id="emailCliente" placeholder="Email" type="text">
                 </div>
             </div>
         </br></br>
         <div class="form-group">
-            <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
+            <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
             <div class="col-md-8">
-                <input class="form-control" id="emailCliente" placeholder="Email" type="text">
+                <input class="form-control" id="telCliente" placeholder="Tel&eacute;fono" type="text">
+                <label><b>Ej: 042-338745/09-08784567</b></</label></br></br>
             </div>
         </div>
     </br></br>
     <div class="form-group">
-        <label for="telefonoCliente" class="col-md-2 control-label"><strong>Tel&eacute;fono:</strong></label>
-        <div class="col-md-8">
-            <input class="form-control" id="telCliente" placeholder="Tel&eacute;fono" type="text">
-            <label><b>Ej: 042-338745/09-08784567</b></</label></br></br>
-        </div>
-    </div>
-</br></br>
-<div class="form-group">
-</br></br>
-<label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
+    </br></br>
+    <label for="direccionCliente" class="col-md-2 control-label"><strong>Direcci&oacute;n:<strong></label>
     <div class="col-md-8">
         <textarea id="direccionCliente" name="direccionCliente" required> </textarea>
     </div>
@@ -424,10 +423,10 @@ Aquí se define el título de la página y todas las librerías que se necesitan
 </br></br>
 <div class="form-group"></br>
     <label  class="col-md-3 control-label"><strong>Descripci&oacute;n:<strong></label>
-        <div class="col-md-8">
-            <textarea id="descripcion" name="descripcion" class="form-control" > </textarea>
-        </div>
+    <div class="col-md-8">
+        <textarea id="descripcion" name="descripcion" class="form-control" > </textarea>
     </div>
+</div>
 </br></br></br></br></br></br></br></br></br></br>
 </br></br></br></br></br></br></br></br>
 </div>

@@ -34,10 +34,10 @@ Aqui se define el título de la página y todas las librerías que se necesitan 
 	<!-- the jScrollPane script -->
 	<script type="text/javascript" src="{% static 'js/jquery.jscrollpane.min.js' %}"></script>
 	<script type="text/javascript" id="sourcecode">
-	$(function()
-	{
-		$('.scroll-pane').jScrollPane();
-	});
+		$(function()
+		{
+			$('.scroll-pane').jScrollPane();
+		});
 	</script>
 	<!--the jScrollPane script -->
 
@@ -182,7 +182,11 @@ Fin de script -->
 </li>
 <li class="grid"><a href="/servicio/">Servicios</a></li>
 <li class="grid"><a href="/contacto/">Contacto</a></li>
-<li class="grid"><div class="cart box_1 text-center" style="margin:initial auto">
+</ul>
+
+</div>
+<!---->
+<div class="cart box_1" style="float:right; margin-top:2em;" >
 	<a href="/cotizacion/">
 		<div class="total">
 			(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
@@ -192,11 +196,6 @@ Fin de script -->
 	<p><a href="javascript:;" class="simpleCart_empty">Vaciar Carrito</a></p>
 	<div class="clearfix"> </div>
 </div>
-</li>
-</ul>
-
-</div>
-<!---->
 
 
 <div class="clearfix"> </div>
@@ -362,8 +361,8 @@ Fin de script -->
 									<h4 class="item_price"></h4> <br>
 									<p class="para" ></p>
 									<h4 class="item_name" style="display:none"></h4>
-            						<h5 class="item_marca" style="display:none"></h5>
-            						<h5 class="item_capacidad" style="display:none"></h5>
+									<h5 class="item_marca" style="display:none"></h5>
+									<h5 class="item_capacidad" style="display:none"></h5>
 									<div class="prdt-info-grid">
 										<ul>
 										</ul> 
