@@ -55,6 +55,8 @@ urlpatterns = [
 
     url(r'^servicios/$', 'web.views.exportServicios', name="export_servicios"),
 
+    url(r'^cotizaciones/$', 'web.views.exportCotizacion', name="export_cotizaciones"),
+
     url(r'^guardarCotizacion/$', 'web.views.save_cotizacion', name="guardarCotizacion"),
 
     #RestFramework

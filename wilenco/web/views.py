@@ -73,6 +73,36 @@ def exportServicios(request):
         data.append(solicitudic)
     return HttpResponse(json.dumps(data))
 
+def exportCotizacion(request):
+    data = []
+    cotizaciones = Cotizacion.objects.all()
+    for cotizacion in cotizaciones:
+        prodcot = ProductosEnCotizacion.objects.filter(cotizacion=cotizacion.id)
+        productos = []
+        for element in prodcot:
+            producto  = {
+                "nombre": element.producto.nombre,
+                "categoria": element.producto.categoria.categoria,
+                "marca": element.producto.marca,
+                "cantidad": element.cantidad
+            }
+            productos.append(producto)
+
+        cotizaciondic = {
+            "descripcion": cotizacion.descripcionObra,
+            "totalproductos": cotizacion.total_productos,
+            "cliente":{
+                "nombre": cotizacion.cliente.nombre,
+                "cedula": cotizacion.cliente.cedula,
+                "direccion": cotizacion.cliente.direccion,
+                "telefono": cotizacion.cliente.telefono,
+                "email": cotizacion.cliente.email
+            },
+            "productos":productos
+        }
+        data.append(cotizaciondic)
+    return HttpResponse(json.dumps(data))
+
 def save_cotizacion(request):
     if request.method == 'POST':
         cliente = None
