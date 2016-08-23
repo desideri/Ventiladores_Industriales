@@ -53,6 +53,10 @@ urlpatterns = [
 
     url(r'^get_marcas/$', 'web.views.get_marcas', name="marcas"),
 
+    url(r'^servicios/$', 'web.views.exportServicios', name="export_servicios"),
+
+    url(r'^guardarCotizacion/$', 'web.views.save_cotizacion', name="guardarCotizacion"),
+
     #RestFramework
     url(r'^api/', include(router.urls)),
 

@@ -15,7 +15,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 """Para el correo electronico"""
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -51,6 +51,44 @@ class SolicitudViewSet(viewsets.ModelViewSet):
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
+
+def exportServicios(request):
+    data = []
+    solicitudes = Solicitud.objects.all()
+    for solicitud in solicitudes:
+        # cliente = Cliente.objects.get(pk=solicitud.cliente.id)
+        solicitudic = {
+            "tipo": solicitud.tipoSolicitud,
+            "descripcion": solicitud.descripcion,
+            "fechaCreada": "{}/{}/{}".format(solicitud.fechaCreada.year,solicitud.fechaCreada.month,solicitud.fechaCreada.day),
+            "fechaEscojida": "{}/{}/{}".format(solicitud.fechaEscojida.year, solicitud.fechaEscojida.month, solicitud.fechaEscojida.day),
+            "cliente" : {
+                "nombre": solicitud.cliente.nombre,
+                "cedula": solicitud.cliente.cedula,
+                "direccion": solicitud.cliente.direccion,
+                "telefono": solicitud.cliente.telefono,
+                "email": solicitud.cliente.email
+            }
+        }
+        data.append(solicitudic)
+    return HttpResponse(json.dumps(data))
+
+def save_cotizacion(request):
+    if request.method == 'POST':
+        cliente = None
+        try:
+            cliente = Cliente.objects.get(cedula=request.POST['cedula'])
+        except:
+            cliente = Cliente.objects.create(cedula=request.POST['cedula'], nombre=request.POST['nombre'], direccion=request.POST['direccion'], telefono=request.POST['telefono'], email=request.POST['email'])
+
+        cotizacion = Cotizacion.objects.create(cliente=cliente,descripcionObra=request.POST['descripcion'],total_productos=request.POST['total_productos'])
+        productos = json.loads(request.POST['productos'])
+        for element in productos:
+            producto = Producto.objects.get(nombre=element['nombre'], marca=element['marca'], capacidad=element['capacidad'])
+            pro_cot = ProductosEnCotizacion.objects.create(cotizacion= cotizacion, producto=producto, cantidad = element['cantidad'])
+
+        return HttpResponse("datos guardados")
+        
 
 def index(request):
     """ Funcion  "index"

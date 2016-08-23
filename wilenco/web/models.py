@@ -114,7 +114,7 @@ class Cliente(models.Model):
     direccion = models.TextField()
     telefono = models.CharField(max_length=10)
     email = models.EmailField()
-    
+
     def __str__(self):
         return "{}".format(self.nombre)
 
@@ -139,7 +139,13 @@ class Solicitud(models.Model):
                                                     #  la Solicitud
     fechaEscojida = models.DateField() # Fecha tentativa del cliente para el
                                        # Mantemiento/Instalacion
-    cliente = models.ForeignKey(Cliente)
+    cliente = models.ForeignKey(Cliente, related_name='clientes')
+
+    def __str__(self):
+        return "{}".format(self.id)
+
+    def __unicode__(self):
+        return unicode(str(self))
 
 
 class Cotizacion(models.Model):
@@ -148,8 +154,23 @@ class Cotizacion(models.Model):
     Entidad Cotizacion contiene informacion relevante sobre cada cliente que
     solicita una cotizacion, como fecha, id de cotizacion,  descripcion de
     obra o producto a cotizar"""
-    cotizadorID = models.CharField(max_length=10)
     fechaDeSolicitud = models.DateField(auto_now=True)
     cliente = models.ForeignKey(Cliente,null=False)
-    producto = models.ManyToManyField(Producto, blank=False, null=False)
+    productos = models.ManyToManyField(Producto, through='ProductosEnCotizacion', through_fields=('cotizacion', 'producto'))
     descripcionObra = models.TextField()
+    total_productos = models.IntegerField()
+
+    def __str__(self):
+        return "{}".format(self.id)
+
+    def __unicode__(self):
+        return unicode(str(self))
+
+class ProductosEnCotizacion(models.Model):
+    """
+    Tabla intermedia entre Cotizacion y producto que almacena
+    la cantidad de productos por cotizacion
+    """
+    cotizacion = models.ForeignKey(Cotizacion)
+    producto = models.ForeignKey(Producto)
+    cantidad = models.IntegerField()

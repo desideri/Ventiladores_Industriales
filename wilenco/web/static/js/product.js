@@ -12,15 +12,21 @@ var productos = [];
 var all_products = "" ;
 function LoadProducto(index){
     $('.item_price').empty();
+    $('div.single-para>h4.item_name').empty();
+    $('div.single-para>h5.item_marca').empty();
     $('p.para').empty();
     $('.prdt-info-grid').empty();
     $('#photoProducto').attr('src',productos[index].imagen);
     $('.item_price').append("<b>"+productos[index].nombre+"</b>");
+    $('div.single-para>h4.item_name').append(productos[index].nombre);
+    $('div.single-para>h5.item_marca').append(productos[index].marca);
+    $('div.single-para>h5.item_capacidad').append(productos[index].capacidad);
     $('p.para').append(productos[index].descripcion);
     $(".prdt-info-grid").append($('<ul>').attr("class", "hul"));
     $(".hul").append("<li><b> -Categoria : </b>"+productos[index].categoria+"</li>");
     $(".hul").append("<li><b> -Capacidad : </b>"+productos[index].capacidad+"</li>");
     $(".hul").append("<li><b> -Marca : </b>"+productos[index].marca+"</li>");
+
 }
 
 
@@ -40,7 +46,8 @@ function searchByMark(marca){
             +'<div class="product-info simpleCart_shelfItem">'
             +'<div class="product-info-cust prt_name">'
             +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
-            +'<h5 class="item_marca">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_marca" style="display:none">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_categoria" style="display:none">'+ productos[i].capacidad +'</h5>'
             +'<input type="text" class="item_quantity" value="1" />'
             +'<input type="button" class="item_add items" value="+">'
             +'<div class="clearfix"></div>'
@@ -67,7 +74,8 @@ function searchByCategory(categoria){
             +'<div class="product-info simpleCart_shelfItem">'
             +'<div class="product-info-cust prt_name">'
             +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
-            +'<h5 class="item_marca">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_marca" style="display:none">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_categoria" style="display:none">'+ productos[i].capacidad +'</h5>'
             +'<input type="text" class="item_quantity" value="1" />'
             +'<input type="button" class="item_add items" value="+">'
             +'<div class="clearfix"></div>'
@@ -106,7 +114,8 @@ $(document).ready(function(){
             +'<div class="product-info simpleCart_shelfItem">'
             +'<div class="product-info-cust prt_name">'
             +'<h4 class="item_name">'+productos[i].nombre+'</h4>'
-            +'<h5 class="item_marca">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_marca" style="display:none">'+productos[i].marca+'</h5>'
+            +'<h5 class="item_capacidad" style="display:none">'+ productos[i].capacidad +'</h5>'
             +'<input type="text" class="item_quantity" value="1" />'
             +'<input type="button" class="item_add items" value="+">'
             +'<div class="clearfix"></div>'
