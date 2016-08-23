@@ -301,6 +301,7 @@ def enviarServicio(request):
         descripcion =  request.POST.get('descripcion', None)
         to_email=settings.EMAIL_HOST_USER
         asunto = "Agendar Servicio de " + tipo +  " para " + nombre + " " + apellido
+        print "holi"
         if asunto and from_email:
             try:
                 titulo = '<h2>Formulario de Servicio</h2><br>'

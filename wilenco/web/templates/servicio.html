@@ -55,7 +55,7 @@ Aquí se define el título de la página y todas las librerías que se necesitan
 
         today = yyyy+'-'+mm+'-'+dd;
         document.getElementById("fecha").setAttribute("min", today);
-        $.getJSON('/api/cliente/',function(data){
+        $.getJSON('/api/cliente/?format=json',function(data){
             clientes = data;
         });
         //Muestra el menu de la página
