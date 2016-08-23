@@ -330,7 +330,6 @@ def enviarServicio(request):
 # Save information device for Notification Push
 @csrf_exempt
 def register_device(request):
-
     response = {}
     device_id = request.POST.get('device_id',None)
     registration_id = request.POST.get('registration_id',None)
