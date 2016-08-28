@@ -120,7 +120,7 @@ def save_cotizacion(request):
             pro_cot = ProductosEnCotizacion.objects.create(cotizacion= cotizacion, producto=producto, cantidad = element['cantidad'])
 
         return HttpResponse("datos guardados")
-        
+
 
 def index(request):
     """ Funcion  "index"
@@ -164,6 +164,13 @@ def servicio(request):
         Fecha de Creacion: Junio 07/2016
         Fecha de Modificacion: Junio 07/2016"""
     return render(request, 'servicio.html', {})
+
+def viewServicios(request):
+    """ Funcion  "movil-servicio"
+        Descripcion: Funcion que hace render la pagina de movil Servicio.
+        Fecha de Creacion: Junio 07/2016
+        Fecha de Modificacion: Junio 07/2016"""
+    return render(request, 'mservicio.html', {})
 
 def filtrar_productos(request):
     """

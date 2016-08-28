@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<!--theme style-->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+<!--//theme style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- /start menu -->
+</head>
+<body>
+<!--header-->
+
+<script src="{% static 'js/bootstrap.js' %}"> </script>
+
+<script>
+
+function obtenerCliente(id){
+
+  $.getJSON('http://wilenco.tk/api/cliente/?format=json',function(data2){
+    clientes = data2;
+        for(var i = 0; i < clientes.length; i++){
+           if(clientes[i].id ==id){
+             console.log(clientes[i].nombre);
+             return clientes[i].nombre
+           }
+           else{
+             return
+           }
+        }
+
+      });
+}
+  $(document).ready(function () {
+    var solicitudes = [];
+    var clientes = [];
+    var idcliente,nombrecli;
+    $.getJSON('http://wilenco.tk/api/solicitud/?format=json',function(data){
+        solicitudes = data;
+        //console.log(data);
+          for(var i = 0; i < solicitudes.length; i++){
+             if(solicitudes[i].tipoSolicitud=="MANT"){
+               idcliente = solicitudes[i].cliente;
+               $.getJSON('http://wilenco.tk/api/cliente/?format=json',function(data2){
+                 clientes = data2;
+                     for(var i = 0; i < clientes.length; i++){
+                        if(clientes[i].id ==idcliente){
+                          var html ='<a href="#" class="list-group-item ">'+
+                              '<h4 class="list-group-item-heading">'+
+                               'MANTENIMIENTO'
+                              +'</h4>'
+                              + '<p class="list-group-item-text">' +
+                              clientes[i].nombre + " - "+solicitudes[i].fechaEscojida
+                              +'</p>'
+                              +'</a>';
+                              $('.list-group').append(html);
+                        }
+                     }
+                   });
+             }
+            else{
+              $.getJSON('http://wilenco.tk/api/cliente/?format=json',function(data2){
+                clientes = data2;
+                    for(var i = 0; i < clientes.length; i++){
+                       if(clientes[i].id ==idcliente){
+                         var html ='<a href="#" class="list-group-item ">'+
+                             '<h4 class="list-group-item-heading">'+
+                              'INSTALACION'
+                             +'</h4>'
+                             + '<p class="list-group-item-text">' +
+                             clientes[i].nombre + " - "+solicitudes[i].fechaEscojida
+                             +'</p>'
+                             +'</a>';
+                             $('.list-group').append(html);
+                       }
+                    }
+                  });
+            }
+
+          }
+          });
+
+
+  });
+  </script>
+<!---->
+<div id="solicitudes">
+<hr>
+<ul class="list-group"></ul>
+</div>
+</body>
+</html>

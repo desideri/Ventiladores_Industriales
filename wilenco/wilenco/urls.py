@@ -54,6 +54,8 @@ urlpatterns = [
     url(r'^get_marcas/$', 'web.views.get_marcas', name="marcas"),
 
     url(r'^servicios/$', 'web.views.exportServicios', name="export_servicios"),
+    #para movil servicios
+    url(r'^mservicio/', 'web.views.viewServicios'),
 
     url(r'^cotizaciones/$', 'web.views.exportCotizacion', name="export_cotizaciones"),
 
