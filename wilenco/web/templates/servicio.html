@@ -72,11 +72,27 @@ Aquí se define el título de la página y todas las librerías que se necesitan
         rgemail = new RegExp('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$');
         rgtel = new RegExp('0[0-9]{2}-[0-9]{6}');
 
+         $("#divempresa").hide();
+
+        $("input:radio[name=optradio]").click(function(){
+            var valor =$("input[name='optradio']:checked").val();
+            if(valor=="empresa"){
+               $("#divpnatural").hide();
+                $("#divempresa").show();
+            }else{
+               $("#divpnatural").show()
+               $("#divempresa").hide();
+
+            }
+          });
+
         $("#btnEnviar").click(function () {
 
             nombre = $("#nombreCliente").val();
+            nombre2 = $("#nombreCliente2").val();
             apellido = $("#apellidoCliente").val();
             cedula = $("#cedulaCliente").val();
+            ruc = $("#cedulaCliente2").val();
             email = $("#emailCliente").val();
             telefono = $("#telCliente").val();
             direccion = $("#direccionCliente").val();
@@ -91,158 +107,224 @@ Aquí se define el título de la página y todas las librerías que se necesitan
                 tipotmp = "INST";
             }
 
-            if (nombre.trim() == '' || !rgnombre.test(nombre)) {
-                $("#ErrorMessage").text("Nombre Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (apellido.trim() == '' || !rgnombre.test(apellido)) {
-                $("#ErrorMessage").text("Apellido Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (email.trim() == '' || !rgemail.test(email)) {
-                $("#ErrorMessage").text("Email Incorrecto");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
-                $("#ErrorMessage").text("Telefono Incorrecto");
-                $("#ErrorMessage").show();
-                //console.log("Telefono Incorrecto");
-                return false;
-            }
-            else if (direccion.trim() == '') {
-                $("#ErrorMessage").text("Direccion Incorrecta");
-                $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
-                return false;
-            }
-            else if (cedula.trim() == '') {
-                $("#ErrorMessage").text("Cedula Incorrecta");
-                $("#ErrorMessage").show();
-                //console.log("Asunto Incorrecto");
-                return false;
-            }
-            else if (tipo == "default") {
-                $("#ErrorMessage").text("Escoja un servicio.");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (fecha == "") {
-                $("#ErrorMessage").text("Escoja una fecha para el servicio.");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else if (descripcion == "") {
-                $("#ErrorMessage").text("Escriba el motivo del Servicio escojido.");
-                $("#ErrorMessage").show();
-                return false;
-            }
-            else {
-
-                //Datos del Cliente : Nombre, Apellido, Cedula, email, telefono, direcccion
-                //Detalle del Servicio : Tipo, Fecha, Descripcion
-
-                $.post('/enviarServicio/',{'nombre':nombre,'apellido':apellido,'cedula':cedula, 'email':email,'telefono':telefono,'direccion':direccion,'tipo':tipo,'fecha':fecha,'descripcion':descripcion, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
-
-                    console.log("mail enviado exitosamente!!");
-
-                });
-                cliente = null;
-
-                for(var i = 0; i < clientes.length; i++){
-                    if ( $("#cedulaCliente").val() == clientes[i].cedula){
-                        cliente = clientes[i];
-                        solicitudat = {
-                            'tipoSolicitud': tipotmp,
-                            'descripcion': $("#descripcion").val(),
-                            'fechaEscojida': $("#fecha").val(),
-                            'cliente': cliente.id,
-                            'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
-                        };
-                        console.log(solicitudat);
-                        $.post('/api/solicitud/',solicitudat,function(data){
-                            console.log("solicitud enviada");
-                        }).fail(function(data) {
-                            console.log( "error del for  " + data );
-                            console.log(data);
-                        });
-                    }
-                }
-                if (cliente == null){
-                    fechita = $("#fecha").val();
-                    console.log("entre aqui")
-                    datos ={
-                        'nombre':nombre + " "+ apellido,
-                        'cedula':$("#cedulaCliente").val(),
-                        'email':email,
-                        'telefono':telefono.replace('-',''),
-                        'direccion':direccion,
-                        'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
-                    };
-                    console.log(datos);
-                    $.post('/api/cliente/',datos ,function(data){
-                        console.log($("#descripcion").val());
-                        console.log($("#fecha").val());
-                        id = data.id;
-                        solicitudatos = {
-                            'tipoSolicitud': tipotmp,
-                            'descripcion': descripcion,
-                            'fechaEscojida': fechita,
-                            'cliente': id,
-                            'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
-                        };
-                        console.log(solicitudatos);
-                        $.post('/api/solicitud/',solicitudatos,function(data){
-                            console.log(data);
-                            console.log("solicitud enviada");
-                        }).fail(function(data) {
-                            alert( "error con client null en solicitud" );
-                            console.log("error ");
-                            console.log(data);
-                        });
-                    }).fail(function(){
-                        console.log("error " + data.responseText);
-                    });
-                }
-
-                $("#ErrorMessage").hide();
-                $("#OkMessage").text("Formulario Enviado..!");
-                $("#OkMessage").show();
-                //Si se envia el formulario se enceran los inputs.
-                $("#nombreCliente").val("");
-                $("#apellidoCliente").val("");
-                $("#cedulaCliente").val("");
-                $("#emailCliente").val("");
-                $("#telCliente").val("");
-                $("#direccionCliente").val("");
-                $('select[name=subject]').val("default");
-                $("#fecha").val("");
-                $("#descripcion").val("");
+            var valor =$("input[name='optradio']:checked").val();
 
 
+            if(valor=="empresa"){
+               console.log($("#nombreCliente2").val());
+
+              if (nombre2.trim() == '') {
+                  $("#ErrorMessage").text("Nombre Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (email.trim() == '' || !rgemail.test(email)) {
+                  $("#ErrorMessage").text("Email Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+                  $("#ErrorMessage").text("Telefono Incorrecto");
+                  $("#ErrorMessage").show();
+                  //console.log("Telefono Incorrecto");
+                  return false;
+              }
+              else if (direccion.trim() == '') {
+                  $("#ErrorMessage").text("Direccion Incorrecta");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (ruc.trim() == '') {
+                  $("#ErrorMessage").text("Ruc Incorrecto");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (tipo == "default") {
+                  $("#ErrorMessage").text("Escoja un servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (fecha == "") {
+                  $("#ErrorMessage").text("Escoja una fecha para el servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (descripcion == "") {
+                  $("#ErrorMessage").text("Escriba el motivo del Servicio escojido.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else {
+
+                  //Datos del Cliente : Nombre, Apellido, Cedula, email, telefono, direcccion
+                  //Detalle del Servicio : Tipo, Fecha, Descripcion
+
+                  $.post('/enviarServicio/',{'nombre':nombre2,'apellido':"EMPRESA",'cedula':ruc, 'email':email,'telefono':telefono,'direccion':direccion,'tipo':tipo,'fecha':fecha,'descripcion':descripcion, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+
+                      console.log("mail enviado exitosamente!!");
+
+                  });
+                  
+                  $("#ErrorMessage").hide();
+                  $("#OkMessage").text("Formulario Enviado..!");
+                  $("#OkMessage").show();
+                  //Si se envia el formulario se enceran los inputs.
+                  $("#nombreCliente").val("");
+                  $("#nombreCliente2").val("");
+                  $("#apellidoCliente").val("");
+                  $("#cedulaCliente").val("");
+                  $("#cedulaCliente2").val("");
+                  $("#emailCliente").val("");
+                  $("#telCliente").val("");
+                  $("#direccionCliente").val("");
+                  $('select[name=subject]').val("default");
+                  $("#fecha").val("");
+                  $("#descripcion").val("");
+
+
+              }
+
+
+            }
+            else{
+              if (nombre.trim() == '' || !rgnombre.test(nombre)) {
+                  $("#ErrorMessage").text("Nombre Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (apellido.trim() == '' || !rgnombre.test(apellido)) {
+                  $("#ErrorMessage").text("Apellido Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (email.trim() == '' || !rgemail.test(email)) {
+                  $("#ErrorMessage").text("Email Incorrecto");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (telefono.trim() == '' || !rgtel.test(telefono) && !rgCel.test(telefono)) {
+                  $("#ErrorMessage").text("Telefono Incorrecto");
+                  $("#ErrorMessage").show();
+                  //console.log("Telefono Incorrecto");
+                  return false;
+              }
+              else if (direccion.trim() == '') {
+                  $("#ErrorMessage").text("Direccion Incorrecta");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (cedula.trim() == '') {
+                  $("#ErrorMessage").text("Cedula Incorrecta");
+                  $("#ErrorMessage").show();
+                  //console.log("Asunto Incorrecto");
+                  return false;
+              }
+              else if (tipo == "default") {
+                  $("#ErrorMessage").text("Escoja un servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (fecha == "") {
+                  $("#ErrorMessage").text("Escoja una fecha para el servicio.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else if (descripcion == "") {
+                  $("#ErrorMessage").text("Escriba el motivo del Servicio escojido.");
+                  $("#ErrorMessage").show();
+                  return false;
+              }
+              else {
+
+                  //Datos del Cliente : Nombre, Apellido, Cedula, email, telefono, direcccion
+                  //Detalle del Servicio : Tipo, Fecha, Descripcion
+
+                  $.post('/enviarServicio/',{'nombre':nombre,'apellido':apellido,'cedula':cedula, 'email':email,'telefono':telefono,'direccion':direccion,'tipo':tipo,'fecha':fecha,'descripcion':descripcion, 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()}, function(data){
+
+                      console.log("mail enviado exitosamente!!");
+
+                  });
+                  cliente = null;
+
+                  for(var i = 0; i < clientes.length; i++){
+                      if ( $("#cedulaCliente").val() == clientes[i].cedula){
+                          cliente = clientes[i];
+                          solicitudat = {
+                              'tipoSolicitud': tipotmp,
+                              'descripcion': $("#descripcion").val(),
+                              'fechaEscojida': $("#fecha").val(),
+                              'cliente': cliente.id,
+                              'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                          };
+                          console.log(solicitudat);
+                          $.post('/api/solicitud/',solicitudat,function(data){
+                              console.log("solicitud enviada");
+                          }).fail(function(data) {
+                              console.log( "error del for  " + data );
+                              console.log(data);
+                          });
+                      }
+                  }
+                  if (cliente == null){
+                      fechita = $("#fecha").val();
+                      console.log("entre aqui")
+                      datos ={
+                          'nombre':nombre + " "+ apellido,
+                          'cedula':$("#cedulaCliente").val(),
+                          'email':email,
+                          'telefono':telefono.replace('-',''),
+                          'direccion':direccion,
+                          'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                      };
+                      console.log(datos);
+                      $.post('/api/cliente/',datos ,function(data){
+                          console.log($("#descripcion").val());
+                          console.log($("#fecha").val());
+                          id = data.id;
+                          solicitudatos = {
+                              'tipoSolicitud': tipotmp,
+                              'descripcion': descripcion,
+                              'fechaEscojida': fechita,
+                              'cliente': id,
+                              'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                          };
+                          console.log(solicitudatos);
+                          $.post('/api/solicitud/',solicitudatos,function(data){
+                              console.log(data);
+                              console.log("solicitud enviada");
+                          }).fail(function(data) {
+                              alert( "error con client null en solicitud" );
+                              console.log("error ");
+                              console.log(data);
+                          });
+                      }).fail(function(){
+                          console.log("error " + data.responseText);
+                      });
+                  }
+
+                  $("#ErrorMessage").hide();
+                  $("#OkMessage").text("Formulario Enviado..!");
+                  $("#OkMessage").show();
+                  //Si se envia el formulario se enceran los inputs.
+                  $("#nombreCliente").val("");
+                  $("#apellidoCliente").val("");
+                  $("#cedulaCliente").val("");
+                  $("#emailCliente").val("");
+                  $("#telCliente").val("");
+                  $("#direccionCliente").val("");
+                  $('select[name=subject]').val("default");
+                  $("#fecha").val("");
+                  $("#descripcion").val("");
+
+
+              }
             }
 
         });
 
-        // //Codigo para setear el dia cita para el servicio.
-        // //Referencias: http://www.bootply.com/d7BS6aIoKK
-        // $.getScript('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js',function(){
-        //
-        //     $('#datePicker').datepicker({
-        //         autoclose:true,
-        //     }).on("changeDate", function(e){
-        //         //console.log(e.date);
-        //     });
-        //
-        //     $('.input-daterange').datepicker({
-        //         autoclose:true
-        //     }).on("changeDate", function(e){
-        //         //console.log(e.date);
-        //     });
-        //
-        // });
 
     });
 </script>
@@ -253,7 +335,7 @@ Aquí se define el título de la página y todas las librerías que se necesitan
     <div class="header-top">
         <div class="header-bottom">
             <div class="logo">
-                <h1><a href="/">Wilenco</a></h1>
+                <h1><a href="/">WILENCO</a></h1>
             </div>
             <!---->
             <div class="top-nav">
@@ -342,27 +424,54 @@ Aquí se define el título de la página y todas las librerías que se necesitan
             <div class="panel-body">
                 <div class="contact-form">
                     <form>
-                        <div class="form-group">
-                            <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
-                            <div class="col-md-8">
-                                <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
-                            </div>
-                        </div>
-                    </br></br></br>
-                    <div class="form-group">
-                        <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
-                        <div class="col-md-8">
-                            <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
-                        </div>
-                    </div>
-                </br></br>
+                      <div style="text-align:center;">
+                        <p>Escoja si es Persona Jur&iacute;dica (Empresa) o si es Persona Natural</p>
+                        <label class="radio-inline"><input type="radio" name="optradio"  value="natural" checked><b>Persona Natural</b></label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="empresa"  ><b>Persona Jur&iacute;dica</b></label>
+                      </div>
+                    <!-- persona natural   -->
+                      <div id="divpnatural">
+                          <div class="form-group">
+                              <label for="nombreCliente" class="col-md-2 control-label"><strong>Nombre:</strong></label>
+                              <div class="col-md-8">
+                                  <input class="form-control" id="nombreCliente" placeholder="Nombre" type="text">
+                              </div>
+                          </div>
+                          </br></br></br>
+                          <div class="form-group">
+                              <label for="apellidoCliente" class="col-md-2 control-label"><strong>Apellido:</strong></label>
+                              <div class="col-md-8">
+                                  <input class="form-control" id="apellidoCliente" placeholder="Apellido" type="text">
+                              </div>
+                          </div>
+                          </br></br>
+                          <div class="form-group">
+                              <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                              <div class="col-md-8">
+                                  <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                              </div>
+                          </div>
+                          </br></br>
+                 </div>
+          <!--    -->
+          <!-- empresa   -->
+            <div id="divempresa">
                 <div class="form-group">
-                    <label for="cedulaCliente" class="col-md-2 control-label"><strong>C&eacute;dula:</strong></label>
+                    <label for="nombreCliente" class="col-md-2 control-label"><strong>Empresa:</strong></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="cedulaCliente" placeholder="C&eacute;dula" type="text">
+                        <input class="form-control" id="nombreCliente2" placeholder="Nombre" type="text">
                     </div>
                 </div>
-            </br></br>
+                </br></br></br>
+                <div class="form-group">
+                    <label for="cedulaCliente" class="col-md-2 control-label"><strong>Ruc:</strong></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="cedulaCliente2" placeholder="RUC" type="text">
+                    </div>
+                </div>
+                </br></br>
+       </div>
+<!--    -->
             <div class="form-group">
                 <label for="emailCliente" class="col-md-2 control-label"><strong>Email:</strong></label>
                 <div class="col-md-8">

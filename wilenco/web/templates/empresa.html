@@ -34,7 +34,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{% static 'css/empresa.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/memenu.js' %}"></script>
 <script src="{% static 'js/empresa.js' %}"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>$(document).ready(function(){$(".memenu").memenu();
+$('.nav a').click(function(e){
+            $('ul li').removeClass('actif');
+            $(this).find('li').addClass('actif');
+            $('.tab').hide();
+            $('#'+$(this).attr('data-related')).show();
+           //This is also valid
+           //$('#'+$(this).data('related')).show();
+            e.preventDefault();
+});
+
+ });</script>
 <!-- /start menu -->
 </head>
 <body>
@@ -42,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header-top">
 	 <div class="header-bottom">
 				<div class="logo">
-					<h1><a href="/">Wilenco</a></h1>
+					<h1><a href="/">WILENCO</a></h1>
 				</div>
 			 <!---->
 			 <div class="top-nav">
@@ -92,21 +103,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!-- SIDEBAR MENU -->
 									<div class="profile-usermenu">
 										<ul class="nav">
-											<li  class="">
-												<a href="#"  data="#historia" class="show" >
+											<li>
+												<a href="" class="active" data-related="historia">
 												Historia</a>
 											</li>
-											<li  class="">
-												<a href="#"  data="#mision" class="show">
+											<li>
+												<a href=""  data-related="mision">
 												Misi&oacute;n </a>
 											</li>
-											<li  class="">
-												<a href="#"  data="#vision" class="show">
+											<li>
+												<a href=""  data-related="vision">
 												Visi&oacute;n </a>
 											</li>
 
-											<li  class="">
-												<a href="#"  data="#obras" class="show" >
+											<li>
+												<a href="" data-related="obras">
 												Obras</a>
 											</li>
 										</ul>
@@ -116,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="col-md-9">
 						    <div class="profile-content">
-									<div id="mision" class="col-md-6 span_2_of_3">
+									<div id="mision" class="tab col-md-6 span_2_of_3">
 										<div class="contact-form">
 																<h3>Misi&oacute;n</h3>
 																	<hr>
@@ -125,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 											</div>
 										</div>
-									<div id="vision" class="col-md-6 span_2_of_3">
+									<div id="vision" class="tab col-md-6 span_2_of_3">
 										<div class="contact-form">
 											<h3>Visi&oacute;n</h3>	<hr>
 																<br/>
@@ -135,9 +146,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 											</div>
 										</div>
-									<div id="obras" class="col-md-6 span_2_of_3">
+									<div id="obras" class="tab col-md-6 span_2_of_3">
 								    <div class="contact-form text-center">
 								      <h3>Obras</h3>	<hr>
+
 								                <p>Edificio Biblioteca  Universidad Salesiana  de Guayaquil:  Climatizaci&oacute;n </p>
 								                <p>Iglesia Santa Isabel  Ubicada en el centro comercial Mall Del Sol</p>
 								                <p>Climatizacion de nuevos locales de exhibici&oacute;n de la nueva ampliacion del centro comercial Mall del SoL</p>
@@ -158,9 +170,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								                <p>Pudeleco, climatizaci&oacute;n de todas sus oficinas – centro comercial Plaza Quil.</p>
 								                <br/>
                       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 								      </div>
 								  </div>
-                  <div id="historia" class="col-md-6 span_2_of_3">
+                  <div id="historia" class=" tab col-md-6 span_2_of_3">
 												<div class="text-center">
 														<h3>Informaci&oacute;n de la Empresa</h3>	<hr>
 														</br>

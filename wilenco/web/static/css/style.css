@@ -143,27 +143,22 @@ h1.b1,h2.b2,h3.b3 {
 }
 /*--- slider-css --*/
 .banner1{
-	background:url(../images/malldelsol.jpg) no-repeat 0px 0px;
-	background-size:cover;
-	min-height:585px;
-}
-.banner1-2{
-	background:url(../images/chimenea.jpg) no-repeat 0px 0px;
+	background:url(../images/banner2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
 .banner1-3{
-	background:url(../images/gases.jpg) no-repeat 0px 0px;
+	background:url(../images/banner3.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
 .banner2{
-	background:url(../images/dulceteria.jpg) no-repeat 0px 0px;
+	background:url(../images/salesiana.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
 .banner3{
-	background:url(../images/edificio.jpg) no-repeat 0px 0px;
+	background:url(../images/banner4.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:585px;
 }
